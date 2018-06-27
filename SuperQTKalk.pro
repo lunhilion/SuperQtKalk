@@ -18,13 +18,33 @@ SOURCES += main.cpp\
     drawbox.cpp \
     leftbox.cpp \
     rightbox.cpp \
-    bottombox.cpp
+    bottombox.cpp \
+    Model/colore.cpp \
+    rgb.cpp \
+    Model/rgb.cpp \
+    Model/cymk.cpp \
+    Model/poligono.cpp \
+    Model/latifiniti.cpp \
+    Model/punto.cpp \
+    Model/triangolo.cpp \
+    Model/circonferenza.cpp \
+    Model/quadrilatero.cpp
 
 HEADERS  += mainwindow.h \
     datamanager.h \
     drawbox.h \
     leftbox.h \
     rightbox.h \
-    bottombox.h
+    bottombox.h \
+    Model/colore.h \
+    rgb.h \
+    Model/rgb.h \
+    Model/poligono.h \
+    Model/latifiniti.h \
+    Model/punto.h \
+    Model/triangolo.h \
+    Model/circonferenza.h \
+    Model/cmyk.h \
+    Model/quadrilatero.h
 
 FORMS    += mainwindow.ui
