@@ -7,7 +7,7 @@ private:
   unsigned int x;   //altezza in pixel dall'angolo in basso a sinistra del padre
   unsigned int y;
 public:
-  Punto(unsigned int, unsigned int);
+  Punto(unsigned int=0, unsigned int=0);
   Punto getPunto() const;
   unsigned int getX() const;
   unsigned int getY() const;
@@ -15,7 +15,7 @@ public:
   void setX(unsigned int);
   void setY(unsigned int);
   unsigned int distanza(const Punto&) const;
-  static unsigned int distanzaDuePunti(const Punto&, const Punto&);
+  static double distanzaDuePunti(const Punto&, const Punto&);
 };
 
 #endif // PUNTO_H

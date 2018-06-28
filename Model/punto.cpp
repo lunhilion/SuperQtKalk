@@ -12,8 +12,7 @@ unsigned int Punto::getY() const {
 }
 
 Punto Punto::getPunto() const {
-    Punto temp = Punto(x,y);
-    return temp;
+    return Punto(x,y);
 }
 
 void Punto::setPunto(const Punto& p) {
@@ -25,7 +24,7 @@ void Punto::setX(unsigned int i) {
     x = i;
 }
 
-void Punto::setX(unsigned int i) {
+void Punto::setY(unsigned int i) {
     y = i;
 }
 
@@ -39,7 +38,7 @@ unsigned int Punto::distanza(const Punto& p) const {
 
 }
 
-unsigned int Punto::distanzaDuePunti(const Punto& a, const Punto& b) {
+double Punto::distanzaDuePunti(const Punto& a, const Punto& b) {
     unsigned int v = pow(b.getX() - a.getX(), 2);
     unsigned int z = pow(b.getY() - a.getY(), 2);
     unsigned int dist = sqrt(v+z);
