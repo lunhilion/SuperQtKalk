@@ -2,7 +2,8 @@
 #define DATAMANAGER_H
 
 #include <QObject>
-
+#include <Model/poligono.h>
+#include <Model/colore.h>
 
 class DataManager
 {

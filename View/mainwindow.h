@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "../Controller/datamanager.h"
+#include "Controller/datamanager.h"
 #include "drawbox.h"
 #include "leftbox.h"
 #include "rightbox.h"

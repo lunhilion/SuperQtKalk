@@ -13,54 +13,42 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    datamanager.cpp \
-    drawbox.cpp \
-    leftbox.cpp \
-    rightbox.cpp \
-    bottombox.cpp \
-    Model/colore.cpp \
-    rgb.cpp \
-    Model/rgb.cpp \
-    Model/poligono.cpp \
-    Model/latifiniti.cpp \
-    Model/punto.cpp \
-    Model/triangolo.cpp \
+    Controller/datamanager.cpp \
     Model/circonferenza.cpp \
-    Model/quadrilatero.cpp \
     Model/cmyk.cpp \
+    Model/colore.cpp \
+    Model/datamanager.cpp \
+    Model/latifiniti.cpp \
+    Model/poligono.cpp \
+    Model/punto.cpp \
+    Model/quadrilatero.cpp \
+    Model/rgb.cpp \
+    Model/triangolo.cpp \
     View/bottombox.cpp \
     View/drawbox.cpp \
     View/leftbox.cpp \
     View/mainwindow.cpp \
     View/rightbox.cpp \
-    View/valueselector.cpp \
-    Model/datamanager.cpp \
-    Controller/datamanager.cpp
+    View/valueselector.cpp
 
 HEADERS  += mainwindow.h \
-    datamanager.h \
-    drawbox.h \
-    leftbox.h \
-    rightbox.h \
-    bottombox.h \
-    Model/colore.h \
-    rgb.h \
-    Model/rgb.h \
-    Model/poligono.h \
-    Model/latifiniti.h \
-    Model/punto.h \
-    Model/triangolo.h \
+    Controller/datamanager.h \
     Model/circonferenza.h \
     Model/cmyk.h \
+    Model/colore.h \
+    Model/datamanager.h \
+    Model/latifiniti.h \
+    Model/poligono.h \
+    Model/punto.h \
     Model/quadrilatero.h \
+    Model/rgb.h \
+    Model/triangolo.h \
     View/bottombox.h \
     View/drawbox.h \
     View/leftbox.h \
     View/mainwindow.h \
     View/rightbox.h \
-    View/valueselector.h \
-    Model/datamanager.h \
-    Controller/datamanager.h
+    View/valueselector.h
+
 
 FORMS    += mainwindow.ui

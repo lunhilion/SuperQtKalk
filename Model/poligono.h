@@ -1,6 +1,8 @@
 #ifndef POLIGONO_H
 #define POLIGONO_H
 
+#include "punto.h"
+
 class Poligono {
 public:
   virtual double getArea() const=0;
