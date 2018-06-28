@@ -1,5 +1,7 @@
-#ifndef CYMK_H
-#define CYMK_H
+#ifndef CMYK_H
+#define CMYK_H
+#include "colore.h"
+#include <QString>
 
 
 class Cmyk : public Colore {
@@ -22,7 +24,7 @@ class Cmyk : public Colore {
         Cmyk& operator+(const Colore&) const;
         Cmyk& operator-(const Colore&) const;
         QString getHex() const;
-        Cmyk media(const Colore&) const;
+        Cmyk& media(const Colore&) const;
 };
 
 #endif // CYMK_H

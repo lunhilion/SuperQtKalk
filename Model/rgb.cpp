@@ -4,22 +4,22 @@
 //Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) : red(r), green(g), blue(b) {}
 Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) {
     if(r <= RGB_MAX_VALUE) {
-        red(r);
+        red = r;
     }
     else
-        red(RGB_MAX_VALUE);
+        red = RGB_MAX_VALUE;
 
     if(g <= RGB_MAX_VALUE){
-        green(g);
+        green = g;
     }
     else
-        green(RGB_MAX_VALUE);
+        green = RGB_MAX_VALUE;
 
     if(b <= RGB_MAX_VALUE){
-        blue(b);
+        blue = b;
     }
     else
-        green(RGB_MAX_VALUE);
+        blue = RGB_MAX_VALUE;
 
 }
 

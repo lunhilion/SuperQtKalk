@@ -1,5 +1,6 @@
 #ifndef COLORE_H
 #define COLORE_H
+#include <QString>
 
 
 class Colore

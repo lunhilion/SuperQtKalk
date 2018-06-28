@@ -4,6 +4,8 @@
 
 int main(int argc, char *argv[])
 {
+    const Punto* ca = new Punto(10,10);
+    ca->getX();
     QApplication a(argc, argv);
     DataManager* datamanager = new DataManager();
     MainWindow w(datamanager);

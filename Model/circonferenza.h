@@ -1,7 +1,8 @@
 #ifndef CIRCONFERENZA_H
 #define CIRCONFERENZA_H
 
-#include ""
+#include "punto.h"
+#include "poligono.h"
 
 class Circonferenza : public Poligono {
 private:
