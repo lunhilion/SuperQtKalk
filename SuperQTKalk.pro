@@ -22,13 +22,13 @@ SOURCES += main.cpp\
     Model/colore.cpp \
     rgb.cpp \
     Model/rgb.cpp \
-    Model/cymk.cpp \
     Model/poligono.cpp \
     Model/latifiniti.cpp \
     Model/punto.cpp \
     Model/triangolo.cpp \
     Model/circonferenza.cpp \
-    Model/quadrilatero.cpp
+    Model/quadrilatero.cpp \
+    Model/cmyk.cpp
 
 HEADERS  += mainwindow.h \
     datamanager.h \

@@ -20,7 +20,9 @@ class Cmyk : public Colore {
         void setYellow(unsigned int);
         void setBlack(unsigned int);
         Cmyk& operator+(const Colore&) const;
+        Cmyk& operator-(const Colore&) const;
         QString getHex() const;
+        Cmyk media(const Colore&) const;
 };
 
 #endif // CYMK_H

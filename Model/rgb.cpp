@@ -74,3 +74,5 @@ QString Rgb::getHex() const {
     return temp;
 }
 
+unsigned int Rgb::RGB_MAX_VALUE = 255;
+

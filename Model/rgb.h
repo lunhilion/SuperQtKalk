@@ -17,7 +17,9 @@ class Rgb : public Colore {
         void setGreen(unsigned int);
         void setBlue(unsigned int);
         Rgb& operator+ (const Colore&) const;
+        Rgb& operator- (const Colore&) const;
         QString getHex() const;
+        Rgb media(const Colore&) const;
 };
 
 #endif // RGB_H

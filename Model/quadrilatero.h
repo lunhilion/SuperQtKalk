@@ -4,7 +4,7 @@
 
 class Quadrilatero : public Poligono {
 public:
-  Quadrilatero(Punto, Punto, Punto, Punto);
+  Quadrilatero(const Punto&, const Punto&, const Punto&, const Punto&);
   ~Quadrilatero();
   double getArea() const;     //la calcoliamo dividendo in due con una diagonale, e calcolando per due triangoli generici
   double getAltezza() const;  //NB: NON FUNZIONA CON QUADRILATERI CONCAVI

@@ -1,33 +1,33 @@
 #include "cmyk.h"
 
-Cymk::Cymk(unsigned int c, unsigned int m, unsigned int y, unsigned int b) {
-    if(c <= CYMK_MAX_VALUE) {
+Cmyk::Cmyk(unsigned int c, unsigned int m, unsigned int y, unsigned int b) {
+    if(c <= CMYK_MAX_VALUE) {
         cyan(c);
     }
     else
-        red(CYMK_MAX_VALUE);
+        red(CMYK_MAX_VALUE);
 
-    if(m <= CYMK_MAX_VALUE){
+    if(m <= CMYK_MAX_VALUE){
         magenta(m);
     }
     else
-        magenta(CYMK_MAX_VALUE);
+        magenta(CMYK_MAX_VALUE);
 
-    if(y <= CYMK_MAX_VALUE){
+    if(y <= CMYK_MAX_VALUE){
         yellow(y);
     }
     else
-        yellow(CYMK_MAX_VALUE);
+        yellow(CMYK_MAX_VALUE);
 
-    if(b <= CYMK_MAX_VALUE) {
+    if(b <= CMYK_MAX_VALUE) {
         black(b);
     }
     else
-        black(CYMK_MAX_VALUE);
+        black(CMYK_MAX_VALUE);
 
 }
 
-unsigned int Cymk::getCyan() const {
+unsigned int Cmyk::getCyan() const {
     return cyan;
 }
 
@@ -35,31 +35,31 @@ unsigned int Cymk::getMagenta() const {
     return magenta;
 }
 
-unsigned int Cymk::getYellow() const {
+unsigned int Cmyk::getYellow() const {
     return yellow;
 }
 
-unsigned int Cymk::getBlack() const {
+unsigned int Cmyk::getBlack() const {
     return black;
 }
 
-void Cymk::setCyan(unsigned int i) {
+void Cmyk::setCyan(unsigned int i) {
     cyan = i;
 }
 
-void Cymk::setMagenta(unsigned int i) {
+void Cmyk::setMagenta(unsigned int i) {
     magenta = i;
 }
 
-void Cymk::setYellow(unsigned int i) {
+void Cmyk::setYellow(unsigned int i) {
     yellow = i;
 }
 
-void Cymk::setBlack(unsigned int i) {
+void Cmyk::setBlack(unsigned int i) {
     black = i;
 }
 
-QString getHex() const {
+QString Cmyk::getHex() const {
     Qstring temp = "#";
     unsigned int r = ( 1 - cyan / 100) * ( 1 - black / 100);
     unsigned int g = ( 1 - magenta / 100) * ( 1 - black / 100);
@@ -70,6 +70,8 @@ QString getHex() const {
     return temp;
 
 }
+
+unsigned int Cmyk::CMYK_MAX_VALUE = 255;
 
 /*
 Red = 255 × ( 1 - Cyan ÷ 100 ) × ( 1 - Black ÷ 100 )
