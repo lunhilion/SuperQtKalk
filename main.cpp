@@ -1,10 +1,11 @@
-#include "mainwindow.h"
+#include "View/mainwindow.h"
+#include "Controller/datamanager.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    DataManager* datamanager = new DataManager;
+    DataManager* datamanager = new DataManager();
     MainWindow w(datamanager);
     w.show();
 

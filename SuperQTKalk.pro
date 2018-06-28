@@ -28,7 +28,15 @@ SOURCES += main.cpp\
     Model/triangolo.cpp \
     Model/circonferenza.cpp \
     Model/quadrilatero.cpp \
-    Model/cmyk.cpp
+    Model/cmyk.cpp \
+    View/bottombox.cpp \
+    View/drawbox.cpp \
+    View/leftbox.cpp \
+    View/mainwindow.cpp \
+    View/rightbox.cpp \
+    View/valueselector.cpp \
+    Model/datamanager.cpp \
+    Controller/datamanager.cpp
 
 HEADERS  += mainwindow.h \
     datamanager.h \
@@ -45,6 +53,14 @@ HEADERS  += mainwindow.h \
     Model/triangolo.h \
     Model/circonferenza.h \
     Model/cmyk.h \
-    Model/quadrilatero.h
+    Model/quadrilatero.h \
+    View/bottombox.h \
+    View/drawbox.h \
+    View/leftbox.h \
+    View/mainwindow.h \
+    View/rightbox.h \
+    View/valueselector.h \
+    Model/datamanager.h \
+    Controller/datamanager.h
 
 FORMS    += mainwindow.ui
