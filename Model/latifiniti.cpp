@@ -1,6 +1,6 @@
 #include "latifiniti.h"
 #include <QVector>
-#include "punto.h"
+
 
 LatiFiniti::LatiFiniti(const QVector<const Punto*>& v) : vertici(v) {
 }
@@ -28,8 +28,8 @@ Punto LatiFiniti::getBaricentro() const {
     unsigned int numerY = 0;
     for(QVector<const Punto*>::const_iterator it=vertici.begin(); it != vertici.end(); ++it) {
         nVertici++;
-        numerX += **it.getX();
-        numerY += *(it)->getY();
+        numerX += (*it)->getX();
+        numerY += (*it)->getY();
     }
     return Punto(numerX/nVertici,numerY/nVertici);
 
@@ -44,9 +44,9 @@ Punto LatiFiniti::getVertice(unsigned int i) const {
 }
 
 void LatiFiniti::setVertice(unsigned int i, const Punto& p) {
-    vertici[i]->setX(p.getX());
-    vertici[i]->setY(p.getY());
-    const Punto* a = new Punto(10,10);
+    const_cast<Punto*>(vertici[i])->setX(p.getX());
+    const_cast<Punto*>(vertici[i])->setY(p.getY());
+    Punto* a = new Punto(10,10);
     a->setX(p.getX());
 }
 

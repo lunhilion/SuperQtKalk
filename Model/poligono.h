@@ -2,6 +2,7 @@
 #define POLIGONO_H
 
 #include "punto.h"
+#include <QtMath>
 
 class Poligono {
 public:

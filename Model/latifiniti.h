@@ -1,6 +1,7 @@
 #ifndef LATIFINITI_H
 #define LATIFINITI_H
 #include "poligono.h"
+#include "punto.h"
 #include <QVector>
 
 class LatiFiniti : public Poligono {

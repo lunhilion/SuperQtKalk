@@ -1,8 +1,10 @@
 #ifndef QUADRILATERO_H
 #define QUADRILATERO_H
 
+#include "latifiniti.h"
+#include <QVector>
 
-class Quadrilatero : public Poligono {
+class Quadrilatero : public LatiFiniti {
 public:
   Quadrilatero(const Punto&, const Punto&, const Punto&, const Punto&);
   ~Quadrilatero();
