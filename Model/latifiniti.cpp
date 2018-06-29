@@ -46,10 +46,5 @@ Punto LatiFiniti::getVertice(unsigned int i) const {
 void LatiFiniti::setVertice(unsigned int i, const Punto& p) {
     const_cast<Punto*>(vertici[i])->setX(p.getX());
     const_cast<Punto*>(vertici[i])->setY(p.getY());
-    Punto* a = new Punto(10,10);
-    a->setX(p.getX());
 }
-
-//non riesco a capire
-
 

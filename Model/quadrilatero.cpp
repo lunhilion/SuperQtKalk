@@ -1,6 +1,7 @@
 #include "quadrilatero.h"
+#include <QVector>
 
-Quadrilatero::Quadrilatero(QVector<const Punto*> v)  : LatiFiniti(v) {
+Quadrilatero::Quadrilatero(const QVector<const Punto*>& v) : LatiFiniti(v) {
 
 }
 
@@ -17,5 +18,9 @@ double Quadrilatero::getArea() const {      //occhio che questa è sbagliata
 double Quadrilatero::getAltezza() const {
    return getArea()/getLato(1);
 
+}
+
+Quadrilatero* Quadrilatero::clone() const {
+    return new Quadrilatero(*this);
 }
 

@@ -15,6 +15,7 @@ public:
   double getArea() const;
   double getPerimetro() const;
   Punto getBaricentro() const;   //da controllare il tipo di ritorno
+  Circonferenza* clone() const;
 };
 
 #endif // CIRCONFERENZA_H

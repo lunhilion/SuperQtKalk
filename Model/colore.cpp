@@ -1,6 +1,4 @@
 #include "colore.h"
 
-Colore::Colore() {
-
-}
+Colore::~Colore() {}
 
