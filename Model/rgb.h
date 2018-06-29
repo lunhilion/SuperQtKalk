@@ -1,6 +1,7 @@
 #ifndef RGB_H
 #define RGB_H
 
+#include "colore.h"
 
 class Rgb : public Colore {
     private:
@@ -19,7 +20,7 @@ class Rgb : public Colore {
         Rgb& operator+ (const Colore&) const;
         Rgb& operator- (const Colore&) const;
         QString getHex() const;
-        Rgb media(const Colore&) const;
+        Rgb& media(const Colore&) const;
 };
 
 #endif // RGB_H

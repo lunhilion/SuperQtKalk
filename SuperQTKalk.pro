@@ -17,7 +17,6 @@ SOURCES += main.cpp\
     Model/circonferenza.cpp \
     Model/cmyk.cpp \
     Model/colore.cpp \
-    Model/datamanager.cpp \
     Model/latifiniti.cpp \
     Model/poligono.cpp \
     Model/punto.cpp \
@@ -36,7 +35,6 @@ HEADERS  += mainwindow.h \
     Model/circonferenza.h \
     Model/cmyk.h \
     Model/colore.h \
-    Model/datamanager.h \
     Model/latifiniti.h \
     Model/poligono.h \
     Model/punto.h \

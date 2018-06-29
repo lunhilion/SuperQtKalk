@@ -1,10 +1,11 @@
 #ifndef TRIANGOLO_H
 #define TRIANGOLO_H
 
+#include "latifiniti.h"
 
 class Triangolo : public LatiFiniti {
 public:
-  Triangolo(const Punto&, const Punto&, const Punto&);
+  Triangolo(QVector<const Punto *>);
   ~Triangolo();
   double getArea() const; //con magica formula di Erone
 

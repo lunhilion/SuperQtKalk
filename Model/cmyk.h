@@ -27,4 +27,4 @@ class Cmyk : public Colore {
         Cmyk& media(const Colore&) const;
 };
 
-#endif // CYMK_H
+#endif // CMYK_H

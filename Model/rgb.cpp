@@ -24,15 +24,15 @@ Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) {
 }
 
 
-Rgb Rgb::getRed() const {
+unsigned int Rgb::getRed() const {
     return red;
 }
 
-Rgb Rgb::getGreen() const {
+unsigned int Rgb::getGreen() const {
     return green;
 }
 
-Rgb Rgb::getBlue() const {
+unsigned int Rgb::getBlue() const {
     return blue;
 }
 
