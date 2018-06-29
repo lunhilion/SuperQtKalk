@@ -16,6 +16,7 @@ public:
   void setY(unsigned int);
   unsigned int distanza(const Punto&) const;
   static double distanzaDuePunti(const Punto&, const Punto&);
+  Punto* clone() const;
 };
 
 #endif // PUNTO_H

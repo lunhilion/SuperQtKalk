@@ -20,3 +20,7 @@ Punto Circonferenza::getBaricentro() const {
 
 unsigned int Circonferenza::PI = 3.14159265;
 
+Circonferenza* Circonferenza::clone() const {
+    return new Circonferenza(*this);
+}
+

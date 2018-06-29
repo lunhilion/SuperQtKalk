@@ -12,11 +12,12 @@ public:
 
   double getPerimetro() const;
   Punto getBaricentro() const;
-  virtual ~LatiFiniti();
   double getLato(unsigned int) const;
   QVector<double> getLati() const;
   Punto getVertice(unsigned int) const;
   void setVertice(unsigned int, const Punto&);
+  double getArea() const=0;
+  LatiFiniti* clone() const=0;
 };
 
 //qui implementiamo tutto meno che il getArea. Quindi questa classe è virtuale

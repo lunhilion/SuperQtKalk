@@ -76,3 +76,7 @@ QString Rgb::getHex() const {
 
 unsigned int Rgb::RGB_MAX_VALUE = 255;
 
+Rgb* Rgb::clone() const {
+    return new Rgb(*this);
+}
+

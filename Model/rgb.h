@@ -17,10 +17,11 @@ class Rgb : public Colore {
         void setRed(unsigned int);		//faranno i controlli sul MAX_VALUE
         void setGreen(unsigned int);
         void setBlue(unsigned int);
-        Rgb& operator+ (const Colore&) const;
-        Rgb& operator- (const Colore&) const;
+        //Rgb& operator+ (const Colore&) const;
+        //Rgb& operator- (const Colore&) const;
         QString getHex() const;
-        Rgb& media(const Colore&) const;
+        //Rgb& media(const Colore&) const;
+        Rgb* clone() const;
 };
 
 #endif // RGB_H

@@ -5,9 +5,9 @@
 
 class Triangolo : public LatiFiniti {
 public:
-  Triangolo(QVector<const Punto *>);
-  ~Triangolo();
+  Triangolo(const QVector<const Punto *>&);
   double getArea() const; //con magica formula di Erone
+  Triangolo* clone() const;
 
 };
 

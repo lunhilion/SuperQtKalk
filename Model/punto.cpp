@@ -45,3 +45,7 @@ double Punto::distanzaDuePunti(const Punto& a, const Punto& b) {
     return dist;
 
 }
+
+Punto* Punto::clone() const {
+    return new Punto(*this);
+}
