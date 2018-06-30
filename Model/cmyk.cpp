@@ -66,9 +66,9 @@ QString Cmyk::getHex() const {
     unsigned int r = 255 * ( 1 - cyan / 100) * ( 1 - black / 100);
     unsigned int g = 255 * ( 1 - magenta / 100) * ( 1 - black / 100);
     unsigned int b = 255 * ( 1 - yellow / 100) * ( 1 - black / 100);
-    temp += QString::number(r,16);
-    temp += QString::number(g,16);
-    temp += QString::number(b,16);
+    temp += QString::number(r,16).rightJustified(2,'0');
+    temp += QString::number(g,16).rightJustified(2,'0');;
+    temp += QString::number(b,16).rightJustified(2,'0');;
     return temp;
 
 }
