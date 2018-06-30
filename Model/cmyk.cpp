@@ -28,6 +28,7 @@ Cmyk::Cmyk(unsigned int c, unsigned int m, unsigned int y, unsigned int b) {
 
 }
 
+
 unsigned int Cmyk::getCyan() const {
     return cyan;
 }
@@ -62,9 +63,9 @@ void Cmyk::setBlack(unsigned int i) {
 
 QString Cmyk::getHex() const {
     QString temp = "#";
-    unsigned int r = ( 1 - cyan / 100) * ( 1 - black / 100);
-    unsigned int g = ( 1 - magenta / 100) * ( 1 - black / 100);
-    unsigned int b = ( 1 - yellow / 100) * ( 1 - black / 100);
+    unsigned int r = 255 * ( 1 - cyan / 100) * ( 1 - black / 100);
+    unsigned int g = 255 * ( 1 - magenta / 100) * ( 1 - black / 100);
+    unsigned int b = 255 * ( 1 - yellow / 100) * ( 1 - black / 100);
     temp += QString::number(r,16);
     temp += QString::number(g,16);
     temp += QString::number(b,16);
@@ -72,13 +73,24 @@ QString Cmyk::getHex() const {
 
 }
 
-unsigned int Cmyk::CMYK_MAX_VALUE = 255;
+unsigned int Cmyk::CMYK_MAX_VALUE = 100;
 
 Cmyk* Cmyk::clone() const {
     return new Cmyk(*this);
 }
 
+Cmyk& Cmyk::media(const Colore& c) const {
+    return *(new Cmyk());
+}
 
+Cmyk& Cmyk::operator+(const Colore& c) const {
+    return *(new Cmyk());
+
+}
+
+Cmyk& Cmyk::operator-(const Colore& c) const {
+    return *(new Cmyk());
+}
 
 /*
 Red = 255 × ( 1 - Cyan ÷ 100 ) × ( 1 - Black ÷ 100 )
