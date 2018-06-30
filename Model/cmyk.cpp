@@ -79,17 +79,17 @@ Cmyk* Cmyk::clone() const {
     return new Cmyk(*this);
 }
 
-Cmyk& Cmyk::media(const Colore& c) const {
-    return *(new Cmyk());
+Cmyk* Cmyk::media(const Colore& c) const {
+    return new Cmyk();
 }
 
-Cmyk& Cmyk::operator+(const Colore& c) const {
-    return *(new Cmyk());
+Cmyk* Cmyk::operator+(const Colore& c) const {
+    return new Cmyk();
 
 }
 
-Cmyk& Cmyk::operator-(const Colore& c) const {
-    return *(new Cmyk());
+Cmyk* Cmyk::operator-(const Colore& c) const {
+    return new Cmyk();
 }
 unsigned int Cmyk::getMaxValues() const {
     return CMYK_MAX_VALUE;

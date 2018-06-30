@@ -23,9 +23,9 @@ class Cmyk : public Colore {
         void setYellow(unsigned int);
         void setBlack(unsigned int);
         QString getHex() const;
-        Cmyk& operator+(const Colore&) const;
-        Cmyk& operator-(const Colore&) const;
-        Cmyk& media(const Colore&) const;
+        Cmyk* operator+(const Colore&) const;
+        Cmyk* operator-(const Colore&) const;
+        Cmyk* media(const Colore&) const;
         Cmyk* clone() const;
         unsigned int getMaxValues() const;
 };
