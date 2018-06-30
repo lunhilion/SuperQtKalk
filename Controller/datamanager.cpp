@@ -96,12 +96,12 @@ void DataManager::somma() {
 
 void DataManager::sottrai() {
     delete col4;
-    //col4=(*col2)-(*col3);
+    col4=(*col2)-(*col3);
     emit(setResult(col4->getHex()));
 }
 
 void DataManager::media() {
     delete col4;
-    //col4= col2->media(*col3);
+    col4= col2->media(*col3);
     emit(setResult(col4->getHex()));
 }
