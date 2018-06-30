@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bottombox,SIGNAL(somma()),this,SIGNAL(somma()));
     connect(bottombox,SIGNAL(sottrai()),this,SIGNAL(sottrai()));
     connect(bottombox,SIGNAL(media()),this,SIGNAL(media()));
-    connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
+    connect(this,SIGNAL(setResult(QString)),bottombox,SIGNAL(setResult(QString)));
 
 }
 
