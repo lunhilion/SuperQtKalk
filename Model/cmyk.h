@@ -13,6 +13,7 @@ class Cmyk : public Colore {
         static unsigned int CMYK_MAX_VALUE;
     public:
         Cmyk(unsigned int=0, unsigned int=0, unsigned int=0, unsigned int=100);
+        //Cmyk(QString);
         unsigned int getCyan() const;
         unsigned int getMagenta() const;
         unsigned int getYellow() const;
@@ -21,10 +22,10 @@ class Cmyk : public Colore {
         void setMagenta(unsigned int);
         void setYellow(unsigned int);
         void setBlack(unsigned int);
-        //Cmyk& operator+(const Colore&) const;
-        //Cmyk& operator-(const Colore&) const;
         QString getHex() const;
-        //Cmyk& media(const Colore&) const;
+        Cmyk& operator+(const Colore&) const;
+        Cmyk& operator-(const Colore&) const;
+        Cmyk& media(const Colore&) const;
         Cmyk* clone() const;
         unsigned int getMaxValues() const;
 };
