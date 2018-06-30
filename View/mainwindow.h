@@ -43,6 +43,9 @@ signals:
     void col1toOP2();
     void setOP1(QString);
     void setOP2(QString);
+    void somma();
+    void sottrai();
+    void media();
 
 };
 

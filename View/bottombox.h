@@ -15,6 +15,7 @@ class BottomBox : public QFrame
     Q_OBJECT
 
 private:
+    QComboBox* operandselector;
     QLCDNumber* hexlcd1;
     QLCDNumber* hexlcd2;
     QLCDNumber* hexlcd3;
@@ -28,9 +29,12 @@ public:
 signals:
     void setOP1(QString);
     void setOP2(QString);
+    void somma();
+    void sottrai();
+    void media();
 
 public slots:
-
+    void operationRouting();
 
 };
 

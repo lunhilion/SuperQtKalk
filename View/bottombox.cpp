@@ -21,7 +21,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     colorpreview1 = new DrawBox(this);
     layout->addWidget(colorpreview1,1,1,1,1);
 
-    QComboBox* operandselector = new QComboBox(this);
+    operandselector = new QComboBox(this);
     operandselector->addItem(tr("Somma"));
     operandselector->addItem(tr("Sottrazione"));
     operandselector->addItem(tr("Media"));
@@ -35,8 +35,8 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     colorpreview2 = new DrawBox(this);
     layout->addWidget(colorpreview2,1,4,1,1);
 
-    QPushButton* Bottomb1 = new QPushButton("Calcola",this);
-    layout->addWidget(Bottomb1,2,1,1,3);
+    QPushButton* bottomb1 = new QPushButton("Calcola",this);
+    layout->addWidget(bottomb1,2,1,1,3);
 
     QLabel* lab3 = new QLabel("Risultato:",this);
     lab3->setAlignment(Qt::AlignCenter);
@@ -50,8 +50,8 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     colorpreview3 = new DrawBox(this);
     layout->addWidget(colorpreview3,3,2,1,1);
 
-    QPushButton* Bottomb2 = new QPushButton("Applica",this);
-    layout->addWidget(Bottomb2,3,3,1,2);
+    QPushButton* bottomb2 = new QPushButton("Applica",this);
+    layout->addWidget(bottomb2,3,3,1,2);
 
     setFrameShape(QFrame::Box);
     setLineWidth(1);
@@ -62,5 +62,15 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     connect(this,SIGNAL(setOP2(QString)),hexlcd2,SLOT(display(QString)));
     connect(this, SIGNAL(setOP1(QString)),colorpreview1,SLOT(repaintBackground(QString)));
     connect(this, SIGNAL(setOP2(QString)),colorpreview2,SLOT(repaintBackground(QString)));
+    connect(bottomb1,SIGNAL(clicked()),this,SLOT(operationRouting()));
 }
 
+void BottomBox::operationRouting() {
+    if(operandselector->currentIndex()==0)
+        emit(somma());
+    else if(operandselector->currentIndex()==1)
+        emit(sottrai());
+    else if(operandselector->currentIndex()==2)
+        emit(media());
+
+}
