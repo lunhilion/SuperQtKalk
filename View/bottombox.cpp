@@ -15,6 +15,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
 
     hexlcd1 = new QLCDNumber(6);
     hexlcd1->setHexMode();
+    hexlcd1->display("FFFFFF");
     hexlcd1->setMaximumHeight(35);
     layout->addWidget(hexlcd1,1,0,1,1);
 
@@ -29,6 +30,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
 
     hexlcd2 = new QLCDNumber(6);
     hexlcd2->setHexMode();
+    hexlcd2->display("FFFFFF");
     hexlcd2->setMaximumHeight(35);
     layout->addWidget(hexlcd2,1,3,1,1);
 
@@ -44,6 +46,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
 
     hexlcd3 = new QLCDNumber(6);
     hexlcd3->setHexMode();
+    hexlcd3->display("FFFFFF");
     hexlcd3->setMaximumHeight(35);
     layout->addWidget(hexlcd3,3,1,1,1);
 
@@ -63,6 +66,9 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     connect(this, SIGNAL(setOP1(QString)),colorpreview1,SLOT(repaintBackground(QString)));
     connect(this, SIGNAL(setOP2(QString)),colorpreview2,SLOT(repaintBackground(QString)));
     connect(bottomb1,SIGNAL(clicked()),this,SLOT(operationRouting()));
+    connect(this,SIGNAL(setResult(QString)),hexlcd3,SLOT(display(QString)));
+    connect(this,SIGNAL(setResult(QString)),colorpreview3,SLOT(repaintBackground(QString)));
+
 }
 
 void BottomBox::operationRouting() {
@@ -74,3 +80,5 @@ void BottomBox::operationRouting() {
         emit(media());
 
 }
+
+

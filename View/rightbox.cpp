@@ -31,6 +31,7 @@ RightBox::RightBox(QWidget *parent) : QFrame(parent)
     rightboxlayout->addWidget(hexlcd,5,1,1,2);
     colorpreview = new DrawBox(this);
     colorpreview->setMinimumHeight(60);
+    colorpreview->repaintBackground("000000");
     rightboxlayout->addWidget(colorpreview,6,1,2,2);
     QPushButton* rightb1 = new QPushButton("Operando1",this);
     rightboxlayout->addWidget(rightb1,5,3,1,2);
@@ -46,6 +47,7 @@ RightBox::RightBox(QWidget *parent) : QFrame(parent)
 
     connect(colorSelector,SIGNAL(currentIndexChanged(int)),this,SIGNAL(newColorOperand(int)));
     connect(colorSelector,SIGNAL(currentIndexChanged(int)),this,SLOT(setMode(int)));
+    connect(colorSelector,SIGNAL(currentIndexChanged(int)),this,SIGNAL(val1changed(int)));
     connect(val1,SIGNAL(valueChanged(int)),this,SIGNAL(val1changed(int)));
     connect(val2,SIGNAL(valueChanged(int)),this,SIGNAL(val2changed(int)));
     connect(val3,SIGNAL(valueChanged(int)),this,SIGNAL(val3changed(int)));

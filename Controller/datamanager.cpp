@@ -2,10 +2,11 @@
 
 DataManager::DataManager(MainWindow * w) : view(w)
 {
-    col1 = new Rgb();
-    col2 = new Rgb();
-    col3 = new Rgb();
-    col4 = new Rgb();
+    col1 = new Rgb(0,0,0);
+    col2 = new Rgb(255,255,255);
+    col3 = new Rgb(255,255,255);
+    col4 = new Rgb(255,255,255);
+    col5 = new Rgb(0,0,0);
     connect(view,SIGNAL(newColorOperand(int)), this, SLOT(newColorOperand(int)));
     connect(this,SIGNAL(setColorOperandMaxValues(uint)),view,SIGNAL(setColorOperandMaxValues(uint)));
     connect(view,SIGNAL(val1changed(int)),this,SLOT(setval1(int)));

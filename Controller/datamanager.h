@@ -21,6 +21,7 @@ private:
     Colore* col2;
     Colore* col3;
     Colore* col4;
+    Colore* col5;
 
 
 public:

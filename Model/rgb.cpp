@@ -115,14 +115,20 @@ Rgb* Rgb::operator+ (const Colore& c) const {
 
 Rgb* Rgb::operator- (const Colore& c) const {
 
-    unsigned int r = red;
-    unsigned int g = green;
-    unsigned int b = blue;
+    int r = red;
+    int g = green;
+    int b = blue;
     if(typeid(c)==typeid(const Rgb&)) {
         const Rgb* rgbp = static_cast<const Rgb*>(&c);
         r += red - rgbp->getRed();
         g += green - rgbp->getGreen();
         b += blue - rgbp->getBlue();
+        if(r<0)
+            r=0;
+        if(g<0)
+            g=0;
+        if(b<0)
+            b=0;
         return new Rgb(r,g,b);
     }
     else {
@@ -130,6 +136,12 @@ Rgb* Rgb::operator- (const Colore& c) const {
         r += red - t.getRed();
         g += green - t.getGreen();
         b += blue - t.getBlue();
+        if(r<0)
+            r=0;
+        if(g<0)
+            g=0;
+        if(b<0)
+            b=0;
         return new Rgb(r,g,b);
 
     }
@@ -142,9 +154,9 @@ Rgb* Rgb::media (const Colore& c) const {
     unsigned int b = blue;
     if(typeid(c)==typeid(const Rgb&)) {
         const Rgb* rgbp = static_cast<const Rgb*>(&c);
-        r += (red - rgbp->getRed())/2;
-        g += (green - rgbp->getGreen())/2;
-        b += (blue - rgbp->getBlue())/2;
+        r += abs((red - rgbp->getRed()))/2;
+        g += abs((green - rgbp->getGreen()))/2;
+        b += abs((blue - rgbp->getBlue()))/2;
         return new Rgb(r,g,b);
     }
     else {

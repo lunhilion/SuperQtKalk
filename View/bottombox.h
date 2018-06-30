@@ -32,9 +32,11 @@ signals:
     void somma();
     void sottrai();
     void media();
+    void setResult(QString);
 
 public slots:
     void operationRouting();
+
 
 };
 
