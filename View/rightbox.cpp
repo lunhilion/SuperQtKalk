@@ -24,7 +24,7 @@ RightBox::RightBox(QWidget *parent) : QFrame(parent)
     rightboxlayout->addWidget(val4,4,0,1,5);
     val4->setVisible(false);
 
-    hexlcd = new QLCDNumber;
+    hexlcd = new QLCDNumber(6);
     hexlcd->setMaximumHeight(35);
     hexlcd->setHexMode();
     hexlcd->display("000000");

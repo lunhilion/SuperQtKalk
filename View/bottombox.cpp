@@ -13,7 +13,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     layout->addWidget(lab2,0,3,1,2);
     lab2->setAlignment(Qt::AlignCenter);
 
-    hexlcd1 = new QLCDNumber;
+    hexlcd1 = new QLCDNumber(6);
     hexlcd1->setHexMode();
     hexlcd1->setMaximumHeight(35);
     layout->addWidget(hexlcd1,1,0,1,1);
@@ -27,7 +27,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     operandselector->addItem(tr("Media"));
     layout->addWidget(operandselector,1,2,1,1);
 
-    hexlcd2 = new QLCDNumber;
+    hexlcd2 = new QLCDNumber(6);
     hexlcd2->setHexMode();
     hexlcd2->setMaximumHeight(35);
     layout->addWidget(hexlcd2,1,3,1,1);
@@ -42,7 +42,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     lab3->setAlignment(Qt::AlignCenter);
     layout->addWidget(lab3,3,0,1,1);
 
-    hexlcd3 = new QLCDNumber;
+    hexlcd3 = new QLCDNumber(6);
     hexlcd3->setHexMode();
     hexlcd3->setMaximumHeight(35);
     layout->addWidget(hexlcd3,3,1,1,1);
