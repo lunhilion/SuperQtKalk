@@ -33,33 +33,33 @@ void DataManager::newColorOperand(int i) {
 void DataManager::setval1(int i) {
     Colore* c = dynamic_cast<Rgb*>(col1);
     if(c)
-        static_cast<Rgb*>(c)->setRed(i);
+        static_cast<Rgb*>(col1)->setRed(i);
     else
-        static_cast<Cmyk*>(c)->setCyan(i);
+        static_cast<Cmyk*>(col1)->setCyan(i);
     emit(setCol1Preview(col1->getHex()));
 }
 
 void DataManager::setval2(int i) {
     Colore* c = dynamic_cast<Rgb*>(col1);
     if(c)
-        static_cast<Rgb*>(c)->setGreen(i);
+        static_cast<Rgb*>(col1)->setGreen(i);
     else
-        static_cast<Cmyk*>(c)->setMagenta(i);
+        static_cast<Cmyk*>(col1)->setMagenta(i);
     emit(setCol1Preview(col1->getHex()));
 }
 
 void DataManager::setval3(int i) {
     Colore* c = dynamic_cast<Rgb*>(col1);
     if(c)
-        static_cast<Rgb*>(c)->setBlue(i);
+        static_cast<Rgb*>(col1)->setBlue(i);
     else
-        static_cast<Cmyk*>(c)->setYellow(i);
+        static_cast<Cmyk*>(col1)->setYellow(i);
     emit(setCol1Preview(col1->getHex()));
 }
 
 void DataManager::setval4(int i) {
     Colore* c = dynamic_cast<Cmyk*>(col1);
     if(c)
-        static_cast<Cmyk*>(c)->setBlack(i);
+        static_cast<Cmyk*>(col1)->setBlack(i);
     emit(setCol1Preview(col1->getHex()));
 }
