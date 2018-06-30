@@ -91,7 +91,7 @@ Rgb* Rgb::clone() const {
 }
 
 
-Rgb& Rgb::operator+ (const Colore& c) const {
+Rgb* Rgb::operator+ (const Colore& c) const {
 
     unsigned int r = red;
     unsigned int g = green;
@@ -108,12 +108,12 @@ Rgb& Rgb::operator+ (const Colore& c) const {
         r += red + t.getRed();
         g += green + t.getGreen();
         b += blue + t.getBlue();
-        return *(new Rgb(r,g,b));
+        return new Rgb(r,g,b);
 
     }
 }
 
-Rgb& Rgb::operator- (const Colore& c) const {
+Rgb* Rgb::operator- (const Colore& c) const {
 
     unsigned int r = red;
     unsigned int g = green;
@@ -130,12 +130,12 @@ Rgb& Rgb::operator- (const Colore& c) const {
         r += red - t.getRed();
         g += green - t.getGreen();
         b += blue - t.getBlue();
-        return *(new Rgb(r,g,b));
+        return new Rgb(r,g,b);
 
     }
 }
 
-Rgb& Rgb::media (const Colore& c) const {
+Rgb* Rgb::media (const Colore& c) const {
 
     unsigned int r = red;
     unsigned int g = green;
@@ -152,11 +152,10 @@ Rgb& Rgb::media (const Colore& c) const {
         r += (red - t.getRed())/2;
         g += (green - t.getGreen())/2;
         b += (blue - t.getBlue())/2;
-        return *(new Rgb(r,g,b));
+        return new Rgb(r,g,b);
 
     }
 }
-
 
 unsigned int Rgb::getMaxValues() const {
     return RGB_MAX_VALUE;

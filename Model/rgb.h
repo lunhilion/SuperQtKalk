@@ -19,9 +19,9 @@ class Rgb : public Colore {
         void setGreen(unsigned int);
         void setBlue(unsigned int);
         QString getHex() const;
-        Rgb& operator+ (const Colore&) const;
-        Rgb& operator- (const Colore&) const;
-        Rgb& media(const Colore&) const;
+        Rgb* operator+ (const Colore&) const;
+        Rgb* operator- (const Colore&) const;
+        Rgb* media(const Colore&) const;
         Rgb* clone() const;
         unsigned int getMaxValues() const;
 };
