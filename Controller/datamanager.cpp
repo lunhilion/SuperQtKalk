@@ -2,6 +2,7 @@
 
 DataManager::DataManager(MainWindow * w) : view(w)
 {
+    poli = new Circonferenza(Punto(),25);
     col1 = new Rgb(0,0,0);
     col2 = new Rgb(255,255,255);
     col3 = new Rgb(255,255,255);
@@ -31,11 +32,13 @@ void DataManager::newColorOperand(int i) {
     if(i==0) {
         col1 = new Rgb();
         emit(setColorOperandMaxValues(col1->getMaxValues()));
+        emit(setCol1Preview(col1->getHex()));
     }
     else if (i==1)
     {
         col1 = new Cmyk();
         emit(setColorOperandMaxValues(col1->getMaxValues()));
+        emit(setCol1Preview(col1->getHex()));
     }
     else {
         //gestione eccezione

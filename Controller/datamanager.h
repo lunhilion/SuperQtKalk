@@ -3,7 +3,9 @@
 
 #include <QObject>
 #include <QString>
-#include "Model/poligono.h"
+#include "Model/circonferenza.h"
+#include "Model/quadrilatero.h"
+#include "Model/triangolo.h"
 #include "Model/rgb.h"
 #include "Model/cmyk.h"
 #include "View/mainwindow.h"
