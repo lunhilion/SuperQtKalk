@@ -30,6 +30,8 @@ public:
 signals:
     void setColorOperandMaxValues(unsigned int);
     void setCol1Preview(QString);
+    void setOP1(QString);
+    void setOP2(QString);
 
 public slots:
     void newColorOperand(int);
@@ -37,7 +39,8 @@ public slots:
     void setval2(int);
     void setval3(int);
     void setval4(int);
-
+    void col1toOP1();
+    void col1toOP2();
 };
 
 #endif // DATAMANAGER_H

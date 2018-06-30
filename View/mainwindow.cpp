@@ -35,6 +35,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(rightbox,SIGNAL(val3changed(int)),this,SIGNAL(val3changed(int)));
     connect(rightbox,SIGNAL(val4changed(int)),this,SIGNAL(val4changed(int)));
     connect(this,SIGNAL(setCol1Preview(QString)),rightbox,SIGNAL(setCol1Preview(QString)));
+    connect(rightbox,SIGNAL(col1toOP1()),this,SIGNAL(col1toOP1()));
+    connect(rightbox,SIGNAL(col1toOP2()),this,SIGNAL(col1toOP2()));
+    connect(this,SIGNAL(setOP1(QString)),bottombox,SIGNAL(setOP1(QString)));
+    connect(this,SIGNAL(setOP2(QString)),bottombox,SIGNAL(setOP2(QString)));
+
 }
 
 MainWindow::~MainWindow() {

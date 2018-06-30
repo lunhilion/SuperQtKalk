@@ -39,6 +39,10 @@ signals:
     void val3changed(int);
     void val4changed(int);
     void setCol1Preview(QString);
+    void col1toOP1();
+    void col1toOP2();
+    void setOP1(QString);
+    void setOP2(QString);
 
 };
 

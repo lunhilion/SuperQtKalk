@@ -10,6 +10,10 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(val3changed(int)),this,SLOT(setval3(int)));
     connect(view,SIGNAL(val4changed(int)),this,SLOT(setval4(int)));
     connect(this,SIGNAL(setCol1Preview(QString)),view,SIGNAL(setCol1Preview(QString)));
+    connect(view,SIGNAL(col1toOP1()),this,SLOT(col1toOP1()));
+    connect(view,SIGNAL(col1toOP2()),this,SLOT(col1toOP2()));
+    connect(this,SIGNAL(setOP1(QString)),view,SIGNAL(setOP1(QString)));
+    connect(this,SIGNAL(setOP2(QString)),view,SIGNAL(setOP2(QString)));
 }
 
 
@@ -62,4 +66,14 @@ void DataManager::setval4(int i) {
     if(c)
         static_cast<Cmyk*>(col1)->setBlack(i);
     emit(setCol1Preview(col1->getHex()));
+}
+
+void DataManager::col1toOP1() {
+    col2 = col1->clone();
+    emit(setOP1(col2->getHex()));
+}
+
+void DataManager::col1toOP2() {
+    col3 = col1->clone();
+    emit(setOP2(col3->getHex()));
 }

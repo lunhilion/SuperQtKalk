@@ -51,6 +51,9 @@ RightBox::RightBox(QWidget *parent) : QFrame(parent)
     connect(val3,SIGNAL(valueChanged(int)),this,SIGNAL(val3changed(int)));
     connect(val4,SIGNAL(valueChanged(int)),this,SIGNAL(val4changed(int)));
     connect(this,SIGNAL(setCol1Preview(QString)),hexlcd,SLOT(display(QString)));
+    connect(this, SIGNAL(setCol1Preview(QString)),colorpreview,SLOT(repaintBackground(QString)));
+    connect(rightb1,SIGNAL(clicked()),this,SIGNAL(col1toOP1()));
+    connect(rightb2,SIGNAL(clicked()),this,SIGNAL(col1toOP2()));
 }
 
 void RightBox::setMode(int i) {

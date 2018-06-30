@@ -10,7 +10,6 @@ class DrawBox : public QWidget
 
 private:
     QPalette* pal;
-    int colorMode;
 
 public:
     explicit DrawBox(QWidget *parent = 0);
@@ -19,7 +18,7 @@ public:
 signals:
 
 public slots:
-    void setColorMode(int);
+    void repaintBackground(QString);
 };
 
 #endif // DRAWBOX_H

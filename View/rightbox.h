@@ -38,6 +38,8 @@ signals:
     void val3changed(int);
     void val4changed(int);
     void setCol1Preview(QString);
+    void col1toOP1();
+    void col1toOP2();
 
 public slots:
     void setMode(int);
