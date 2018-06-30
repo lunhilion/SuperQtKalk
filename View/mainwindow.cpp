@@ -39,6 +39,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(rightbox,SIGNAL(col1toOP2()),this,SIGNAL(col1toOP2()));
     connect(this,SIGNAL(setOP1(QString)),bottombox,SIGNAL(setOP1(QString)));
     connect(this,SIGNAL(setOP2(QString)),bottombox,SIGNAL(setOP2(QString)));
+    connect(bottombox,SIGNAL(somma()),this,SIGNAL(somma()));
+    connect(bottombox,SIGNAL(sottrai()),this,SIGNAL(sottrai()));
+    connect(bottombox,SIGNAL(media()),this,SIGNAL(media()));
+    connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
 
 }
 
