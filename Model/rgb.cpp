@@ -101,7 +101,7 @@ Rgb* Rgb::operator+ (const Colore& c) const {
         r += red + rgbp->getRed();
         g += green + rgbp->getGreen();
         b += blue + rgbp->getBlue();
-        return *(new Rgb(r,g,b));
+        return new Rgb(r,g,b);
     }
     else {
         Rgb t = Rgb(c.getHex());
@@ -123,7 +123,7 @@ Rgb* Rgb::operator- (const Colore& c) const {
         r += red - rgbp->getRed();
         g += green - rgbp->getGreen();
         b += blue - rgbp->getBlue();
-        return *(new Rgb(r,g,b));
+        return new Rgb(r,g,b);
     }
     else {
         Rgb t = Rgb(c.getHex());
@@ -145,7 +145,7 @@ Rgb* Rgb::media (const Colore& c) const {
         r += (red - rgbp->getRed())/2;
         g += (green - rgbp->getGreen())/2;
         b += (blue - rgbp->getBlue())/2;
-        return *(new Rgb(r,g,b));
+        return new Rgb(r,g,b);
     }
     else {
         Rgb t = Rgb(c.getHex());
