@@ -30,10 +30,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(rightbox,SIGNAL(newColorOperand(int)),this,SIGNAL(newColorOperand(int)));
     connect(this,SIGNAL(setColorOperandMaxValues(uint)),rightbox,SLOT(setColorOperandMaxValues(uint)));
-    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val1changed(int)));
-    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val2changed(int)));
-    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val3changed(int)));
-    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val4changed(int)));
+    connect(rightbox,SIGNAL(val1changed(int)),this,SIGNAL(val1changed(int)));
+    connect(rightbox,SIGNAL(val2changed(int)),this,SIGNAL(val2changed(int)));
+    connect(rightbox,SIGNAL(val3changed(int)),this,SIGNAL(val3changed(int)));
+    connect(rightbox,SIGNAL(val4changed(int)),this,SIGNAL(val4changed(int)));
     connect(this,SIGNAL(setCol1Preview(QString)),rightbox,SIGNAL(setCol1Preview(QString)));
 }
 

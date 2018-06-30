@@ -25,6 +25,7 @@ private:
     ValueSelector* val3;
     ValueSelector* val4;
     DrawBox* colorpreview;
+    QLCDNumber* hexlcd;
 
 public:
     explicit RightBox(QWidget *parent = 0);
@@ -36,6 +37,7 @@ signals:
     void val2changed(int);
     void val3changed(int);
     void val4changed(int);
+    void setCol1Preview(QString);
 
 public slots:
     void setMode(int);
