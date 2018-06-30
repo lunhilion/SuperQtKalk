@@ -31,11 +31,13 @@ void DataManager::newColorOperand(int i) {
     if(i==0) {
         col1 = new Rgb();
         emit(setColorOperandMaxValues(col1->getMaxValues()));
+        emit(setCol1Preview(col1->getHex()));
     }
     else if (i==1)
     {
         col1 = new Cmyk();
         emit(setColorOperandMaxValues(col1->getMaxValues()));
+        emit(setCol1Preview(col1->getHex()));
     }
     else {
         //gestione eccezione

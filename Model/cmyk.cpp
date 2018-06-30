@@ -68,10 +68,10 @@ QString Cmyk::getHex() const {
     float m = magenta;
     float y = yellow;
     float bl = black;
+
     int r = round(255*( 1 - c / 100) * ( 1 - bl / 100));
     int g = round(255*( 1 - m / 100) * ( 1 - bl / 100));
     int b = round(255*( 1 - y / 100) * ( 1 - bl / 100));
-    std::cout << r;
 
     temp += QString::number(r,16).rightJustified(2,'0');
     temp += QString::number(g,16).rightJustified(2,'0');

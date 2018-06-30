@@ -12,7 +12,7 @@ class Cmyk : public Colore {
         unsigned int black;
         static unsigned int CMYK_MAX_VALUE;
     public:
-        Cmyk(unsigned int=0, unsigned int=0, unsigned int=0, unsigned int=100);
+        Cmyk(unsigned int=0, unsigned int=0, unsigned int=0, unsigned int=0);
         //Cmyk(QString);
         unsigned int getCyan() const;
         unsigned int getMagenta() const;
