@@ -2,6 +2,7 @@
 
 DataManager::DataManager(MainWindow * w) : view(w)
 {
+    poli = new Circonferenza(Punto(),25);
     col1 = new Rgb(0,0,0);
     col2 = new Rgb(255,255,255);
     col3 = new Rgb(255,255,255);
