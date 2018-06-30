@@ -80,3 +80,6 @@ Rgb* Rgb::clone() const {
     return new Rgb(*this);
 }
 
+unsigned int Rgb::getMaxValues() const {
+    return RGB_MAX_VALUE;
+}

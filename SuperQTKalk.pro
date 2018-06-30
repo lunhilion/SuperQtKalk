@@ -30,8 +30,7 @@ SOURCES += main.cpp\
     View/rightbox.cpp \
     View/valueselector.cpp
 
-HEADERS  += mainwindow.h \
-    Controller/datamanager.h \
+HEADERS  +=  Controller/datamanager.h \
     Model/circonferenza.h \
     Model/cmyk.h \
     Model/colore.h \

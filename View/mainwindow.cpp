@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 
-MainWindow::MainWindow(DataManager* datamanager, QWidget *parent) :
-    dm(0),
+MainWindow::MainWindow(QWidget *parent) :
     QWidget(parent)
 {
     QHBoxLayout* layout = new QHBoxLayout;
@@ -29,6 +28,13 @@ MainWindow::MainWindow(DataManager* datamanager, QWidget *parent) :
     setMinimumSize(bestsize);
     setLayout(layout);
 
+    connect(rightbox,SIGNAL(newColorOperand(int)),this,SIGNAL(newColorOperand(int)));
+    connect(this,SIGNAL(setColorOperandMaxValues(uint)),rightbox,SLOT(setColorOperandMaxValues(uint)));
+    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val1changed(int)));
+    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val2changed(int)));
+    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val3changed(int)));
+    connect(rightbox,SIGNAL(valueChanged(int)),this,SIGNAL(val4changed(int)));
+    connect(this,SIGNAL(setCol1Preview(QString)),rightbox,SIGNAL(setCol1Preview(QString)));
 }
 
 MainWindow::~MainWindow() {

@@ -26,7 +26,7 @@ class Cmyk : public Colore {
         QString getHex() const;
         //Cmyk& media(const Colore&) const;
         Cmyk* clone() const;
-
+        unsigned int getMaxValues() const;
 };
 
 #endif // CMYK_H

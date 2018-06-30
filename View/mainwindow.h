@@ -1,7 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "Controller/datamanager.h"
 #include "drawbox.h"
 #include "leftbox.h"
 #include "rightbox.h"
@@ -24,15 +23,22 @@ class MainWindow : public QWidget
 {
     Q_OBJECT
 private:
-    DataManager* dm;
     LeftBox* leftbox;
     RightBox* rightbox;
     BottomBox* bottombox;
 
-
 public:
-    explicit MainWindow(DataManager*,QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+
+signals:
+    void newColorOperand(int);
+    void setColorOperandMaxValues(uint);
+    void val1changed(int);
+    void val2changed(int);
+    void val3changed(int);
+    void val4changed(int);
+    void setCol1Preview(QString);
 
 };
 

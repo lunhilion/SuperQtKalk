@@ -72,13 +72,15 @@ QString Cmyk::getHex() const {
 
 }
 
-unsigned int Cmyk::CMYK_MAX_VALUE = 255;
+unsigned int Cmyk::CMYK_MAX_VALUE = 100;
 
 Cmyk* Cmyk::clone() const {
     return new Cmyk(*this);
 }
 
-
+unsigned int Cmyk::getMaxValues() const {
+    return CMYK_MAX_VALUE;
+}
 
 /*
 Red = 255 × ( 1 - Cyan ÷ 100 ) × ( 1 - Black ÷ 100 )

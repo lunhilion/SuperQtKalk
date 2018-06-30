@@ -22,6 +22,7 @@ class Rgb : public Colore {
         QString getHex() const;
         //Rgb& media(const Colore&) const;
         Rgb* clone() const;
+        unsigned int getMaxValues() const;
 };
 
 #endif // RGB_H
