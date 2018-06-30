@@ -90,7 +90,7 @@ void DataManager::col1toOP2() {
 
 void DataManager::somma() {
     delete col4;
-    col4=(*col2)+(*col3)
+    col4=&((*col2)+(*col3));
     emit(setResult(col4->getHex()));
 }
 

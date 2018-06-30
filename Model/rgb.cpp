@@ -90,7 +90,7 @@ Rgb* Rgb::clone() const {
     return new Rgb(*this);
 }
 
-<<<<<<< HEAD
+
 Rgb& Rgb::operator+ (const Colore& c) const {
 
     unsigned int r = red;
@@ -158,11 +158,7 @@ Rgb& Rgb::media (const Colore& c) const {
 }
 
 
-
-
-
-=======
 unsigned int Rgb::getMaxValues() const {
     return RGB_MAX_VALUE;
 }
->>>>>>> e25bdd12aa77d98d7bef2df58c4c074a14ea1676
+
