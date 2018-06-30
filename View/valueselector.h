@@ -14,9 +14,12 @@ class ValueSelector : public QWidget
 
 private:
     QLabel* lab;
+    QSlider* slid;
+    QSpinBox* spin;
+
 public:
-    explicit ValueSelector(const QString&, QWidget *parent = 0);
-    void setText(const QString&);
+    explicit ValueSelector(QWidget *parent = 0);
+    void set(const QString&, unsigned int, unsigned int);
 
 signals:
     int valueChanged(int);

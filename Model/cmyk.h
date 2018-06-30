@@ -27,7 +27,7 @@ class Cmyk : public Colore {
         Cmyk& operator-(const Colore&) const;
         Cmyk& media(const Colore&) const;
         Cmyk* clone() const;
-
+        unsigned int getMaxValues() const;
 };
 
 #endif // CMYK_H

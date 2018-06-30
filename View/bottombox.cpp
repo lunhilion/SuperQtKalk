@@ -13,11 +13,12 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     layout->addWidget(lab2,0,3,1,2);
     lab2->setAlignment(Qt::AlignCenter);
 
-    QLCDNumber* hexlcd1 = new QLCDNumber;
+    hexlcd1 = new QLCDNumber;
+    hexlcd1->setHexMode();
     hexlcd1->setMaximumHeight(35);
     layout->addWidget(hexlcd1,1,0,1,1);
 
-    DrawBox* colorpreview1 = new DrawBox(this);
+    colorpreview1 = new DrawBox(this);
     layout->addWidget(colorpreview1,1,1,1,1);
 
     QComboBox* operandselector = new QComboBox(this);
@@ -26,11 +27,12 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     operandselector->addItem(tr("Media"));
     layout->addWidget(operandselector,1,2,1,1);
 
-    QLCDNumber* hexlcd2 = new QLCDNumber;
+    hexlcd2 = new QLCDNumber;
+    hexlcd2->setHexMode();
     hexlcd2->setMaximumHeight(35);
     layout->addWidget(hexlcd2,1,3,1,1);
 
-    DrawBox* colorpreview2 = new DrawBox(this);
+    colorpreview2 = new DrawBox(this);
     layout->addWidget(colorpreview2,1,4,1,1);
 
     QPushButton* Bottomb1 = new QPushButton("Calcola",this);
@@ -40,11 +42,12 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     lab3->setAlignment(Qt::AlignCenter);
     layout->addWidget(lab3,3,0,1,1);
 
-    QLCDNumber* hexlcd3 = new QLCDNumber;
-    hexlcd1->setMaximumHeight(35);
+    hexlcd3 = new QLCDNumber;
+    hexlcd3->setHexMode();
+    hexlcd3->setMaximumHeight(35);
     layout->addWidget(hexlcd3,3,1,1,1);
 
-    DrawBox* colorpreview3 = new DrawBox(this);
+    colorpreview3 = new DrawBox(this);
     layout->addWidget(colorpreview3,3,2,1,1);
 
     QPushButton* Bottomb2 = new QPushButton("Applica",this);
@@ -55,5 +58,9 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
 
     setLayout(layout);
 
+    connect(this,SIGNAL(setOP1(QString)),hexlcd1,SLOT(display(QString)));
+    connect(this,SIGNAL(setOP2(QString)),hexlcd2,SLOT(display(QString)));
+    connect(this, SIGNAL(setOP1(QString)),colorpreview1,SLOT(repaintBackground(QString)));
+    connect(this, SIGNAL(setOP2(QString)),colorpreview2,SLOT(repaintBackground(QString)));
 }
 

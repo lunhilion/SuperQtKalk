@@ -23,6 +23,7 @@ class Rgb : public Colore {
         Rgb& operator- (const Colore&) const;
         Rgb& media(const Colore&) const;
         Rgb* clone() const;
+        unsigned int getMaxValues() const;
 };
 
 #endif // RGB_H

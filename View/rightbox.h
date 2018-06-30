@@ -19,19 +19,31 @@ class RightBox : public QFrame
 
 private:
     QComboBox* colorSelector;
+    unsigned int colorOperandMaxValue;
     ValueSelector* val1;
     ValueSelector* val2;
     ValueSelector* val3;
     ValueSelector* val4;
     DrawBox* colorpreview;
+    QLCDNumber* hexlcd;
 
 public:
     explicit RightBox(QWidget *parent = 0);
 
 signals:
 
+    void newColorOperand(int);
+    void val1changed(int);
+    void val2changed(int);
+    void val3changed(int);
+    void val4changed(int);
+    void setCol1Preview(QString);
+    void col1toOP1();
+    void col1toOP2();
+
 public slots:
     void setMode(int);
+    void setColorOperandMaxValues(uint);
 };
 
 #endif // RIGHTBOX_H
