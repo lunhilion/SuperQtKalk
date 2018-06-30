@@ -1,6 +1,7 @@
 #include "cmyk.h"
 #include <QString>
-
+#include <iostream>
+#include <math.h>
 Cmyk::Cmyk(unsigned int c, unsigned int m, unsigned int y, unsigned int b) {
     if(c <= CMYK_MAX_VALUE) {
         cyan=c;
@@ -63,12 +64,18 @@ void Cmyk::setBlack(unsigned int i) {
 
 QString Cmyk::getHex() const {
     QString temp = "#";
-    unsigned int r = 255 * ( 1 - cyan / 100) * ( 1 - black / 100);
-    unsigned int g = 255 * ( 1 - magenta / 100) * ( 1 - black / 100);
-    unsigned int b = 255 * ( 1 - yellow / 100) * ( 1 - black / 100);
+    float c = cyan;
+    float m = magenta;
+    float y = yellow;
+    float bl = black;
+    int r = round(255*( 1 - c / 100) * ( 1 - bl / 100));
+    int g = round(255*( 1 - m / 100) * ( 1 - bl / 100));
+    int b = round(255*( 1 - y / 100) * ( 1 - bl / 100));
+    std::cout << r;
+
     temp += QString::number(r,16).rightJustified(2,'0');
-    temp += QString::number(g,16).rightJustified(2,'0');;
-    temp += QString::number(b,16).rightJustified(2,'0');;
+    temp += QString::number(g,16).rightJustified(2,'0');
+    temp += QString::number(b,16).rightJustified(2,'0');
     return temp;
 
 }
