@@ -31,8 +31,8 @@ Cmyk::Cmyk(unsigned int c, unsigned int m, unsigned int y, unsigned int b) {
 
 Cmyk::Cmyk(QString s) {
     QString r = s.mid(1,2);
-    QString g = g.mid(3,2);
-    QString b = b.mid(5,2);
+    QString g = s.mid(3,2);
+    QString b = s.mid(5,2);
     int max = std::max(r.toInt()/100,g.toInt()/100);
     max = std::max(max,b.toInt()/100);
     black = 1 - max;
