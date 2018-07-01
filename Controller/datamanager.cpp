@@ -51,7 +51,7 @@ void DataManager::setval1(int i) {
         static_cast<Rgb*>(col1)->setRed(i);
     else if(dynamic_cast<Cmyk*>(col1))
         static_cast<Cmyk*>(col1)->setCyan(i);
-    else
+    //else
         //gestione eccezione
     emit(setCol1Preview(col1->getHex()));
 }
@@ -61,7 +61,7 @@ void DataManager::setval2(int i) {
         static_cast<Rgb*>(col1)->setGreen(i);
     else if(dynamic_cast<Cmyk*>(col1))
         static_cast<Cmyk*>(col1)->setMagenta(i);
-    else
+    //else
         //gestione eccezione
     emit(setCol1Preview(col1->getHex()));
 }
@@ -71,7 +71,7 @@ void DataManager::setval3(int i) {
         static_cast<Rgb*>(col1)->setBlue(i);
     else if(dynamic_cast<Cmyk*>(col1))
         static_cast<Cmyk*>(col1)->setYellow(i);
-    else
+    //else
         //gestione eccezione
     emit(setCol1Preview(col1->getHex()));
 }
@@ -79,7 +79,7 @@ void DataManager::setval3(int i) {
 void DataManager::setval4(int i) {
     if(dynamic_cast<Cmyk*>(col1))
         static_cast<Cmyk*>(col1)->setBlack(i);
-    else
+    //else
         //gestione eccezione
     emit(setCol1Preview(col1->getHex()));
 }
