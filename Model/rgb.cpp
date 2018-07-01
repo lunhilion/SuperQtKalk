@@ -30,9 +30,9 @@ Rgb::Rgb(QString s) {
     QString g = s.mid(3,2);
     QString b = s.mid(5,2);
     bool ok;
-    red = r.toInt(&ok,10);
-    green = r.toInt(&ok,10);
-    blue = r.toInt(&ok,10);
+    red = r.toInt(&ok,16);
+    green = r.toInt(&ok,16);
+    blue = r.toInt(&ok,16);
 }
 
 

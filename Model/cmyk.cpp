@@ -2,6 +2,7 @@
 #include <QString>
 #include <math.h>
 #include <typeinfo>
+#include <iostream>
 Cmyk::Cmyk(unsigned int c, unsigned int m, unsigned int y, unsigned int b) {
     if(c <= CMYK_MAX_VALUE) {
         cyan=c;
@@ -33,12 +34,22 @@ Cmyk::Cmyk(QString s) {
     QString r = s.mid(1,2);
     QString g = s.mid(3,2);
     QString b = s.mid(5,2);
-    int max = std::max(r.toInt()/100,g.toInt()/100);
-    max = std::max(max,b.toInt()/100);
-    black = 1 - max;
-    cyan = (1-r.toInt()-black) / (1-black);
-    magenta = (1-g.toInt()-black) / (1-black);
-    yellow = (1-b.toInt()-black) / (1-black);
+    double r1=r.toInt(0,16);
+    double r2=g.toInt(0,16);
+    double r3=b.toInt(0,16);
+    r1 = r1/255;
+    r2 = r2/255;
+    r3 = r3/255;
+    double max = std::max(r1,r2);
+    max = std::max(max,r3);
+    double bl = 1-max;
+    black = bl*100;
+    double cy = (1-r1-bl) / (1-bl);
+    cyan = cy*100;
+    double mag = (1-r2-bl) / (1-bl);
+    magenta = mag*100;
+    double yel = (1-r3-bl) / (1-bl);
+    yellow = yel * 100;
 
 }
 
