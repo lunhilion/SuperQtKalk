@@ -10,7 +10,7 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     poligonSelector->addItem(tr("Quadrato"));
     poligonPreview->addWidget(poligonSelector,0,0,1,4);
     drawbox = new DrawBox(this);
-    drawbox->repaint();
+
     poligonPreview->addWidget(drawbox,1,0,1,4);
     poligonPreview->setRowStretch(1,1);
 
