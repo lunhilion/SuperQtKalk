@@ -1,6 +1,7 @@
 #include "rgb.h"
 #include <QString>
 #include <typeinfo>
+#include <iostream>
 
 //Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) : red(r), green(g), blue(b) {}
 Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) {
@@ -26,11 +27,12 @@ Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) {
 
 Rgb::Rgb(QString s) {
     QString r = s.mid(1,2);
-    QString g = g.mid(3,2);
-    QString b = b.mid(5,2);
-    red = r.toInt(0,10);
-    green = r.toInt(0,10);
-    blue = r.toInt(0,10);
+    QString g = s.mid(3,2);
+    QString b = s.mid(5,2);
+    bool ok;
+    red = r.toInt(&ok,10);
+    green = r.toInt(&ok,10);
+    blue = r.toInt(&ok,10);
 }
 
 
