@@ -24,11 +24,12 @@ SOURCES += main.cpp\
     Model/rgb.cpp \
     Model/triangolo.cpp \
     View/bottombox.cpp \
-    View/drawbox.cpp \
     View/leftbox.cpp \
     View/mainwindow.cpp \
     View/rightbox.cpp \
-    View/valueselector.cpp
+    View/valueselector.cpp \
+    View/drawbox.cpp \
+    View/colorbox.cpp
 
 HEADERS  +=  Controller/datamanager.h \
     Model/circonferenza.h \
@@ -45,7 +46,8 @@ HEADERS  +=  Controller/datamanager.h \
     View/leftbox.h \
     View/mainwindow.h \
     View/rightbox.h \
-    View/valueselector.h
+    View/valueselector.h \
+    View/colorbox.h
 
 
 FORMS    += mainwindow.ui

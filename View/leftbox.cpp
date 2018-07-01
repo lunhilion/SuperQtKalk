@@ -50,6 +50,7 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     setGeometry(0,160,250,250);
 
     connect(poligonSelector,SIGNAL(currentIndexChanged(int)),this,SLOT(setMode(int)));
+    connect(drawbox,SIGNAL(fetchPolygon()),this,SIGNAL(fetchPolygon()));
 }
 
 void LeftBox::setMode(int i){

@@ -27,6 +27,7 @@ public:
     explicit LeftBox(QWidget *parent = 0);
 
 signals:
+    void fetchPolygon();
 
 public slots:
     void setMode(int);

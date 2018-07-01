@@ -19,7 +19,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     hexlcd1->setMaximumHeight(35);
     layout->addWidget(hexlcd1,1,0,1,1);
 
-    colorpreview1 = new DrawBox(this);
+    colorpreview1 = new ColorBox(this);
     layout->addWidget(colorpreview1,1,1,1,1);
 
     operandselector = new QComboBox(this);
@@ -34,7 +34,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     hexlcd2->setMaximumHeight(35);
     layout->addWidget(hexlcd2,1,3,1,1);
 
-    colorpreview2 = new DrawBox(this);
+    colorpreview2 = new ColorBox(this);
     layout->addWidget(colorpreview2,1,4,1,1);
 
     QPushButton* bottomb1 = new QPushButton("Calcola",this);
@@ -50,7 +50,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     hexlcd3->setMaximumHeight(35);
     layout->addWidget(hexlcd3,3,1,1,1);
 
-    colorpreview3 = new DrawBox(this);
+    colorpreview3 = new ColorBox(this);
     layout->addWidget(colorpreview3,3,2,1,1);
 
     QPushButton* bottomb2 = new QPushButton("Applica",this);

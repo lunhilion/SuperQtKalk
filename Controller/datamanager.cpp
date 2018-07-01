@@ -23,6 +23,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(sottrai()),this,SLOT(sottrai()));
     connect(view,SIGNAL(media()),this,SLOT(media()));
     connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
+    connect(view,SIGNAL(fetchPolygon()),this,SLOT(fetchPolygon()));
 
 }
 
@@ -127,4 +128,8 @@ void DataManager::media() {
         emit(setResult(col4->getHex()));
     //else
         //gestione eccezione
+}
+
+void DataManager::fetchPolygon() {
+    emit setPolygon(QPixmap);
 }

@@ -48,6 +48,7 @@ public slots:
     void somma();
     void sottrai();
     void media();
+    void fetchPolygon();
 };
 
 #endif // DATAMANAGER_H

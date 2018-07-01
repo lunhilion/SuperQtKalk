@@ -1,7 +1,7 @@
 #ifndef BOTTOMBOX_H
 #define BOTTOMBOX_H
 
-#include "drawbox.h"
+#include "colorbox.h"
 #include <QFrame>
 #include <QGridLayout>
 #include <QLCDNumber>
@@ -19,9 +19,9 @@ private:
     QLCDNumber* hexlcd1;
     QLCDNumber* hexlcd2;
     QLCDNumber* hexlcd3;
-    DrawBox* colorpreview1;
-    DrawBox* colorpreview2;
-    DrawBox* colorpreview3;
+    ColorBox* colorpreview1;
+    ColorBox* colorpreview2;
+    ColorBox* colorpreview3;
 
 public:
     explicit BottomBox(QWidget *parent = 0);
