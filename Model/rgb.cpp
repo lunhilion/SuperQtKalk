@@ -98,16 +98,16 @@ Rgb* Rgb::operator+ (const Colore& c) const {
     unsigned int b = blue;
     if(typeid(c)==typeid(const Rgb&)) {
         const Rgb* rgbp = static_cast<const Rgb*>(&c);
-        r += red + rgbp->getRed();
-        g += green + rgbp->getGreen();
-        b += blue + rgbp->getBlue();
+        r += rgbp->getRed();
+        g += rgbp->getGreen();
+        b += rgbp->getBlue();
         return new Rgb(r,g,b);
     }
     else {
         Rgb t = Rgb(c.getHex());
-        r += red + t.getRed();
-        g += green + t.getGreen();
-        b += blue + t.getBlue();
+        r += t.getRed();
+        g += t.getGreen();
+        b += t.getBlue();
         return new Rgb(r,g,b);
 
     }
@@ -120,9 +120,9 @@ Rgb* Rgb::operator- (const Colore& c) const {
     int b = blue;
     if(typeid(c)==typeid(const Rgb&)) {
         const Rgb* rgbp = static_cast<const Rgb*>(&c);
-        r += red - rgbp->getRed();
-        g += green - rgbp->getGreen();
-        b += blue - rgbp->getBlue();
+        r -= rgbp->getRed();
+        g -= rgbp->getGreen();
+        b -= rgbp->getBlue();
         if(r<0)
             r=0;
         if(g<0)
@@ -133,9 +133,9 @@ Rgb* Rgb::operator- (const Colore& c) const {
     }
     else {
         Rgb t = Rgb(c.getHex());
-        r += red - t.getRed();
-        g += green - t.getGreen();
-        b += blue - t.getBlue();
+        r -= t.getRed();
+        g -= t.getGreen();
+        b -= t.getBlue();
         if(r<0)
             r=0;
         if(g<0)
@@ -154,17 +154,17 @@ Rgb* Rgb::media (const Colore& c) const {
     unsigned int b = blue;
     if(typeid(c)==typeid(const Rgb&)) {
         const Rgb* rgbp = static_cast<const Rgb*>(&c);
-        r += abs((red - rgbp->getRed()))/2;
-        g += abs((green - rgbp->getGreen()))/2;
-        b += abs((blue - rgbp->getBlue()))/2;
-        return new Rgb(r,g,b);
+        r += rgbp->getRed();
+        g += rgbp->getGreen();
+        b += rgbp->getBlue();
+        return new Rgb(abs(r/2),abs(g/2),abs(b/2));
     }
     else {
         Rgb t = Rgb(c.getHex());
-        r += (red - t.getRed())/2;
-        g += (green - t.getGreen())/2;
-        b += (blue - t.getBlue())/2;
-        return new Rgb(r,g,b);
+        r += t.getRed();
+        g += t.getGreen();
+        b += t.getBlue();
+        return new Rgb(abs(r/2),abs(g/2),abs(b/2));
 
     }
 }
