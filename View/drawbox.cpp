@@ -9,10 +9,10 @@ DrawBox::DrawBox(QWidget *parent) : QWidget(parent)
 }
 
 
-void DrawBox::paintEvent()
+void DrawBox::paintEvent(QPaintEvent* paintEvent)
 {
     QPainter painter(this);
-    painter.drawEllipse(pos(),20,20);
+   // painter.drawEllipse(0,0,20,20);
 }
 
 void DrawBox::repaintBackground(QString s) {

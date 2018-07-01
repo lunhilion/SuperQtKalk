@@ -13,7 +13,7 @@ private:
 
 public:
     explicit DrawBox(QWidget *parent = 0);
-    void paintEvent();
+    void paintEvent(QPaintEvent *);
 
 signals:
 
