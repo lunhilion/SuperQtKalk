@@ -23,8 +23,11 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(sottrai()),this,SLOT(sottrai()));
     connect(view,SIGNAL(media()),this,SLOT(media()));
     connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
+<<<<<<< HEAD
+=======
     connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(fetchPolygon(int)));
 
+>>>>>>> 07a40ebcb525320e9a69f311d8c48a4ed599e3b9
 }
 
 //commento
