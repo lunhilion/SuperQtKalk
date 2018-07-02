@@ -31,8 +31,8 @@ Rgb::Rgb(QString s) {
     QString b = s.mid(5,2);
     bool ok;
     red = r.toInt(&ok,16);
-    green = r.toInt(&ok,16);
-    blue = r.toInt(&ok,16);
+    green = g.toInt(&ok,16);
+    blue = b.toInt(&ok,16);
 }
 
 

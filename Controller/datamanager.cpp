@@ -23,7 +23,6 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(sottrai()),this,SLOT(sottrai()));
     connect(view,SIGNAL(media()),this,SLOT(media()));
     connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
-
 }
 
 
