@@ -29,7 +29,7 @@ RightBox::RightBox(QWidget *parent) : QFrame(parent)
     hexlcd->setHexMode();
     hexlcd->display("000000");
     rightboxlayout->addWidget(hexlcd,5,1,1,2);
-    colorpreview = new DrawBox(this);
+    colorpreview = new ColorBox(this);
     colorpreview->setMinimumHeight(60);
     colorpreview->repaintBackground("000000");
     rightboxlayout->addWidget(colorpreview,6,1,2,2);

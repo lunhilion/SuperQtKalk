@@ -43,6 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bottombox,SIGNAL(sottrai()),this,SIGNAL(sottrai()));
     connect(bottombox,SIGNAL(media()),this,SIGNAL(media()));
     connect(this,SIGNAL(setResult(QString)),bottombox,SIGNAL(setResult(QString)));
+    connect(leftbox,SIGNAL(fetchPolygon(int)),this,SIGNAL(fetchPolygon(int)));
 
 }
 

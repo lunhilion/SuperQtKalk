@@ -2,7 +2,7 @@
 #define RIGHTBOX_H
 
 #include "valueselector.h"
-#include "drawbox.h"
+#include "colorbox.h"
 #include <QFrame>
 #include <QComboBox>
 #include <QSlider>
@@ -24,7 +24,7 @@ private:
     ValueSelector* val2;
     ValueSelector* val3;
     ValueSelector* val4;
-    DrawBox* colorpreview;
+    ColorBox* colorpreview;
     QLCDNumber* hexlcd;
 
 public:

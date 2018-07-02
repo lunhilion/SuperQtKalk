@@ -8,17 +8,19 @@ class DrawBox : public QWidget
 {
     Q_OBJECT
 
+
 private:
     QPalette* pal;
 
+
 public:
     explicit DrawBox(QWidget *parent = 0);
-    void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent* PaintEvent);
 
 signals:
 
 public slots:
-    void repaintBackground(QString);
+
 };
 
 #endif // DRAWBOX_H

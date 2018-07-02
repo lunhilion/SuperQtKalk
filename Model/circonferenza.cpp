@@ -24,3 +24,6 @@ Circonferenza* Circonferenza::clone() const {
     return new Circonferenza(*this);
 }
 
+double Circonferenza::getRaggio() const {
+    return raggio;
+}

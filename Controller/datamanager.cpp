@@ -23,6 +23,11 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(sottrai()),this,SLOT(sottrai()));
     connect(view,SIGNAL(media()),this,SLOT(media()));
     connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
+<<<<<<< HEAD
+=======
+    connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(fetchPolygon(int)));
+
+>>>>>>> 07a40ebcb525320e9a69f311d8c48a4ed599e3b9
 }
 
 
@@ -124,6 +129,38 @@ void DataManager::media() {
     col4= col2->media(*col3);
     if(col4)
         emit(setResult(col4->getHex()));
+    //else
+        //gestione eccezione
+}
+
+void DataManager::fetchPolygon(int i) {
+    if(i==0) {
+        Circonferenza* c = dynamic_cast<Circonferenza*>(poli);
+        if(c){
+            int x = c->getBaricentro()->getX();
+            int y = c->getBaricentro()->getY();
+            emit(drawCircle(QPoint(x,y),c->getRaggio()));
+        }
+        //else
+            //gestione eccezione
+    }
+    else if (i==1 || i==2) {
+        LatiFiniti* c = dynamic_cast<LatiFiniti*>(poli);
+        if(c){
+            QPolygon p;
+            int x;
+            int y;
+            for (int j=0; j<c->contaVertici(); ++j) {
+                x = c->getVertice(j)->getX();
+                y = c->getVertice(j)->getY();
+                QPoint q = QPoint(x,y);
+                p.append(q);
+            }
+            emit(drawEdgedPolygon(p));
+        }
+        //else
+            //gestione eccezione
+    }
     //else
         //gestione eccezione
 }

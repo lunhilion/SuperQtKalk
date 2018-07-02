@@ -3,19 +3,15 @@
 DrawBox::DrawBox(QWidget *parent) : QWidget(parent)
 {
     pal = new QPalette();
+    emit(fetchPolygon());
     pal->setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(*pal);
 }
 
 
-void DrawBox::paintEvent(QPaintEvent* paintEvent)
+void DrawBox::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
-   // painter.drawEllipse(0,0,20,20);
-}
 
-void DrawBox::repaintBackground(QString s) {
-    pal->setColor(QPalette::Background,s);
-    setPalette(*pal);
 }

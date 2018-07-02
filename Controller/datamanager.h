@@ -36,6 +36,8 @@ signals:
     void setOP1(QString);
     void setOP2(QString);
     void setResult(QString);
+    void drawCircle(QPoint,double);
+    void drawEdgedPolygon(QPolygon);
 
 public slots:
     void newColorOperand(int);
@@ -48,6 +50,7 @@ public slots:
     void somma();
     void sottrai();
     void media();
+    void fetchPolygon(int);
 };
 
 #endif // DATAMANAGER_H
