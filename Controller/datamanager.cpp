@@ -27,6 +27,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
 
 }
 
+//commento
 
 void DataManager::newColorOperand(int i) {
     delete col1;
