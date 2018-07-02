@@ -7,7 +7,7 @@
 class Circonferenza : public Poligono {
 private:
   Punto centro;
-  unsigned int raggio;
+  double raggio;
 protected:
   static unsigned int PI;
 public:
@@ -16,6 +16,7 @@ public:
   double getPerimetro() const;
   Punto getBaricentro() const;   //da controllare il tipo di ritorno
   Circonferenza* clone() const;
+  double getRaggio() const;
 };
 
 #endif // CIRCONFERENZA_H

@@ -11,7 +11,6 @@ class DrawBox : public QWidget
 
 private:
     QPalette* pal;
-    QPixmap* map;
 
 
 public:
@@ -19,7 +18,6 @@ public:
     void paintEvent(QPaintEvent* PaintEvent);
 
 signals:
-    void fetchPolygon();
 
 public slots:
 

@@ -13,7 +13,7 @@ class LeftBox : public QFrame
     Q_OBJECT
 
 private:
-    QComboBox* poligonSelector;
+    QComboBox* polygonselector;
     DrawBox* drawbox;
     QPushButton* calcolaArea;
     QPushButton* calcolaPerimetro;
@@ -27,10 +27,9 @@ public:
     explicit LeftBox(QWidget *parent = 0);
 
 signals:
-    void fetchPolygon();
+    void fetchPolygon(int);
 
 public slots:
-    void setMode(int);
 };
 
 #endif // LEFTBOX_H

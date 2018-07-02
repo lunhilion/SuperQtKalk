@@ -47,7 +47,7 @@ signals:
     void sottrai();
     void media();
     void setResult(QString);
-    void fetchPolygon();
+    void fetchPolygon(int);
 
 };
 

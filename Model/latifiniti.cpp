@@ -22,14 +22,21 @@ double LatiFiniti::getPerimetro() const {
     return perim;
 }
 
-Punto LatiFiniti::getBaricentro() const {
+unsigned int LatiFiniti::contaVertici() const {
     unsigned int nVertici = 0;
+    for(QVector<const Punto*>::const_iterator cit=vertici.begin(); cit != vertici.end(); ++cit) {
+        nVertici++;
+    }
+    return nVertici;
+}
+
+Punto LatiFiniti::getBaricentro() const {
+    unsigned int nVertici = contaVertici();
     unsigned int numerX = 0;
     unsigned int numerY = 0;
-    for(QVector<const Punto*>::const_iterator it=vertici.begin(); it != vertici.end(); ++it) {
-        nVertici++;
-        numerX += (*it)->getX();
-        numerY += (*it)->getY();
+    for(int i=0; i<nVertici; ++i) {
+        numerX += vertici[i]->getX();
+        numerY += vertici[i]->getY();
     }
     return Punto(numerX/nVertici,numerY/nVertici);
 
@@ -40,7 +47,7 @@ double LatiFiniti::getLato(unsigned int l) const {
 }
 
 Punto LatiFiniti::getVertice(unsigned int i) const {
-    return *(vertici[i]);
+    return vertici[i];
 }
 
 void LatiFiniti::setVertice(unsigned int i, const Punto& p) {

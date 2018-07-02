@@ -2,43 +2,44 @@
 
 LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
 {
-    QGridLayout* poligonPreview = new QGridLayout;
+    QGridLayout* polygonPreview = new QGridLayout;
 
-    poligonSelector = new QComboBox(this);
-    poligonSelector->addItem(tr("Cerchio"));
-    poligonSelector->addItem(tr("Triangolo"));
-    poligonSelector->addItem(tr("Quadrato"));
-    poligonPreview->addWidget(poligonSelector,0,0,1,4);
+    polygonSelector = new QComboBox(this);
+    polygonSelector->addItem(tr("Cerchio"));
+    polygonSelector->addItem(tr("Triangolo"));
+    polygonSelector->addItem(tr("Quadrato"));
+    emit(fetchPolygon(0));
+    polygonPreview->addWidget(polygonSelector,0,0,1,4);
     drawbox = new DrawBox(this);
 
-    poligonPreview->addWidget(drawbox,1,0,1,4);
-    poligonPreview->setRowStretch(1,1);
+    polygonPreview->addWidget(drawbox,1,0,1,4);
+    polygonPreview->setRowStretch(1,1);
 
     calcolaArea = new QPushButton("Calcola Area",this);
-    poligonPreview->addWidget(calcolaArea,2,0,1,3);
+    polygonPreview->addWidget(calcolaArea,2,0,1,3);
     QLCDNumber* lcdArea = new QLCDNumber();
-    poligonPreview->addWidget(lcdArea,2,3);
+    polygonPreview->addWidget(lcdArea,2,3);
 
     calcolaPerimetro = new QPushButton("Calcola Perimetro",this);
-    poligonPreview->addWidget(calcolaPerimetro,3,0,1,3);
+    polygonPreview->addWidget(calcolaPerimetro,3,0,1,3);
     QLCDNumber* lcdPerimetro = new QLCDNumber();
-    poligonPreview->addWidget(lcdPerimetro,3,3);
+    polygonPreview->addWidget(lcdPerimetro,3,3);
 
     calcolaBaricentro = new QPushButton("Trova Baricentro",this);
-    poligonPreview->addWidget(calcolaBaricentro,4,0,1,3);
+    polygonPreview->addWidget(calcolaBaricentro,4,0,1,3);
 
     calcolaLati = new QPushButton("Calcola Lunghezza Lati",this);
-    poligonPreview->addWidget(calcolaLati,5,0,1,3);
+    polygonPreview->addWidget(calcolaLati,5,0,1,3);
 
     lcdLato1 = new QLCDNumber();
     lcdLato2 = new QLCDNumber();
     lcdLato3 = new QLCDNumber();
     lcdLato4 = new QLCDNumber();
     lcdLato1->setMaximumHeight(35);
-    poligonPreview->addWidget(lcdLato1,6,0);
-    poligonPreview->addWidget(lcdLato2,6,1);
-    poligonPreview->addWidget(lcdLato3,6,2);
-    poligonPreview->addWidget(lcdLato4,6,3);
+    polygonPreview->addWidget(lcdLato1,6,0);
+    polygonPreview->addWidget(lcdLato2,6,1);
+    polygonPreview->addWidget(lcdLato3,6,2);
+    polygonPreview->addWidget(lcdLato4,6,3);
     calcolaLati->setVisible(false);
     lcdLato1->setVisible(false);
     lcdLato2->setVisible(false);
@@ -46,12 +47,12 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     lcdLato4->setVisible(false);
 
 
-    setLayout(poligonPreview);
+    setLayout(polygonPreview);
     setGeometry(0,160,250,250);
 
-    connect(poligonSelector,SIGNAL(currentIndexChanged(int)),this,SLOT(setMode(int)));
-    connect(drawbox,SIGNAL(fetchPolygon()),this,SIGNAL(fetchPolygon()));
+    connect(polygonSelector,SIGNAL(currentIndexChanged(int)),this,SIGNAL(fetchPolygon(int)));
 }
+
 
 void LeftBox::setMode(int i){
     if(i==0)
