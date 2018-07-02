@@ -1,8 +1,11 @@
 #include "quadrilatero.h"
 #include <QVector>
 
-Quadrilatero::Quadrilatero(const QVector<const Punto*>& v) : LatiFiniti(v) {
-
+Quadrilatero::Quadrilatero(const Punto& p1, const Punto& p2, const Punto& p3, const Punto& p4) : LatiFiniti() {
+    pushVertice(p1);
+    pushVertice(p2);
+    pushVertice(p3);
+    pushVertice(p4);
 }
 
 double Quadrilatero::getArea() const {

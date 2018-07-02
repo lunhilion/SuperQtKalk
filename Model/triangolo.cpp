@@ -2,8 +2,10 @@
 #include <QVector>
 #include <math.h>
 
-Triangolo::Triangolo(const QVector<const Punto*>& v) : LatiFiniti(v) {
-
+Triangolo::Triangolo(const Punto& p1, const Punto& p2, const Punto& p3) : LatiFiniti() {
+    pushVertice(p1);
+    pushVertice(p2);
+    pushVertice(p3);
 }
 
 double Triangolo::getArea() const {

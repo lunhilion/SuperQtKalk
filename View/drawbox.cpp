@@ -3,7 +3,6 @@
 DrawBox::DrawBox(QWidget *parent) : QWidget(parent)
 {
     pal = new QPalette();
-    emit(fetchPolygon());
     pal->setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(*pal);

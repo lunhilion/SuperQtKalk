@@ -13,7 +13,7 @@ class LeftBox : public QFrame
     Q_OBJECT
 
 private:
-    QComboBox* polygonselector;
+    QComboBox* polygonSelector;
     DrawBox* drawbox;
     QPushButton* calcolaArea;
     QPushButton* calcolaPerimetro;
@@ -30,6 +30,7 @@ signals:
     void fetchPolygon(int);
 
 public slots:
+    void setMode(int);
 };
 
 #endif // LEFTBOX_H

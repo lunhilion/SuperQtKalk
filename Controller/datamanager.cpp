@@ -132,32 +132,33 @@ void DataManager::media() {
 
 void DataManager::fetchPolygon(int i) {
     if(i==0) {
-        Circonferenza* c = dynamic_cast<Circonferenza*>(poli);
-        if(c){
-            int x = c->getBaricentro()->getX();
-            int y = c->getBaricentro()->getY();
-            emit(drawCircle(QPoint(x,y),c->getRaggio()));
-        }
+        delete poli;
+        poli = new Circonferenza(Punto(0,0),25);
+        Circonferenza* temp = static_cast<Circonferenza*>(poli);
+        int x = temp->getBaricentro().getX();
+        int y = temp->getBaricentro().getY();
+        emit(drawCircle(QPoint(x,y),temp->getRaggio()));
         //else
             //gestione eccezione
     }
-    else if (i==1 || i==2) {
-        LatiFiniti* c = dynamic_cast<LatiFiniti*>(poli);
-        if(c){
-            QPolygon p;
-            int x;
-            int y;
-            for (int j=0; j<c->contaVertici(); ++j) {
-                x = c->getVertice(j)->getX();
-                y = c->getVertice(j)->getY();
+    else if (i>0) {
+        delete poli;
+        if(i==1)
+            poli = new Triangolo(Punto(0,0),Punto(30,0),Punto(20,20));
+        else if (i==2)
+            poli = new Quadrilatero(Punto(0,0),Punto(30,0),Punto(30,30),Punto(0,30));
+        //else
+            //gestione eccezione: poligono non implementato
+        LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
+        QPolygon p;
+        int x;
+        int y;
+        for (unsigned int j = 0; j < temp->contaVertici(); ++j) {
+                x = temp->getVertice(j).getX();
+                y = temp->getVertice(j).getY();
                 QPoint q = QPoint(x,y);
-                p.append(q);
+                p.push_back(q);
             }
-            emit(drawEdgedPolygon(p));
-        }
-        //else
-            //gestione eccezione
+        emit(drawEdgedPolygon(p));
     }
-    //else
-        //gestione eccezione
 }

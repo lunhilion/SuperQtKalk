@@ -6,9 +6,9 @@
 
 class LatiFiniti : public Poligono {
 private:
-  QVector<const Punto*> vertici;    //vector costante o no?
+  QVector<Punto*> vertici;    //vector costante o no?
 public:
-  LatiFiniti(const QVector<const Punto*>&);
+  LatiFiniti(const QVector<Punto*>& = QVector<Punto*>());
 
   double getPerimetro() const;
   Punto getBaricentro() const;
@@ -19,6 +19,10 @@ public:
   double getArea() const=0;
   LatiFiniti* clone() const=0;
   unsigned int contaVertici() const;
+
+protected:
+  void pushVertice(const Punto&);
+
 };
 
 //qui implementiamo tutto meno che il getArea. Quindi questa classe è virtuale

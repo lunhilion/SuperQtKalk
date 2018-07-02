@@ -2,12 +2,12 @@
 #include <QVector>
 
 
-LatiFiniti::LatiFiniti(const QVector<const Punto*>& v) : vertici(v) {
+LatiFiniti::LatiFiniti(const QVector<Punto*>& v) : vertici(v) {
 }
 
 QVector<double> LatiFiniti::getLati() const {
     QVector<double> t;
-    for(QVector<const Punto*>::const_iterator it=vertici.begin(); it != vertici.end(); ++it) {
+    for(QVector<Punto*>::const_iterator it=vertici.begin(); it != vertici.end(); ++it) {
         t.push_back(Punto::distanzaDuePunti(**it,**(it+1)));
     }
     t.push_back(Punto::distanzaDuePunti(*(vertici.first()),*(vertici.last())));
@@ -24,7 +24,7 @@ double LatiFiniti::getPerimetro() const {
 
 unsigned int LatiFiniti::contaVertici() const {
     unsigned int nVertici = 0;
-    for(QVector<const Punto*>::const_iterator cit=vertici.begin(); cit != vertici.end(); ++cit) {
+    for(QVector<Punto*>::const_iterator cit=vertici.begin(); cit != vertici.end(); ++cit) {
         nVertici++;
     }
     return nVertici;
@@ -47,7 +47,7 @@ double LatiFiniti::getLato(unsigned int l) const {
 }
 
 Punto LatiFiniti::getVertice(unsigned int i) const {
-    return vertici[i];
+    return *vertici[i];
 }
 
 void LatiFiniti::setVertice(unsigned int i, const Punto& p) {
@@ -55,3 +55,6 @@ void LatiFiniti::setVertice(unsigned int i, const Punto& p) {
     const_cast<Punto*>(vertici[i])->setY(p.getY());
 }
 
+void LatiFiniti::pushVertice(const Punto & p) {
+    vertici.push_back(new Punto(p));
+}
