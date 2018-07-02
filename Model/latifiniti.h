@@ -18,6 +18,7 @@ public:
   void setVertice(unsigned int, const Punto&);
   double getArea() const=0;
   LatiFiniti* clone() const=0;
+  unsigned int contaVertici() const;
 };
 
 //qui implementiamo tutto meno che il getArea. Quindi questa classe è virtuale
