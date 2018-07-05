@@ -42,7 +42,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(this,SIGNAL(showBaricentro(QPoint)),view,SIGNAL(showBaricentro(QPoint)));
     connect(this,SIGNAL(showLati(QVector<double>)),view,SIGNAL(showLati(QVector<double>)));
 
-    initializeOperands(2,0);
+    initializeOperands(1,0);
 
 }
 
@@ -226,12 +226,10 @@ void DataManager::initializeOperands(int polygon, int color) {
 }
 
 void DataManager::findArea() {
-    std::cout<<poli->getArea()<<std::endl;
     emit(showArea(poli->getArea()));
 }
 
 void DataManager::findPerimetro() {
-    std::cout<<poli->getPerimetro()<<std::endl;
     emit(showPerimetro(poli->getPerimetro()));
 }
 

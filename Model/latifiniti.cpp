@@ -7,7 +7,7 @@ LatiFiniti::LatiFiniti(const QVector<Punto*>& v) : vertici(v) {
 
 QVector<double> LatiFiniti::getLati() const {
     QVector<double> t;
-    for(QVector<Punto*>::const_iterator it=vertici.begin(); it != vertici.end(); ++it) {
+    for(QVector<Punto*>::const_iterator it=vertici.begin(); it != vertici.end()-1; ++it) {
         t.push_back(Punto::distanzaDuePunti(**it,**(it+1)));
     }
     t.push_back(Punto::distanzaDuePunti(*(vertici.first()),*(vertici.last())));
