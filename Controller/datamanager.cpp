@@ -1,9 +1,6 @@
 #include "datamanager.h"
-<<<<<<< HEAD
 #include "Exception/kalkexception.h"
-=======
 #include <iostream>
->>>>>>> 14f87246bd9c867541043d39e5745229368ddd39
 
 DataManager::DataManager(MainWindow * w) : view(w)
 {
