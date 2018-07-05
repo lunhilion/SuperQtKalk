@@ -1,9 +1,7 @@
 #include "datamanager.h"
-<<<<<<< HEAD
 #include "Exception/kalkexception.h"
-=======
 #include <iostream>
->>>>>>> 14f87246bd9c867541043d39e5745229368ddd39
+
 
 DataManager::DataManager(MainWindow * w) : view(w)
 {
@@ -203,7 +201,7 @@ void DataManager::fetchPolygon(int i) {
         }
         else if (i==2)
         {
-            poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
+            poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-30),Punto(-50,-30));
             emit(setPolygonMode(2));
         }
         //else
