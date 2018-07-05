@@ -11,17 +11,18 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     polygonPreview->addWidget(polygonSelector,0,0,1,4);
 
     drawbox = new DrawBox(this);
+    drawbox->setMinimumHeight(365);
+    drawbox->setMinimumWidth(450);
     polygonPreview->addWidget(drawbox,1,0,1,4);
-    polygonPreview->setRowStretch(1,1);
 
     calcolaArea = new QPushButton("Calcola Area",this);
     polygonPreview->addWidget(calcolaArea,2,0,1,3);
-    QLCDNumber* lcdArea = new QLCDNumber();
+    lcdArea = new QLCDNumber(8);
     polygonPreview->addWidget(lcdArea,2,3);
 
     calcolaPerimetro = new QPushButton("Calcola Perimetro",this);
     polygonPreview->addWidget(calcolaPerimetro,3,0,1,3);
-    QLCDNumber* lcdPerimetro = new QLCDNumber();
+    lcdPerimetro = new QLCDNumber(8);
     polygonPreview->addWidget(lcdPerimetro,3,3);
 
     calcolaBaricentro = new QPushButton("Trova Baricentro",this);
@@ -50,6 +51,12 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     connect(polygonSelector,SIGNAL(currentIndexChanged(int)),this,SIGNAL(fetchPolygon(int)));
     connect(this,SIGNAL(drawCircle(QPointF,double)),drawbox,SLOT(drawCircle(QPointF,double)));
     connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),drawbox,SLOT(drawEdgedPolygon(QPolygonF)));
+    connect(this,SIGNAL(updateDrawingColor(QString)),drawbox,SLOT(updateDrawingColor(QString)));
+    connect(calcolaArea,SIGNAL(clicked()),this,SIGNAL(findArea()));
+    connect(calcolaPerimetro,SIGNAL(clicked()),this,SIGNAL(findPerimetro()));
+    connect(calcolaBaricentro,SIGNAL(clicked()),this,SIGNAL(findBaricentro()));
+    connect(calcolaLati,SIGNAL(clicked()),this,SIGNAL(findLati()));
+    connect(this,SIGNAL(drawPoint(QPoint)),drawbox,SLOT(drawPoint(QPoint)));
 
 }
 
@@ -72,4 +79,27 @@ void LeftBox::setPolygonMode(int i){
         lcdLato4->setVisible(true);
 
     }
+}
+
+void LeftBox::showArea(double d) {
+    lcdArea->display(d);
+}
+
+void LeftBox::showPerimetro(double d) {
+    lcdPerimetro->display(d);
+}
+
+void LeftBox::showBaricentro(QPoint p) {
+    emit(drawPoint(p));
+}
+
+void LeftBox::showLati(QVector<double> q) {
+    if(q.size()>0)
+        lcdLato1->display(q[0]);
+    if(q.size()>1)
+        lcdLato2->display(q[1]);
+    if(q.size()>2)
+        lcdLato3->display(q[2]);
+    if(q.size()>3)
+        lcdLato4->display(q[3]);
 }

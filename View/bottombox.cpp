@@ -68,6 +68,7 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
     connect(bottomb1,SIGNAL(clicked()),this,SLOT(operationRouting()));
     connect(this,SIGNAL(setResult(QString)),hexlcd3,SLOT(display(QString)));
     connect(this,SIGNAL(setResult(QString)),colorpreview3,SLOT(repaintBackground(QString)));
+    connect(bottomb2,SIGNAL(clicked()),this,SIGNAL(colorResulttoPolygonColor()));
 
 }
 

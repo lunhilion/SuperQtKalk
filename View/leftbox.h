@@ -23,6 +23,8 @@ private:
     QLCDNumber* lcdLato2;
     QLCDNumber* lcdLato3;
     QLCDNumber* lcdLato4;
+    QLCDNumber* lcdArea;
+    QLCDNumber* lcdPerimetro;
 public:
     explicit LeftBox(QWidget *parent = 0);
 
@@ -30,9 +32,19 @@ signals:
     void fetchPolygon(int);
     void drawCircle(QPointF,double);
     void drawEdgedPolygon(QPolygonF);
+    void updateDrawingColor(QString);
+    void findArea();
+    void findPerimetro();
+    void findBaricentro();
+    void findLati();
+    void drawPoint(QPoint);
 
 public slots:
     void setPolygonMode(int);
+    void showArea(double);
+    void showPerimetro(double);
+    void showBaricentro(QPoint);
+    void showLati(QVector<double>);
 };
 
 #endif // LEFTBOX_H

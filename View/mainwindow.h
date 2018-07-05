@@ -42,6 +42,8 @@ signals:
     void setCol1Preview(QString);
     void col1toOP1();
     void col1toOP2();
+    void col1toPolygonColor();
+    void colorResulttoPolygonColor();
     void setOP1(QString);
     void setOP2(QString);
     void somma();
@@ -52,6 +54,15 @@ signals:
     void setPolygonMode(int);
     void drawCircle(QPointF,double);
     void drawEdgedPolygon(QPolygonF);
+    void updateDrawingColor(QString);
+    void findArea();
+    void findPerimetro();
+    void findBaricentro();
+    void findLati();
+    void showArea(double);
+    void showPerimetro(double);
+    void showBaricentro(QPoint);
+    void showLati(QVector<double>);
 
 };
 
