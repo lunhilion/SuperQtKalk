@@ -2,6 +2,7 @@
 #include "Controller/datamanager.h"
 #include <QApplication>
 #include <iostream>
+#include "Exception/kalkexception.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,5 +14,9 @@ int main(int argc, char *argv[])
 
     return a.exec();
 
+//    try {
+//        std::cout << "prova";
+//    }
+//    catch(KalkException k) { k.printError();}
 }
 

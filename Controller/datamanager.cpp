@@ -1,4 +1,5 @@
 #include "datamanager.h"
+#include "Exception/kalkexception.h"
 
 DataManager::DataManager(MainWindow * w) : view(w)
 {
@@ -54,19 +55,24 @@ void DataManager::newColorOperand(int i) {
         emit(setColorMode(1));
     }
     else {
-        //gestione eccezione
+        //gestione eccezione: "valore non definito"
     }
 }
 
 
 void DataManager::setval1(int i) {
-    if(dynamic_cast<Rgb*>(col1))
-        static_cast<Rgb*>(col1)->setRed(i);
-    else if(dynamic_cast<Cmyk*>(col1))
-        static_cast<Cmyk*>(col1)->setCyan(i);
-    //else
-        //gestione eccezione
-    emit(setCol1Preview(col1->getHex()));
+    try {
+        if(dynamic_cast<Rgb*>(col1))
+            static_cast<Rgb*>(col1)->setRed(i);
+        else if(dynamic_cast<Cmyk*>(col1))
+            static_cast<Cmyk*>(col1)->setCyan(i);
+        else
+            throw TypeErr("Valore non settabile");
+        emit(setCol1Preview(col1->getHex()));
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
 
 void DataManager::setval2(int i) {
