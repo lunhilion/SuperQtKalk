@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QPainter>
+#include <QColor>
 
 class DrawBox : public QWidget
 {
@@ -10,7 +11,12 @@ class DrawBox : public QWidget
 
 
 private:
-    QPalette* pal;
+    bool drawingCircle;
+    QPalette pal;
+    QColor color;
+    QPointF circleCenter;
+    double circleRadius;
+    QPolygonF edgedPolygon;
 
 
 public:
@@ -18,8 +24,11 @@ public:
     void paintEvent(QPaintEvent* PaintEvent);
 
 signals:
+    void fetchPolygon();
 
 public slots:
+    void drawCircle(QPointF,double);
+    void drawEdgedPolygon(QPolygonF);
 
 };
 

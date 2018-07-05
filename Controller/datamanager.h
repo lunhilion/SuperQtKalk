@@ -32,12 +32,13 @@ public:
 
 signals:
     void setColorOperandMaxValues(unsigned int);
+    void setColorMode(int);
     void setCol1Preview(QString);
     void setOP1(QString);
     void setOP2(QString);
     void setResult(QString);
-    void drawCircle(QPoint,double);
-    void drawEdgedPolygon(QPolygon);
+    void drawCircle(QPointF,double);
+    void drawEdgedPolygon(QPolygonF);
 
 public slots:
     void newColorOperand(int);

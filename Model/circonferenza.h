@@ -3,13 +3,13 @@
 
 #include "punto.h"
 #include "poligono.h"
+#include "math.h"
 
 class Circonferenza : public Poligono {
 private:
   Punto centro;
   double raggio;
-protected:
-  static unsigned int PI;
+
 public:
   Circonferenza(const Punto&, unsigned int);
   double getArea() const;

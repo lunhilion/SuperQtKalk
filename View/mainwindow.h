@@ -34,6 +34,7 @@ public:
 signals:
     void newColorOperand(int);
     void setColorOperandMaxValues(uint);
+    void setColorMode(int);
     void val1changed(int);
     void val2changed(int);
     void val3changed(int);
@@ -48,6 +49,9 @@ signals:
     void media();
     void setResult(QString);
     void fetchPolygon(int);
+    void setPolygonMode(int);
+    void drawCircle(QPointF,double);
+    void drawEdgedPolygon(QPolygonF);
 
 };
 

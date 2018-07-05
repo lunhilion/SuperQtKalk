@@ -32,9 +32,9 @@ unsigned int LatiFiniti::contaVertici() const {
 
 Punto LatiFiniti::getBaricentro() const {
     unsigned int nVertici = contaVertici();
-    unsigned int numerX = 0;
-    unsigned int numerY = 0;
-    for(int i=0; i<nVertici; ++i) {
+    double numerX = 0;
+    double numerY = 0;
+    for(unsigned int i=0; i<nVertici; ++i) {
         numerX += vertici[i]->getX();
         numerY += vertici[i]->getY();
     }

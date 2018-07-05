@@ -4,17 +4,17 @@
 
 class Punto {
 private:
-  unsigned int x;   //altezza in pixel dall'angolo in basso a sinistra del padre
-  unsigned int y;
+  double x;   //altezza in pixel dall'angolo in basso a sinistra del padre
+  double y;
 public:
-  Punto(unsigned int=0, unsigned int=0);
+  Punto(double=0, double=0);
   Punto getPunto() const;
-  unsigned int getX() const;
-  unsigned int getY() const;
+  double getX() const;
+  double getY() const;
   void setPunto(const Punto&);
-  void setX(unsigned int);
-  void setY(unsigned int);
-  unsigned int distanza(const Punto&) const;
+  void setX(double);
+  void setY(double);
+  double distanza(const Punto&) const;
   static double distanzaDuePunti(const Punto&, const Punto&);
   Punto* clone() const;
 };

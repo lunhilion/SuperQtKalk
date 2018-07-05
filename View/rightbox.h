@@ -42,7 +42,7 @@ signals:
     void col1toOP2();
 
 public slots:
-    void setMode(int);
+    void setColorMode(int);
     void setColorOperandMaxValues(uint);
 };
 

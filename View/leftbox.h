@@ -28,9 +28,11 @@ public:
 
 signals:
     void fetchPolygon(int);
+    void drawCircle(QPointF,double);
+    void drawEdgedPolygon(QPolygonF);
 
 public slots:
-    void setMode(int);
+    void setPolygonMode(int);
 };
 
 #endif // LEFTBOX_H

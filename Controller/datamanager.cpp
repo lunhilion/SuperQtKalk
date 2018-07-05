@@ -24,12 +24,21 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(media()),this,SLOT(media()));
     connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
     connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(fetchPolygon(int)));
+    connect(this,SIGNAL(drawCircle(QPointF,double)),view,SIGNAL(drawCircle(QPointF,double)));
+    connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),view,SIGNAL(drawEdgedPolygon(QPolygonF)));
+
+    //inizializzazione figura
+    fetchPolygon(0);
+
+    //inizializzazione colore
+    newColorOperand(0);
 }
 
 //commento
 
 void DataManager::newColorOperand(int i) {
-    delete col1;
+    if(col1)
+        delete col1;
     if(i==0) {
         col1 = new Rgb();
         emit(setColorOperandMaxValues(col1->getMaxValues()));
@@ -86,7 +95,8 @@ void DataManager::setval4(int i) {
 }
 
 void DataManager::col1toOP1() {
-    delete col2;
+    if(col3)
+        delete col2;
     col2 = col1->clone();
     if(col2)
         emit(setOP1(col2->getHex()));
@@ -95,7 +105,8 @@ void DataManager::col1toOP1() {
 }
 
 void DataManager::col1toOP2() {
-    delete col3;
+    if(col3)
+        delete col3;
     col3 = col1->clone();
     if(col3)
         emit(setOP2(col3->getHex()));
@@ -104,7 +115,8 @@ void DataManager::col1toOP2() {
 }
 
 void DataManager::somma() {
-    delete col4;
+    if(col4)
+        delete col4;
     col4=(*col2)+(*col3);
     if(col4)
         emit(setResult(col4->getHex()));
@@ -113,7 +125,8 @@ void DataManager::somma() {
 }
 
 void DataManager::sottrai() {
-    delete col4;
+    if(col4)
+        delete col4;
     col4=(*col2)-(*col3);
     if(col4)
         emit(setResult(col4->getHex()));
@@ -122,7 +135,8 @@ void DataManager::sottrai() {
 }
 
 void DataManager::media() {
-    delete col4;
+    if(col4)
+        delete col4;
     col4= col2->media(*col3);
     if(col4)
         emit(setResult(col4->getHex()));
@@ -132,31 +146,33 @@ void DataManager::media() {
 
 void DataManager::fetchPolygon(int i) {
     if(i==0) {
-        delete poli;
-        poli = new Circonferenza(Punto(0,0),25);
+        if(poli)
+            delete poli;
+        poli = new Circonferenza(Punto(0,0), 50);
         Circonferenza* temp = static_cast<Circonferenza*>(poli);
-        int x = temp->getBaricentro().getX();
-        int y = temp->getBaricentro().getY();
-        emit(drawCircle(QPoint(x,y),temp->getRaggio()));
+        double x = temp->getBaricentro().getX();
+        double y = temp->getBaricentro().getY();
+        emit(drawCircle(QPointF(x,y),temp->getRaggio()));
         //else
             //gestione eccezione
     }
     else if (i>0) {
-        delete poli;
+        if(poli)
+            delete poli;
         if(i==1)
-            poli = new Triangolo(Punto(0,0),Punto(30,0),Punto(20,20));
+            poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
         else if (i==2)
-            poli = new Quadrilatero(Punto(0,0),Punto(30,0),Punto(30,30),Punto(0,30));
+            poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
         //else
             //gestione eccezione: poligono non implementato
         LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
-        QPolygon p;
-        int x;
-        int y;
+        QPolygonF p;
+        double x;
+        double y;
         for (unsigned int j = 0; j < temp->contaVertici(); ++j) {
                 x = temp->getVertice(j).getX();
                 y = temp->getVertice(j).getY();
-                QPoint q = QPoint(x,y);
+                QPointF q = QPointF(x,y);
                 p.push_back(q);
             }
         emit(drawEdgedPolygon(p));

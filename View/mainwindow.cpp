@@ -44,6 +44,11 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(bottombox,SIGNAL(media()),this,SIGNAL(media()));
     connect(this,SIGNAL(setResult(QString)),bottombox,SIGNAL(setResult(QString)));
     connect(leftbox,SIGNAL(fetchPolygon(int)),this,SIGNAL(fetchPolygon(int)));
+    connect(this,SIGNAL(drawCircle(QPointF,double)),leftbox,SIGNAL(drawCircle(QPointF,double)));
+    connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),leftbox,SIGNAL(drawEdgedPolygon(QPolygonF)));
+    connect(this,SIGNAL(setColorMode(int)),rightbox,SLOT(setColorMode(int)));
+    connect(this,SIGNAL(setPolygonMode(int)),leftbox,SLOT(setPolygonMode(int)));
+
 
 }
 
