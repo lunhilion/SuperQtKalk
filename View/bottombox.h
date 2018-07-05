@@ -33,6 +33,7 @@ signals:
     void sottrai();
     void media();
     void setResult(QString);
+    void colorResulttoPolygonColor();
 
 public slots:
     void operationRouting();

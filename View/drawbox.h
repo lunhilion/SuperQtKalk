@@ -12,11 +12,13 @@ class DrawBox : public QWidget
 
 private:
     bool drawingCircle;
+    bool drawingSinglePoint;
     QPalette pal;
     QColor color;
     QPointF circleCenter;
     double circleRadius;
     QPolygonF edgedPolygon;
+    QPoint singlePoint;
 
 
 public:
@@ -29,6 +31,8 @@ signals:
 public slots:
     void drawCircle(QPointF,double);
     void drawEdgedPolygon(QPolygonF);
+    void updateDrawingColor(QString s);
+    void drawPoint(QPoint);
 
 };
 

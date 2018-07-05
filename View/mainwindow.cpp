@@ -37,6 +37,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,SIGNAL(setCol1Preview(QString)),rightbox,SIGNAL(setCol1Preview(QString)));
     connect(rightbox,SIGNAL(col1toOP1()),this,SIGNAL(col1toOP1()));
     connect(rightbox,SIGNAL(col1toOP2()),this,SIGNAL(col1toOP2()));
+    connect(rightbox,SIGNAL(col1toPolygonColor()),this,SIGNAL(col1toPolygonColor()));
+    connect(bottombox,SIGNAL(colorResulttoPolygonColor()),this,SIGNAL(colorResulttoPolygonColor()));
     connect(this,SIGNAL(setOP1(QString)),bottombox,SIGNAL(setOP1(QString)));
     connect(this,SIGNAL(setOP2(QString)),bottombox,SIGNAL(setOP2(QString)));
     connect(bottombox,SIGNAL(somma()),this,SIGNAL(somma()));
@@ -48,6 +50,15 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),leftbox,SIGNAL(drawEdgedPolygon(QPolygonF)));
     connect(this,SIGNAL(setColorMode(int)),rightbox,SLOT(setColorMode(int)));
     connect(this,SIGNAL(setPolygonMode(int)),leftbox,SLOT(setPolygonMode(int)));
+    connect(this,SIGNAL(updateDrawingColor(QString)),leftbox,SIGNAL(updateDrawingColor(QString)));
+    connect(leftbox,SIGNAL(findArea()),this,SIGNAL(findArea()));
+    connect(leftbox,SIGNAL(findPerimetro()),this,SIGNAL(findPerimetro()));
+    connect(leftbox,SIGNAL(findBaricentro()),this,SIGNAL(findBaricentro()));
+    connect(leftbox,SIGNAL(findLati()),this,SIGNAL(findLati()));
+    connect(this,SIGNAL(showArea(double)),leftbox,SLOT(showArea(double)));
+    connect(this,SIGNAL(showPerimetro(double)),leftbox,SLOT(showPerimetro(double)));
+    connect(this,SIGNAL(showBaricentro(QPoint)),leftbox,SLOT(showBaricentro(QPoint)));
+    connect(this,SIGNAL(showLati(QVector<double>)),leftbox,SLOT(showLati(QVector<double>)));
 
 
 }

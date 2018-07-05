@@ -1,13 +1,14 @@
 #include "datamanager.h"
+#include <iostream>
 
 DataManager::DataManager(MainWindow * w) : view(w)
 {
-    poli = new Circonferenza(Punto(),25);
-    col1 = new Rgb(0,0,0);
-    col2 = new Rgb(255,255,255);
-    col3 = new Rgb(255,255,255);
-    col4 = new Rgb(255,255,255);
-    col5 = new Rgb(0,0,0);
+    poli = 0;
+    col1 = 0;
+    op1 = new Rgb(255,255,255);
+    op2 = new Rgb(255,255,255);
+    colorResult = new Rgb(255,255,255);
+    polygonColor = new Rgb(0,0,0);
     connect(view,SIGNAL(newColorOperand(int)), this, SLOT(newColorOperand(int)));
     connect(this,SIGNAL(setColorOperandMaxValues(uint)),view,SIGNAL(setColorOperandMaxValues(uint)));
     connect(view,SIGNAL(val1changed(int)),this,SLOT(setval1(int)));
@@ -17,6 +18,8 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(this,SIGNAL(setCol1Preview(QString)),view,SIGNAL(setCol1Preview(QString)));
     connect(view,SIGNAL(col1toOP1()),this,SLOT(col1toOP1()));
     connect(view,SIGNAL(col1toOP2()),this,SLOT(col1toOP2()));
+    connect(view,SIGNAL(col1toPolygonColor()),this,SLOT(col1toPolygonColor()));
+    connect(view,SIGNAL(colorResulttoPolygonColor()),this,SLOT(colorResulttoPolygonColor()));
     connect(this,SIGNAL(setOP1(QString)),view,SIGNAL(setOP1(QString)));
     connect(this,SIGNAL(setOP2(QString)),view,SIGNAL(setOP2(QString)));
     connect(view,SIGNAL(somma()),this,SLOT(somma()));
@@ -27,12 +30,19 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(this,SIGNAL(drawCircle(QPointF,double)),view,SIGNAL(drawCircle(QPointF,double)));
     connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),view,SIGNAL(drawEdgedPolygon(QPolygonF)));
     connect(this,SIGNAL(setColorMode(int)),view,SIGNAL(setColorMode(int)));
+    connect(this,SIGNAL(setPolygonMode(int)),view,SIGNAL(setPolygonMode(int)));
+    connect(this,SIGNAL(updateDrawingColor(QString)),view,SIGNAL(updateDrawingColor(QString)));
+    connect(view,SIGNAL(findArea()),this,SLOT(findArea()));
+    connect(view,SIGNAL(findPerimetro()),this,SLOT(findPerimetro()));
+    connect(view,SIGNAL(findBaricentro()),this,SLOT(findBaricentro()));
+    connect(view,SIGNAL(findLati()),this,SLOT(findLati()));
+    connect(this,SIGNAL(showArea(double)),view,SIGNAL(showArea(double)));
+    connect(this,SIGNAL(showPerimetro(double)),view,SIGNAL(showPerimetro(double)));
+    connect(this,SIGNAL(showBaricentro(QPoint)),view,SIGNAL(showBaricentro(QPoint)));
+    connect(this,SIGNAL(showLati(QVector<double>)),view,SIGNAL(showLati(QVector<double>)));
 
-    //inizializzazione figura
-    fetchPolygon(0);
+    initializeOperands(0,0);
 
-    //inizializzazione colore
-    newColorOperand(0);
 }
 
 //commento
@@ -98,51 +108,65 @@ void DataManager::setval4(int i) {
 }
 
 void DataManager::col1toOP1() {
-    if(col3)
-        delete col2;
-    col2 = col1->clone();
-    if(col2)
-        emit(setOP1(col2->getHex()));
+    if(op1)
+        delete op1;
+    op1 = col1->clone();
+    if(op1)
+        emit(setOP1(op1->getHex()));
     //else
         //gestione eccezione
 }
 
 void DataManager::col1toOP2() {
-    if(col3)
-        delete col3;
-    col3 = col1->clone();
-    if(col3)
-        emit(setOP2(col3->getHex()));
+    if(op2)
+        delete op2;
+    op2 = col1->clone();
+    if(op2)
+        emit(setOP2(op2->getHex()));
     //else
         //gestione eccezione
 }
 
+void DataManager::col1toPolygonColor() {
+    if(polygonColor)
+        delete polygonColor;
+    polygonColor = col1->clone();
+    emit(updateDrawingColor(polygonColor->getHex()));
+}
+
+void DataManager::colorResulttoPolygonColor() {
+    if(polygonColor)
+        delete polygonColor;
+    polygonColor = colorResult->clone();
+    emit(updateDrawingColor(polygonColor->getHex()));
+}
+
 void DataManager::somma() {
-    if(col4)
-        delete col4;
-    col4=(*col2)+(*col3);
-    if(col4)
-        emit(setResult(col4->getHex()));
+    if(colorResult)
+        delete colorResult;
+    colorResult=(*op1)+(*op2);
+    if(colorResult)
+        emit(setResult(colorResult->getHex()));
     //else
         //gestione eccezione
 }
 
 void DataManager::sottrai() {
-    if(col4)
-        delete col4;
-    col4=(*col2)-(*col3);
-    if(col4)
-        emit(setResult(col4->getHex()));
+    if(colorResult)
+        delete colorResult;
+    colorResult=(*op1)-(*op2);
+    if(colorResult)
+        emit(setResult(colorResult->getHex()));
     //else
         //gestione eccezione
 }
 
 void DataManager::media() {
-    if(col4)
-        delete col4;
-    col4= col2->media(*col3);
-    if(col4)
-        emit(setResult(col4->getHex()));
+    if(colorResult)
+        delete colorResult;
+    colorResult= op1->media(*op2);
+    if(colorResult)
+        emit(setResult(colorResult->getHex()));
     //else
         //gestione eccezione
 }
@@ -156,6 +180,7 @@ void DataManager::fetchPolygon(int i) {
         double x = temp->getBaricentro().getX();
         double y = temp->getBaricentro().getY();
         emit(drawCircle(QPointF(x,y),temp->getRaggio()));
+        emit(setPolygonMode(0));
         //else
             //gestione eccezione
     }
@@ -163,9 +188,15 @@ void DataManager::fetchPolygon(int i) {
         if(poli)
             delete poli;
         if(i==1)
+        {
             poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
+            emit(setPolygonMode(1));
+        }
         else if (i==2)
+        {
             poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
+            emit(setPolygonMode(2));
+        }
         //else
             //gestione eccezione: poligono non implementato
         LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
@@ -180,4 +211,32 @@ void DataManager::fetchPolygon(int i) {
             }
         emit(drawEdgedPolygon(p));
     }
+}
+
+
+void DataManager::initializeOperands(int polygon, int color) {
+    fetchPolygon(polygon);
+    newColorOperand(color);
+}
+
+void DataManager::findArea() {
+    std::cout<<poli->getArea()<<std::endl;
+    emit(showArea(poli->getArea()));
+}
+
+void DataManager::findPerimetro() {
+    std::cout<<poli->getPerimetro()<<std::endl;
+    emit(showPerimetro(poli->getPerimetro()));
+}
+
+void DataManager::findBaricentro() {
+    QPoint p = QPoint(poli->getBaricentro().getX(),poli->getBaricentro().getY());
+    emit(showBaricentro(p));
+}
+
+void DataManager::findLati() {
+    if(dynamic_cast<LatiFiniti*>(poli))
+        emit(showLati(static_cast<LatiFiniti*>(poli)->getLati()));
+    //else
+        //gestione eccezione: operazione non possibile su questo poligono
 }

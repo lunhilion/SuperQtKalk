@@ -54,6 +54,7 @@ RightBox::RightBox(QWidget *parent) : QFrame(parent)
     connect(this,SIGNAL(setCol1Preview(QString)),colorpreview,SLOT(repaintBackground(QString)));
     connect(rightb1,SIGNAL(clicked()),this,SIGNAL(col1toOP1()));
     connect(rightb2,SIGNAL(clicked()),this,SIGNAL(col1toOP2()));
+    connect(rightb3,SIGNAL(clicked()),this,SIGNAL(col1toPolygonColor()));
 }
 
 void RightBox::setColorMode(int i) {

@@ -20,10 +20,12 @@ private:
     MainWindow* view;
     Poligono* poli;
     Colore* col1;
-    Colore* col2;
-    Colore* col3;
-    Colore* col4;
-    Colore* col5;
+    Colore* op1;
+    Colore* op2;
+    Colore* colorResult;
+    Colore* polygonColor;
+
+    void initializeOperands(int, int);
 
 
 public:
@@ -39,6 +41,12 @@ signals:
     void setResult(QString);
     void drawCircle(QPointF,double);
     void drawEdgedPolygon(QPolygonF);
+    void setPolygonMode(int);
+    void updateDrawingColor(QString);
+    void showArea(double);
+    void showPerimetro(double);
+    void showBaricentro(QPoint);
+    void showLati(QVector<double>);
 
 public slots:
     void newColorOperand(int);
@@ -48,10 +56,16 @@ public slots:
     void setval4(int);
     void col1toOP1();
     void col1toOP2();
+    void col1toPolygonColor();
+    void colorResulttoPolygonColor();
     void somma();
     void sottrai();
     void media();
     void fetchPolygon(int);
+    void findArea();
+    void findPerimetro();
+    void findBaricentro();
+    void findLati();
 };
 
 #endif // DATAMANAGER_H

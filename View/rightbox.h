@@ -40,6 +40,7 @@ signals:
     void setCol1Preview(QString);
     void col1toOP1();
     void col1toOP2();
+    void col1toPolygonColor();
 
 public slots:
     void setColorMode(int);
