@@ -2,7 +2,6 @@
 #include "Exception/kalkexception.h"
 #include <iostream>
 
-
 DataManager::DataManager(MainWindow * w) : view(w)
 {
     poli = 0;
