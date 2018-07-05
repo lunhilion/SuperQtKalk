@@ -26,6 +26,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(fetchPolygon(int)));
     connect(this,SIGNAL(drawCircle(QPointF,double)),view,SIGNAL(drawCircle(QPointF,double)));
     connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),view,SIGNAL(drawEdgedPolygon(QPolygonF)));
+    connect(this,SIGNAL(setColorMode(int)),view,SIGNAL(setColorMode(int)));
 
     //inizializzazione figura
     fetchPolygon(0);
@@ -43,12 +44,14 @@ void DataManager::newColorOperand(int i) {
         col1 = new Rgb();
         emit(setColorOperandMaxValues(col1->getMaxValues()));
         emit(setCol1Preview(col1->getHex()));
+        emit(setColorMode(0));
     }
     else if (i==1)
     {
         col1 = new Cmyk();
         emit(setColorOperandMaxValues(col1->getMaxValues()));
         emit(setCol1Preview(col1->getHex()));
+        emit(setColorMode(1));
     }
     else {
         //gestione eccezione
