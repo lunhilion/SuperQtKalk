@@ -45,7 +45,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(this,SIGNAL(showBaricentro(QPoint)),view,SIGNAL(showBaricentro(QPoint)));
     connect(this,SIGNAL(showLati(QVector<double>)),view,SIGNAL(showLati(QVector<double>)));
 
-    initializeOperands(0,0);
+    initializeOperands(2,0);
 
 }
 
