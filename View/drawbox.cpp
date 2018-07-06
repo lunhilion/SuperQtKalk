@@ -18,7 +18,9 @@ void DrawBox::paintEvent(QPaintEvent*)
     QPainter painter(this);
     painter.setPen(color);
     painter.setRenderHint(QPainter::HighQualityAntialiasing);
-
+    if(drawingSinglePoint)
+        painter.drawPoint(singlePoint);
+    drawingSinglePoint = false;
     if(drawingCircle) {
         painter.drawEllipse(circleCenter,circleRadius,circleRadius);
     }
@@ -52,6 +54,7 @@ void DrawBox::updateDrawingColor(QString s) {
 
 void DrawBox::drawPoint(QPoint p) {
     drawingSinglePoint = true;
-    singlePoint = p;
+    singlePoint.setX(p.x()+width()/2);
+    singlePoint.setY(p.x()+height()/2);
     update();
 }
