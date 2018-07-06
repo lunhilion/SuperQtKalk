@@ -9,7 +9,7 @@ abstract class LatiFiniti implements Poligono {
 
     public ArrayList<Double> getLati() {
         ArrayList<Double> t = new ArrayList<Double>();
-        for(int i = 0; i <vertici.size(); ++i) {
+        for(int i = 0; i <vertici.size()-1; ++i) {
             t.add(Punto.distanzaDuePunti(vertici.get(i),vertici.get(i+1)));
         }
         t.add(Punto.distanzaDuePunti(vertici.get(0),vertici.get(vertici.size()-1)));

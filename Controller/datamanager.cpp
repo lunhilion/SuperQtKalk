@@ -49,23 +49,28 @@ DataManager::DataManager(MainWindow * w) : view(w)
 //commento
 
 void DataManager::newColorOperand(int i) {
-    if(col1)
-        delete col1;
-    if(i==0) {
-        col1 = new Rgb();
-        emit(setColorOperandMaxValues(col1->getMaxValues()));
-        emit(setCol1Preview(col1->getHex()));
-        emit(setColorMode(0));
+    try {
+        if(col1)
+            delete col1;
+        if(i==0) {
+            col1 = new Rgb();
+            emit(setColorOperandMaxValues(col1->getMaxValues()));
+            emit(setCol1Preview(col1->getHex()));
+            emit(setColorMode(0));
+        }
+        else if (i==1)
+        {
+            col1 = new Cmyk();
+            emit(setColorOperandMaxValues(col1->getMaxValues()));
+            emit(setCol1Preview(col1->getHex()));
+            emit(setColorMode(1));
+        }
+        else {
+            throw UndefValue();
+        }
     }
-    else if (i==1)
-    {
-        col1 = new Cmyk();
-        emit(setColorOperandMaxValues(col1->getMaxValues()));
-        emit(setCol1Preview(col1->getHex()));
-        emit(setColorMode(1));
-    }
-    else {
-        //gestione eccezione: "valore non definito"
+    catch(KalkException k) {
+        k.printError();
     }
 }
 
@@ -86,51 +91,78 @@ void DataManager::setval1(int i) {
 }
 
 void DataManager::setval2(int i) {
-    if(dynamic_cast<Rgb*>(col1))
-        static_cast<Rgb*>(col1)->setGreen(i);
-    else if(dynamic_cast<Cmyk*>(col1))
-        static_cast<Cmyk*>(col1)->setMagenta(i);
-    //else
-        //gestione eccezione
-    emit(setCol1Preview(col1->getHex()));
+    try {
+        if(dynamic_cast<Rgb*>(col1))
+            static_cast<Rgb*>(col1)->setGreen(i);
+        else if(dynamic_cast<Cmyk*>(col1))
+            static_cast<Cmyk*>(col1)->setMagenta(i);
+        else
+            throw TypeErr();
+        emit(setCol1Preview(col1->getHex()));
+    }
+    catch (KalkException k) {
+            k.printError();
+        }
+
 }
 
 void DataManager::setval3(int i) {
-    if(dynamic_cast<Rgb*>(col1))
-        static_cast<Rgb*>(col1)->setBlue(i);
-    else if(dynamic_cast<Cmyk*>(col1))
-        static_cast<Cmyk*>(col1)->setYellow(i);
-    //else
-        //gestione eccezione
-    emit(setCol1Preview(col1->getHex()));
+    try {
+        if(dynamic_cast<Rgb*>(col1))
+            static_cast<Rgb*>(col1)->setBlue(i);
+        else if(dynamic_cast<Cmyk*>(col1))
+            static_cast<Cmyk*>(col1)->setYellow(i);
+        else
+            throw TypeErr();
+        emit(setCol1Preview(col1->getHex()));
+    }
+    catch (KalkException k) {
+            k.printError();
+        }
 }
 
 void DataManager::setval4(int i) {
-    if(dynamic_cast<Cmyk*>(col1))
-        static_cast<Cmyk*>(col1)->setBlack(i);
-    //else
-        //gestione eccezione
-    emit(setCol1Preview(col1->getHex()));
+    try {
+        if(dynamic_cast<Cmyk*>(col1))
+            static_cast<Cmyk*>(col1)->setBlack(i);
+        else
+            throw TypeErr();
+        emit(setCol1Preview(col1->getHex()));
+    }
+    catch (KalkException k) {
+            k.printError();
+        }
+
 }
 
 void DataManager::col1toOP1() {
-    if(op1)
-        delete op1;
-    op1 = col1->clone();
-    if(op1)
-        emit(setOP1(op1->getHex()));
-    //else
-        //gestione eccezione
+    try {
+        if(op1)
+            delete op1;
+        op1 = col1->clone();
+        if(op1)
+            emit(setOP1(op1->getHex()));
+        else
+            throw  EmptyObj();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
 
 void DataManager::col1toOP2() {
-    if(op2)
-        delete op2;
-    op2 = col1->clone();
-    if(op2)
-        emit(setOP2(op2->getHex()));
-    //else
-        //gestione eccezione
+    try {
+        if(op2)
+            delete op2;
+        op2 = col1->clone();
+        if(op2)
+            emit(setOP2(op2->getHex()));
+        else
+            throw  EmptyObj();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
 
 void DataManager::col1toPolygonColor() {
@@ -148,75 +180,96 @@ void DataManager::colorResulttoPolygonColor() {
 }
 
 void DataManager::somma() {
-    if(colorResult)
-        delete colorResult;
-    colorResult=(*op1)+(*op2);
-    if(colorResult)
-        emit(setResult(colorResult->getHex()));
-    //else
-        //gestione eccezione
+    try {
+        if(colorResult)
+            delete colorResult;
+        colorResult=(*op1)+(*op2);
+        if(colorResult)
+            emit(setResult(colorResult->getHex()));
+        else
+            throw OperatErr();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
 
 void DataManager::sottrai() {
-    if(colorResult)
-        delete colorResult;
-    colorResult=(*op1)-(*op2);
-    if(colorResult)
-        emit(setResult(colorResult->getHex()));
-    //else
-        //gestione eccezione
+    try {
+        if(colorResult)
+            delete colorResult;
+        colorResult=(*op1)-(*op2);
+        if(colorResult)
+            emit(setResult(colorResult->getHex()));
+        else
+            throw OperatErr();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
 
 void DataManager::media() {
-    if(colorResult)
-        delete colorResult;
-    colorResult= op1->media(*op2);
-    if(colorResult)
-        emit(setResult(colorResult->getHex()));
-    //else
-        //gestione eccezione
+    try {
+        if(colorResult)
+            delete colorResult;
+        colorResult= op1->media(*op2);
+        if(colorResult)
+            emit(setResult(colorResult->getHex()));
+        else
+            throw OperatErr();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
 
 void DataManager::fetchPolygon(int i) {
-    if(i==0) {
-        if(poli)
-            delete poli;
-        poli = new Circonferenza(Punto(0,0), 50);
-        Circonferenza* temp = static_cast<Circonferenza*>(poli);
-        double x = temp->getBaricentro().getX();
-        double y = temp->getBaricentro().getY();
-        emit(drawCircle(QPointF(x,y),temp->getRaggio()));
-        emit(setPolygonMode(0));
-        //else
-            //gestione eccezione
-    }
-    else if (i>0) {
-        if(poli)
-            delete poli;
-        if(i==1)
-        {
-            poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
-            emit(setPolygonMode(1));
+    try {
+        if(i==0) {
+            if(poli)
+                delete poli;
+            poli = new Circonferenza(Punto(0,0), 50);
+            Circonferenza* temp = static_cast<Circonferenza*>(poli);
+            double x = temp->getBaricentro().getX();
+            double y = temp->getBaricentro().getY();
+            emit(drawCircle(QPointF(x,y),temp->getRaggio()));
+            emit(setPolygonMode(0));
+            //else
+                //gestione eccezione
         }
-        else if (i==2)
-        {
-            poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
-            emit(setPolygonMode(2));
-        }
-        //else
-            //gestione eccezione: poligono non implementato
-        LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
-        QPolygonF p;
-        double x;
-        double y;
-        for (unsigned int j = 0; j < temp->contaVertici(); ++j) {
-                x = temp->getVertice(j).getX();
-                y = temp->getVertice(j).getY();
-                QPointF q = QPointF(x,y);
-                p.push_back(q);
+        else if (i>0) {
+            if(poli)
+                delete poli;
+            if(i==1)
+            {
+                poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
+                emit(setPolygonMode(1));
             }
-        emit(drawEdgedPolygon(p));
+            else if (i==2)
+            {
+                poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
+                emit(setPolygonMode(2));
+            }
+            else
+                throw EmptyPoly();
+            LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
+            QPolygonF p;
+            double x;
+            double y;
+            for (unsigned int j = 0; j < temp->contaVertici(); ++j) {
+                    x = temp->getVertice(j).getX();
+                    y = temp->getVertice(j).getY();
+                    QPointF q = QPointF(x,y);
+                    p.push_back(q);
+                }
+            emit(drawEdgedPolygon(p));
+        }
     }
+    catch(KalkException k) {
+        k.printError();
+    }
+
 }
 
 
@@ -241,8 +294,13 @@ void DataManager::findBaricentro() {
 }
 
 void DataManager::findLati() {
-    if(dynamic_cast<LatiFiniti*>(poli))
-        emit(showLati(static_cast<LatiFiniti*>(poli)->getLati()));
-    //else
-        //gestione eccezione: operazione non possibile su questo poligono
+    try {
+        if(dynamic_cast<LatiFiniti*>(poli))
+            emit(showLati(static_cast<LatiFiniti*>(poli)->getLati()));
+        else
+            throw TypeErr();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
