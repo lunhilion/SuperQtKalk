@@ -4,7 +4,7 @@
 
 class Punto {
 private:
-  double x;   //altezza in pixel dall'angolo in basso a sinistra del padre
+  double x;
   double y;
 public:
   Punto(double=0, double=0);

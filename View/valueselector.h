@@ -20,6 +20,7 @@ private:
 public:
     explicit ValueSelector(QWidget *parent = 0);
     void set(const QString&, unsigned int, unsigned int);
+    ~ValueSelector();
 
 signals:
     int valueChanged(int);

@@ -90,3 +90,13 @@ void RightBox::setColorMode(int i) {
 void RightBox::setColorOperandMaxValues(uint i) {
     colorOperandMaxValue = i;
 }
+
+RightBox::~RightBox() {
+    delete colorSelector;
+    delete val1;
+    delete val2;
+    delete val3;
+    delete val4;
+    delete colorpreview;
+    delete hexlcd;
+}

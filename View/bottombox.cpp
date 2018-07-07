@@ -82,4 +82,14 @@ void BottomBox::operationRouting() {
 
 }
 
+BottomBox::~BottomBox() {
+    delete operandselector;
+    delete hexlcd1;
+    delete hexlcd2;
+    delete hexlcd3;
+    delete colorpreview1;
+    delete colorpreview2;
+    delete colorpreview3;
+}
+
 

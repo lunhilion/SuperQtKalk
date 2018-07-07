@@ -128,3 +128,18 @@ void LeftBox::showLati(QVector<double> q) {
     if(q.size()>3)
         lcdLato4->display(q[3]);
 }
+
+LeftBox::~LeftBox() {
+    delete polygonSelector;
+    delete drawbox;
+    delete calcolaArea;
+    delete calcolaPerimetro;
+    delete calcolaBaricentro;
+    delete calcolaLati;
+    delete lcdLato1;
+    delete lcdLato2;
+    delete lcdLato3;
+    delete lcdLato4;
+    delete lcdArea;
+    delete lcdPerimetro;
+}

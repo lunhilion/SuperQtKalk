@@ -27,6 +27,8 @@ private:
     QLCDNumber* lcdPerimetro;
 public:
     explicit LeftBox(QWidget *parent = 0);
+    ~LeftBox();
+
 
 signals:
     void fetchPolygon(int);

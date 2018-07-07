@@ -12,3 +12,7 @@ void ColorBox::repaintBackground(QString s) {
     pal->setColor(QPalette::Background,s);
     setPalette(*pal);
 }
+
+ColorBox::~ColorBox() {
+    delete pal;
+}

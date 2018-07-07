@@ -207,4 +207,8 @@ public class Cmyk implements Colore {
         return new Cmyk(abs(c1/2),abs(m/2),abs(y/2),abs(k/2));
 
     }
+    
+    public int getMaxValues() {
+        return CMYK_MAX_VALUE;
+    }
 }

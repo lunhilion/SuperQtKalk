@@ -102,6 +102,8 @@ public class Use {
     	System.out.println(r3.getBlue());
     	
     	Cmyk cm3 = new Cmyk(0,0,0,0);
+    	System.out.println("Valore massimo Cmyk: ");
+    	System.out.println(cm3.getMaxValues());
     	cm3.setCyan(134);
     	cm3.setMagenta(25);
     	cm3.setYellow(12);
