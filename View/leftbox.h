@@ -45,6 +45,7 @@ public slots:
     void showPerimetro(double);
     void showBaricentro(QPoint);
     void showLati(QVector<double>);
+    void polygonRouter();
 };
 
 #endif // LEFTBOX_H
