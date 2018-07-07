@@ -51,15 +51,16 @@ public class Cmyk implements Colore {
         g1 = g1/255;
         b1 = b1/255;
         double max = max(r1,g1);
-        max = max(max,b1);
-        double bla = (1 - max) * 100;
-        double cy = ((1-r1-bla) / (1-bla)) * 100;
-        double mag = ((1-g1-bla) / (1-bla)) * 100;
-        double yel = ((1-b1-bla) / (1-bla)) * 100;
-        cyan = (int)cy;
-        magenta = (int)mag;
-        yellow = (int)yel;
-        black = (int)bla;
+        double max2=0;
+        max2 = max(max,b1);
+        double bla = 1 - max2;
+        double cy = (1-r1-bla) / (1-bla);
+        double mag = (1-g1-bla) / (1-bla);
+        double yel = (1-b1-bla) / (1-bla);
+        cyan = (int)round(cy*100);
+        magenta = (int)round(mag*100);
+        yellow = (int)round(yel*100);
+        black = (int)round(bla*100);
     }
 
     public int getCyan() {
