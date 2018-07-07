@@ -71,35 +71,55 @@ public class Cmyk implements Colore {
     public int getYellow() {
         return yellow;
     }
-    public int getblack() {
+    public int getBlack() {
         return black;
     }
 
-    void setCyan(int i) {
-        cyan = i;
+    void setCyan(int c) {
+    	if(c > CMYK_MAX_VALUE)
+    		cyan = CMYK_MAX_VALUE;
+    	else if (c < 0)
+    		cyan = 0;
+    	else
+    		cyan = c;
     }
 
-    void setMagenta(int i) {
-        magenta = i;
+    void setMagenta(int m) {
+    	if(m > CMYK_MAX_VALUE)
+    		magenta = CMYK_MAX_VALUE;
+    	else if (m < 0)
+    		magenta = 0;
+    	else
+    		magenta = m;
     }
 
-    void setYellow(int i) {
-        yellow = i;
+    void setYellow(int y) {
+    	if(y > CMYK_MAX_VALUE)
+    		yellow = CMYK_MAX_VALUE;
+    	else if (y < 0)
+    		yellow = 0;
+    	else
+    		yellow = y;
     }
 
-    void setBlack(int i) {
-        black = i;
+    void setBlack(int k) {
+    	if(k > CMYK_MAX_VALUE)
+    		black = CMYK_MAX_VALUE;
+    	else if (k < 0)
+    		black = 0;
+    	else
+    		black = k;
     }
 
     
     public String getHex() {
         String temp = "#";
-        float c = cyan;
+        double c = cyan;
         double m = magenta;
         double y = yellow;
         double bl = black;
 
-        double r1 = round(255*( 1 - c / 100) * ( 1 - bl / 100)); //da rivedere
+        double r1 = round(255*( 1 - c / 100) * ( 1 - bl / 100));
         double g1 = round(255*( 1 - m / 100) * ( 1 - bl / 100));
         double b1 = round(255*( 1 - y / 100) * ( 1 - bl / 100));
 
@@ -120,14 +140,14 @@ public class Cmyk implements Colore {
             c1 += temp.getCyan();
             m += temp.getMagenta();
             y += temp.getYellow();
-            k += temp.getblack();
+            k += temp.getBlack();
         }
         else {
             Cmyk t = new Cmyk(c.getHex());
             c1 += t.getCyan();
             m += t.getMagenta();
             y += t.getYellow();
-            k += t.getblack();
+            k += t.getBlack();
 
         }
         return new Cmyk(c1,m,y,k);
@@ -145,14 +165,14 @@ public class Cmyk implements Colore {
             c1 -= temp.getCyan();
             m -= temp.getMagenta();
             y -= temp.getYellow();
-            k -= temp.getblack();
+            k -= temp.getBlack();
         }
         else {
             Cmyk t = new Cmyk(c.getHex());
             c1 -= t.getCyan();
             m -= t.getMagenta();
             y -= t.getYellow();
-            k -= t.getblack();
+            k -= t.getBlack();
 
         }
         if(c1<0) c1 = 0;
@@ -174,14 +194,14 @@ public class Cmyk implements Colore {
             c1 += temp.getCyan();
             m += temp.getMagenta();
             y += temp.getYellow();
-            k += temp.getblack();
+            k += temp.getBlack();
         }
         else {
             Cmyk t = new Cmyk(c.getHex());
             c1 += t.getCyan();
             m += t.getMagenta();
             y += t.getYellow();
-            k += t.getblack();
+            k += t.getBlack();
 
         }
         return new Cmyk(abs(c1/2),abs(m/2),abs(y/2),abs(k/2));

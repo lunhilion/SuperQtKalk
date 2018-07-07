@@ -16,4 +16,9 @@ public class Triangolo extends LatiFiniti {
         double area = sqrt(semiP * (semiP-l.get(0)) * (semiP-l.get(1)) * (semiP-l.get(2)));
         return area;
     }
+    
+
+    public double getAltezza() {
+        return getArea()/getLato(1);
+    }
 }

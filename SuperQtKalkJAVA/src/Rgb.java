@@ -47,6 +47,33 @@ public class Rgb implements Colore {
     int getBlue() {
         return blue;
     }
+    
+    void setRed(int r) {
+    	if(r > RGB_MAX_VALUE)
+    		red = RGB_MAX_VALUE;
+    	else if (r < 0)
+    		red = 0;
+    	else
+    		red = r;
+    }
+    
+    void setGreen(int g) {
+    	if(g > RGB_MAX_VALUE)
+    		green = RGB_MAX_VALUE;
+    	else if (g < 0)
+    		green = 0;
+    	else
+    		green = g;
+    }
+    
+    void setBlue(int b) {
+    	if(b > RGB_MAX_VALUE)
+    		blue = RGB_MAX_VALUE;
+    	else if (b < 0)
+    		blue = 0;
+    	else
+    		blue = b;
+    }
 
     
     public String getHex() {
