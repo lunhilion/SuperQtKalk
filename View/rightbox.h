@@ -29,6 +29,8 @@ private:
 
 public:
     explicit RightBox(QWidget *parent = 0);
+    ~RightBox();
+
 
 signals:
 

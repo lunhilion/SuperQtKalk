@@ -58,3 +58,11 @@ void LatiFiniti::setVertice(unsigned int i, const Punto& p) {
 void LatiFiniti::pushVertice(const Punto & p) {
     vertici.push_back(new Punto(p));
 }
+
+LatiFiniti::~LatiFiniti() {
+    for(QVector<Punto*>::iterator it=vertici.begin(); it != vertici.end(); ++it) {
+        delete *it;
+
+    }
+
+}

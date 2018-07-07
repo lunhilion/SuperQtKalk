@@ -10,6 +10,7 @@ class ColorBox : public QWidget
 
 public:
     explicit ColorBox(QWidget *parent = 0);
+    ~ColorBox();
 
 private:
     QPalette* pal;

@@ -25,6 +25,7 @@ private:
 
 public:
     explicit BottomBox(QWidget *parent = 0);
+    ~BottomBox();
 
 signals:
     void setOP1(QString);

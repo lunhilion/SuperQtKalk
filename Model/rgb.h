@@ -15,7 +15,7 @@ class Rgb : public Colore {
         unsigned int getRed() const;
         unsigned int getGreen() const;
         unsigned int getBlue() const;
-        void setRed(unsigned int);		//faranno i controlli sul MAX_VALUE
+        void setRed(unsigned int);
         void setGreen(unsigned int);
         void setBlue(unsigned int);
         QString getHex() const;

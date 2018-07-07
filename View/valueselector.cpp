@@ -25,3 +25,9 @@ void ValueSelector::set(const QString& s, unsigned int i, unsigned int max) {
     slid->setMaximum(max);
     spin->setMaximum(max);
 }
+
+ValueSelector::~ValueSelector() {
+    delete lab;
+    delete slid;
+    delete spin;
+}
