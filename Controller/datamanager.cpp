@@ -49,7 +49,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
 
 }
 
-//commento
+
 
 void DataManager::newColorOperand(int i) {
     try {
@@ -233,42 +233,19 @@ void DataManager::fetchPolygon(int i) {
             if(poli)
                 delete poli;
             poli = new Circonferenza(Punto(0,0), 50);
-            //emit(setPolygonMode(0));
-            /*
-            Circonferenza* temp = static_cast<Circonferenza*>(poli);
-            double x = temp->getBaricentro().getX();
-            double y = temp->getBaricentro().getY();
-            emit(drawCircle(QPointF(x,y),temp->getRaggio()));
-            */
         }
-        else if (i>0) {
+        else if(i==1) {
             if(poli)
                 delete poli;
-            if(i==1)
-            {
-                poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
-                //emit(setPolygonMode(1));
-            }
-            else if (i==2)
-            {
-                poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
-                //emit(setPolygonMode(2));
-            }
-            else
-                throw EmptyPoly();
-            /*
-            LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
-            QPolygonF p;
-            double x;
-            double y;
-            for (unsigned int j = 0; j < temp->contaVertici(); ++j) {
-                    x = temp->getVertice(j).getX();
-                    y = temp->getVertice(j).getY();
-                    QPointF q = QPointF(x,y);
-                    p.push_back(q);
-                }
-            emit(drawEdgedPolygon(p)); */
+            poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
         }
+        else if (i==2) {
+            if(poli)
+                delete poli;
+            poli = new Quadrilatero(Punto(-50,50),Punto(50,50),Punto(50,-50),Punto(-50,-50));
+        }
+        else
+            throw EmptyPoly();
     }
     catch(KalkException k) {
         k.printError();
@@ -280,31 +257,12 @@ void DataManager::drawPolygon(int i) {
     try {
         emit(setPolygonMode(i));
         if(i==0) {
-            //if(poli)
-                //delete poli;
-            //poli = new Circonferenza(Punto(0,0), 50);
             Circonferenza* temp = static_cast<Circonferenza*>(poli);
             double x = temp->getBaricentro().getX();
             double y = temp->getBaricentro().getY();
             emit(drawCircle(QPointF(x,y),temp->getRaggio()));
-            //emit(setPolygonMode(0));
         }
         else if (i>0) {
-            /*if(poli)
-                delete poli;
-            if(i==1)
-            {
-                poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
-                emit(setPolygonMode(1));
-            }
-            else if (i==2)
-            {
-                poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
-                emit(setPolygonMode(2));
-            }
-            else
-                throw EmptyPoly();
-            */
             LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
             QPolygonF p;
             double x;
@@ -321,7 +279,6 @@ void DataManager::drawPolygon(int i) {
     catch(KalkException k) {
         k.printError();
     }
-
 }
 
 

@@ -11,7 +11,7 @@ DrawBox::DrawBox(QWidget *parent) : QWidget(parent)
     pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
-    //emit(fetchPolygon());
+    setMouseTracking(true);
 }
 
 
@@ -71,8 +71,10 @@ void DrawBox::mousePressEvent(QMouseEvent *event) {
         double x = event->x()-circleCenter.x();
         double y = event->y()-circleCenter.y();
         double r = sqrt(pow(x, 2) + pow(y, 2));
-        if(r > circleRadius-10 && r < circleRadius+10)
+        if(r > circleRadius-10 && r < circleRadius+10) {
+            setCursor(Qt::ClosedHandCursor);
             mousePressed = true;
+        }
     }
     else {
         int i = 0;
@@ -80,6 +82,7 @@ void DrawBox::mousePressEvent(QMouseEvent *event) {
             double x = event->pos().x();
             double y = event->pos().y();
             if(x > edgedPolygon[i].x()-10  &&  x < edgedPolygon[i].x()+10  &&  y > edgedPolygon[i].y()-10  &&  y < edgedPolygon[i].y()+10) {
+                setCursor(Qt::ClosedHandCursor);
                 mousePressed = true;
                 grabbed = i;
             }
@@ -89,6 +92,32 @@ void DrawBox::mousePressEvent(QMouseEvent *event) {
 }
 
 void DrawBox::mouseMoveEvent(QMouseEvent *event) {
+
+    if(mousePressed == false) {
+        bool found = false;
+        if(drawingCircle) {
+            double x = event->x()-circleCenter.x();
+            double y = event->y()-circleCenter.y();
+            double r = sqrt(pow(x, 2) + pow(y, 2));
+            if(r > circleRadius-10 && r < circleRadius+10)
+                found = true;
+            else
+                found = false;
+        }
+        else {
+            double x = event->pos().x();
+            double y = event->pos().y();
+            for(int i=0; i<edgedPolygon.size() && found == false; ++i)
+                if(x > edgedPolygon[i].x()-10  &&  x < edgedPolygon[i].x()+10  &&  y > edgedPolygon[i].y()-10  &&  y < edgedPolygon[i].y()+10)
+                    found = true;
+        }
+        if(found)
+            setCursor(Qt::OpenHandCursor);
+        else
+            setCursor(Qt::ArrowCursor);
+    }
+
+
     if(event->type() == QEvent::MouseMove && mousePressed == true) {
         if(drawingCircle) {
             double x = event->x()-circleCenter.x();
@@ -105,11 +134,32 @@ void DrawBox::mouseMoveEvent(QMouseEvent *event) {
     }
 }
 
-void DrawBox::mouseReleaseEvent(QMouseEvent*) {
+void DrawBox::mouseReleaseEvent(QMouseEvent* event) {
+    if(drawingCircle) {
+        double x = event->x()-circleCenter.x();
+        double y = event->y()-circleCenter.y();
+        double r = sqrt(pow(x, 2) + pow(y, 2));
+        if(r > circleRadius-10 && r < circleRadius+10)
+            setCursor(Qt::OpenHandCursor);
+        else
+            setCursor(Qt::ArrowCursor);
+    }
+    else {
+        for(int i=0; i<edgedPolygon.size(); ++i) {
+            double x = event->pos().x();
+            double y = event->pos().y();
+            if(x > edgedPolygon[i].x()-10  &&  x < edgedPolygon[i].x()+10  &&  y > edgedPolygon[i].y()-10  &&  y < edgedPolygon[i].y()+10)
+                setCursor(Qt::OpenHandCursor);
+            else
+                setCursor(Qt::ArrowCursor);
+        }
+    }
     mousePressed = false;
     if(drawingCircle)
         emit(sendRadius(circleRadius));
-    else
-        emit(sendPolygonPoint(edgedPolygon[grabbed],grabbed));
+    else {
+        QPointF p(edgedPolygon[grabbed].x()-width()/2, edgedPolygon[grabbed].y()-height()/2);
+        emit(sendPolygonPoint(p,grabbed));
+    }
     update();
 }

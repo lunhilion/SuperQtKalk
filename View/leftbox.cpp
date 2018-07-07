@@ -36,19 +36,21 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     polygonPreview->addWidget(calcolaBaricentro,4,0,1,3);
 
     calcolaLati = new QPushButton("Calcola Lunghezza Lati",this);
+    calcolaLati->setEnabled(false);
     polygonPreview->addWidget(calcolaLati,5,0,1,3);
 
-    lcdLato1 = new QLCDNumber();
-    lcdLato2 = new QLCDNumber();
-    lcdLato3 = new QLCDNumber();
-    lcdLato4 = new QLCDNumber();
-    lcdLato1->setMaximumHeight(35);
+    lcdLato1 = new QLCDNumber(8);
+    lcdLato2 = new QLCDNumber(8);
+    lcdLato3 = new QLCDNumber(8);
+    lcdLato4 = new QLCDNumber(8);
+    lcdLato4->setVisible(false);
+    lcdLato1->setMinimumHeight(25);
     polygonPreview->addWidget(lcdLato1,6,0);
     polygonPreview->addWidget(lcdLato2,6,1);
     polygonPreview->addWidget(lcdLato3,6,2);
     polygonPreview->addWidget(lcdLato4,6,3);
-    calcolaLati->setEnabled(false);
-    lcdLato4->setVisible(false);
+
+
 
 
     setLayout(polygonPreview);
@@ -108,11 +110,13 @@ void LeftBox::setPolygonMode(int i){
 }
 
 void LeftBox::showArea(double d) {
-    lcdArea->display(d);
+    QString s = QString::number(d, 'f',2);
+    lcdArea->display(s);
 }
 
 void LeftBox::showPerimetro(double d) {
-    lcdPerimetro->display(d);
+    QString s = QString::number(d, 'f',2);
+    lcdPerimetro->display(s);
 }
 
 void LeftBox::showBaricentro(QPoint p) {
@@ -120,14 +124,23 @@ void LeftBox::showBaricentro(QPoint p) {
 }
 
 void LeftBox::showLati(QVector<double> q) {
-    if(q.size()>0)
-        lcdLato1->display(q[0]);
-    if(q.size()>1)
-        lcdLato2->display(q[1]);
-    if(q.size()>2)
-        lcdLato3->display(q[2]);
-    if(q.size()>3)
-        lcdLato4->display(q[3]);
+    QString s;
+    if(q.size()>0) {
+        s = QString::number(q[0], 'f',2);
+        lcdLato1->display(s);
+    }
+    if(q.size()>1) {
+        s = QString::number(q[1], 'f',2);
+        lcdLato2->display(s);
+    }
+    if(q.size()>2) {
+        s = QString::number(q[2], 'f',2);
+        lcdLato3->display(s);
+    }
+    if(q.size()>3) {
+        s = QString::number(q[3], 'f',2);
+        lcdLato4->display(s);
+    }
 }
 
 LeftBox::~LeftBox() {
