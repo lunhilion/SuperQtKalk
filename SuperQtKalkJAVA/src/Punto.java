@@ -30,12 +30,6 @@ public class Punto {
         y = i;
     }
 
-    public double distanza(Punto p) {
-        double a = pow(p.getX()-x,2);
-        double b = pow(p.getY()-y,2);
-        return sqrt(a+b);
-    }
-
     static double distanzaDuePunti(Punto a, Punto b) {
         double v = pow(b.getX() - a.getX(), 2);
         double z = pow(b.getY() - a.getY(), 2);

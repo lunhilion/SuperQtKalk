@@ -57,7 +57,7 @@ abstract class LatiFiniti implements Poligono {
         vertici.get(i).setY(p.getY());
     }
 
-    protected void pushVertice(Punto p) { //controllare se serva una new
+    protected void pushVertice(Punto p) {
         vertici.add(p);
     }
 }

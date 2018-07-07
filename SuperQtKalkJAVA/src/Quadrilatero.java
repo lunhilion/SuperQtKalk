@@ -21,7 +21,4 @@ public class Quadrilatero extends LatiFiniti {
         return area1+area2;
     }
 
-    public double getAltezza() {
-        return getArea()/getLato(1);
-    }
 }

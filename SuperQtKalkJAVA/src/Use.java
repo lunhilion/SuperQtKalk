@@ -8,6 +8,8 @@ public class Use {
     	System.out.println("Distanza tra due punti: ");
     	System.out.println(Punto.distanzaDuePunti(a, b));
     	
+    	
+    	
     	//Triangolo
     	Poligono p1 = new Triangolo(new Punto(3,3), new Punto(7,3), new Punto(5,7));
     	System.out.println("Perimetro Triangolo: ");
@@ -16,6 +18,19 @@ public class Use {
     	System.out.println(p1.getArea());
     	System.out.println("Baricentro Triangolo: ");
     	System.out.println("X: " + p1.getBaricentro().getX() + " Y: " + p1.getBaricentro().getY());
+    	System.out.println("Altezza Triangolo: ");
+    	Triangolo t = (Triangolo)p1;
+    	System.out.println(t.getAltezza());
+    	System.out.println("Numero Vertici Triangolo: ");
+    	System.out.println(t.contaVertici());
+    	System.out.println("Un Lato: ");
+    	System.out.println(t.getLato(2));
+    	System.out.println("Un Vertice: ");
+    	System.out.println("X: " + t.getVertice(2).getX() + "Y: " + t.getVertice(2).getY());
+    	
+    	
+    	
+    	//LatiFiniti
     	
     	//Quadrilatero
     	Poligono p2 = new Quadrilatero(new Punto(3,3), new Punto(7,3), new Punto(7,6), new Punto(3,6));
@@ -25,9 +40,6 @@ public class Use {
     	System.out.println(p2.getArea());
     	System.out.println("Baricentro Quadrilatero: ");
     	System.out.println("X: " + p2.getBaricentro().getX() + " Y: " + p2.getBaricentro().getY());
-    	System.out.println("Altezza Quadrilatero: ");
-    	Quadrilatero q = (Quadrilatero)p2;
-    	System.out.println(q.getAltezza());
     	
     	//Circonferenza
     	Poligono p3 = new Circonferenza(new Punto(5,5), 3);
@@ -75,6 +87,33 @@ public class Use {
     	Colore med2 = cm2.media(r2);
     	System.out.println("Hex Cmyk media: ");
     	System.out.println(med2.getHex());
+    	
+    	Rgb r3 = new Rgb(0,0,0);
+    	System.out.println("Valore massimo Rgb: ");
+    	System.out.println(r3.getMaxValues());
+    	
+    	r3.setRed(100);
+    	r3.setGreen(130);
+    	r3.setBlue(20);
+    	
+    	System.out.println("Valori Rgb settati: ");
+    	System.out.println(r3.getRed());
+    	System.out.println(r3.getGreen());
+    	System.out.println(r3.getBlue());
+    	
+    	Cmyk cm3 = new Cmyk(0,0,0,0);
+    	cm3.setCyan(134);
+    	cm3.setMagenta(25);
+    	cm3.setYellow(12);
+    	cm3.setBlack(84);
+    	
+    	System.out.println("Valori Cmyk settati: ");
+    	System.out.println(cm3.getCyan());
+    	System.out.println(cm3.getMagenta());
+    	System.out.println(cm3.getYellow());
+    	System.out.println(cm3.getBlack());
+    	
+    	
     	
     	
     	
