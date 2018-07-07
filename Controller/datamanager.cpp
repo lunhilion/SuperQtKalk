@@ -28,6 +28,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(media()),this,SLOT(media()));
     connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
     connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(fetchPolygon(int)));
+    connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(drawPolygon(int)));
     connect(this,SIGNAL(drawCircle(QPointF,double)),view,SIGNAL(drawCircle(QPointF,double)));
     connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),view,SIGNAL(drawEdgedPolygon(QPolygonF)));
     connect(this,SIGNAL(setColorMode(int)),view,SIGNAL(setColorMode(int)));
@@ -42,7 +43,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(this,SIGNAL(showBaricentro(QPoint)),view,SIGNAL(showBaricentro(QPoint)));
     connect(this,SIGNAL(showLati(QVector<double>)),view,SIGNAL(showLati(QVector<double>)));
 
-    initializeOperands(1,0);
+    initializeOperands(0,0);
 
 }
 
@@ -230,14 +231,64 @@ void DataManager::fetchPolygon(int i) {
             if(poli)
                 delete poli;
             poli = new Circonferenza(Punto(0,0), 50);
+            //emit(setPolygonMode(0));
+            /*
             Circonferenza* temp = static_cast<Circonferenza*>(poli);
             double x = temp->getBaricentro().getX();
             double y = temp->getBaricentro().getY();
             emit(drawCircle(QPointF(x,y),temp->getRaggio()));
-            emit(setPolygonMode(0));
+            */
         }
         else if (i>0) {
             if(poli)
+                delete poli;
+            if(i==1)
+            {
+                poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
+                //emit(setPolygonMode(1));
+            }
+            else if (i==2)
+            {
+                poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-60),Punto(-50,-60));
+                //emit(setPolygonMode(2));
+            }
+            else
+                throw EmptyPoly();
+            /*
+            LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
+            QPolygonF p;
+            double x;
+            double y;
+            for (unsigned int j = 0; j < temp->contaVertici(); ++j) {
+                    x = temp->getVertice(j).getX();
+                    y = temp->getVertice(j).getY();
+                    QPointF q = QPointF(x,y);
+                    p.push_back(q);
+                }
+            emit(drawEdgedPolygon(p)); */
+        }
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
+
+}
+
+void DataManager::drawPolygon(int i) {
+    try {
+        emit(setPolygonMode(i));
+        if(i==0) {
+            //if(poli)
+                //delete poli;
+            //poli = new Circonferenza(Punto(0,0), 50);
+            Circonferenza* temp = static_cast<Circonferenza*>(poli);
+            double x = temp->getBaricentro().getX();
+            double y = temp->getBaricentro().getY();
+            emit(drawCircle(QPointF(x,y),temp->getRaggio()));
+            //emit(setPolygonMode(0));
+        }
+        else if (i>0) {
+            /*if(poli)
                 delete poli;
             if(i==1)
             {
@@ -251,6 +302,7 @@ void DataManager::fetchPolygon(int i) {
             }
             else
                 throw EmptyPoly();
+            */
             LatiFiniti* temp = static_cast<LatiFiniti*>(poli);
             QPolygonF p;
             double x;

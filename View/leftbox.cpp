@@ -8,7 +8,10 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     polygonSelector->addItem(tr("Cerchio"));
     polygonSelector->addItem(tr("Triangolo"));
     polygonSelector->addItem(tr("Quadrilatero"));
-    polygonPreview->addWidget(polygonSelector,0,0,1,4);
+    polygonPreview->addWidget(polygonSelector,0,0,1,3);
+
+    QPushButton* disegna = new QPushButton("Disegna",this);
+    polygonPreview->addWidget(disegna,0,3,1,1);
 
     drawbox = new DrawBox(this);
     //drawbox->setMinimumHeight(365);
@@ -17,16 +20,19 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     polygonPreview->setRowStretch(1,1);
 
     calcolaArea = new QPushButton("Calcola Area",this);
+    calcolaArea->setEnabled(false);
     polygonPreview->addWidget(calcolaArea,2,0,1,3);
     lcdArea = new QLCDNumber(8);
     polygonPreview->addWidget(lcdArea,2,3);
 
     calcolaPerimetro = new QPushButton("Calcola Perimetro",this);
+    calcolaPerimetro->setEnabled(false);
     polygonPreview->addWidget(calcolaPerimetro,3,0,1,3);
     lcdPerimetro = new QLCDNumber(8);
     polygonPreview->addWidget(lcdPerimetro,3,3);
 
     calcolaBaricentro = new QPushButton("Trova Baricentro",this);
+    calcolaBaricentro->setEnabled(false);
     polygonPreview->addWidget(calcolaBaricentro,4,0,1,3);
 
     calcolaLati = new QPushButton("Calcola Lunghezza Lati",this);
@@ -48,8 +54,8 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     setLayout(polygonPreview);
     setGeometry(0,160,250,250);
 
-    connect(polygonSelector,SIGNAL(currentIndexChanged(int)),this,SLOT(setPolygonMode(int)));
-    connect(polygonSelector,SIGNAL(currentIndexChanged(int)),this,SIGNAL(fetchPolygon(int)));
+    //connect(polygonSelector,SIGNAL(currentIndexChanged(int)),this,SLOT(setPolygonMode(int)));
+    connect(disegna,SIGNAL(clicked()),this,SLOT(polygonRouter()));
     connect(this,SIGNAL(drawCircle(QPointF,double)),drawbox,SLOT(drawCircle(QPointF,double)));
     connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),drawbox,SLOT(drawEdgedPolygon(QPolygonF)));
     connect(this,SIGNAL(updateDrawingColor(QString)),drawbox,SLOT(updateDrawingColor(QString)));
@@ -62,23 +68,41 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
 }
 
 
+void LeftBox::polygonRouter() {
+    lcdArea->display(0);
+    lcdPerimetro->display(0);
+    lcdLato1->display(0);
+    lcdLato2->display(0);
+    lcdLato3->display(0);
+    lcdLato4->display(0);
+    emit(fetchPolygon(polygonSelector->currentIndex()));
+    emit(setPolygonMode(polygonSelector->currentIndex()));
+}
+
 void LeftBox::setPolygonMode(int i){
     if(i==0)
     {
         polygonSelector->setCurrentIndex(0);
+        calcolaArea->setEnabled(true);
+        calcolaPerimetro->setEnabled(true);
+        calcolaBaricentro->setEnabled(true);
         calcolaLati->setEnabled(false);
-
     }
     else if (i==1) {
         polygonSelector->setCurrentIndex(1);
+        calcolaArea->setEnabled(true);
+        calcolaPerimetro->setEnabled(true);
+        calcolaBaricentro->setEnabled(true);
         calcolaLati->setEnabled(true);
         lcdLato4->setVisible(false);
     }
     else if (i==2) {
         polygonSelector->setCurrentIndex(2);
+        calcolaArea->setEnabled(true);
+        calcolaPerimetro->setEnabled(true);
+        calcolaBaricentro->setEnabled(true);
         calcolaLati->setEnabled(true);
         lcdLato4->setVisible(true);
-
     }
 }
 

@@ -66,6 +66,7 @@ public slots:
     void findPerimetro();
     void findBaricentro();
     void findLati();
+    void drawPolygon(int);
 };
 
 #endif // DATAMANAGER_H
