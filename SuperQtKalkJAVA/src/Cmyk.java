@@ -11,10 +11,33 @@ public class Cmyk implements Colore {
     private static int CMYK_MAX_VALUE = 100;
 
     public Cmyk(int c, int m, int y, int k) {
-        cyan = c;
-        magenta = m;
-        yellow = y;
-        black = k;
+    	if(c > CMYK_MAX_VALUE)
+    		cyan = CMYK_MAX_VALUE;
+    	else if (c < 0)
+    		cyan = 0;
+    	else
+    		cyan = c;
+    	
+    	if(m > CMYK_MAX_VALUE)
+    		magenta = CMYK_MAX_VALUE;
+    	else if (m < 0)
+    		magenta = 0;
+    	else
+    		magenta = m;
+    	
+    	if(y > CMYK_MAX_VALUE)
+    		yellow = CMYK_MAX_VALUE;
+    	else if (y < 0)
+    		yellow = 0;
+    	else
+    		yellow = y;
+    	
+    	if(k > CMYK_MAX_VALUE)
+    		black = CMYK_MAX_VALUE;
+    	else if (k < 0)
+    		black = 0;
+    	else
+    		black = k;
     }
 
     public Cmyk(String s) {

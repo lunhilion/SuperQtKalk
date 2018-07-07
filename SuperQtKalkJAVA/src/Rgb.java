@@ -6,15 +6,33 @@ public class Rgb implements Colore {
     private int blue;
     private static int RGB_MAX_VALUE = 255;
 
-    public Rgb(int r, int g, int b) { //mancano controlli bound
-        red = r;
-        green = g;
-        blue = b;
+    public Rgb(int r, int g, int b) {
+    	if(r > RGB_MAX_VALUE)
+    		red = RGB_MAX_VALUE;
+    	else if (r < 0)
+    		red = 0;
+    	else
+    		red = r;
+    	
+    	if(g > RGB_MAX_VALUE)
+    		green = RGB_MAX_VALUE;
+    	else if (g < 0)
+    		green = 0;
+    	else
+    		green = g;
+    	
+    	if(b > RGB_MAX_VALUE)
+    		blue = RGB_MAX_VALUE;
+    	else if (b < 0)
+    		blue = 0;
+    	else
+    		blue = b;
     }
 
     public Rgb(String s) {
         String r = s.substring(1,2);
-        String g = s.substring(3,4);        String b = s.substring(5,6);
+        String g = s.substring(3,4);
+        String b = s.substring(5,6);
         red = Integer.parseInt(r,16);
         green = Integer.parseInt(g,16);
         blue = Integer.parseInt(b,16);

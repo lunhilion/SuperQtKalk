@@ -1,4 +1,5 @@
 #include "rightbox.h"
+#include "Exception/kalkexception.h"
 
 RightBox::RightBox(QWidget *parent) : QFrame(parent)
 {
@@ -58,26 +59,31 @@ RightBox::RightBox(QWidget *parent) : QFrame(parent)
 }
 
 void RightBox::setColorMode(int i) {
-    if(i==0)
-    {
-        colorSelector->setCurrentIndex(0);
-        val1->set("R",0,colorOperandMaxValue);
-        val2->set("G",0,colorOperandMaxValue);
-        val3->set("B",0,colorOperandMaxValue);
-        val4->setVisible(false);
+    try {
+        if(i==0)
+        {
+            colorSelector->setCurrentIndex(0);
+            val1->set("R",0,colorOperandMaxValue);
+            val2->set("G",0,colorOperandMaxValue);
+            val3->set("B",0,colorOperandMaxValue);
+            val4->setVisible(false);
+        }
+        else if (i==1)
+        {
+            colorSelector->setCurrentIndex(1);
+            val1->set("C",0,colorOperandMaxValue);
+            val2->set("M",0,colorOperandMaxValue);
+            val3->set("Y",0,colorOperandMaxValue);
+            val4->set("K",0,colorOperandMaxValue);
+            val4->setVisible(true);
+        }
+        else
+        {
+            throw ViewUndefValue();
+        }
     }
-    else if (i==1)
-    {
-        colorSelector->setCurrentIndex(1);
-        val1->set("C",0,colorOperandMaxValue);
-        val2->set("M",0,colorOperandMaxValue);
-        val3->set("Y",0,colorOperandMaxValue);
-        val4->set("K",0,colorOperandMaxValue);
-        val4->setVisible(true);
-    }
-    else
-    {
-        //gestione errore
+    catch(KalkException k) {
+        k.printError();
     }
 }
 
