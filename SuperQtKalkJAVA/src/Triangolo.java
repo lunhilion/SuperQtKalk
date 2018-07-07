@@ -19,6 +19,6 @@ public class Triangolo extends LatiFiniti {
     
 
     public double getAltezza() {
-        return getArea()/getLato(1);
+        return (getArea()/2)/getLato(1);
     }
 }
