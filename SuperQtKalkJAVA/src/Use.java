@@ -25,9 +25,6 @@ public class Use {
     	System.out.println(p2.getArea());
     	System.out.println("Baricentro Quadrilatero: ");
     	System.out.println("X: " + p2.getBaricentro().getX() + " Y: " + p2.getBaricentro().getY());
-    	System.out.println("Altezza Quadrilatero: ");
-    	Quadrilatero q = (Quadrilatero)p2;
-    	System.out.println(q.getAltezza());
     	
     	//Circonferenza
     	Poligono p3 = new Circonferenza(new Punto(5,5), 3);

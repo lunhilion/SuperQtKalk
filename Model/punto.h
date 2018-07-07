@@ -14,7 +14,6 @@ public:
   void setPunto(const Punto&);
   void setX(double);
   void setY(double);
-  double distanza(const Punto&) const;
   static double distanzaDuePunti(const Punto&, const Punto&);
   Punto* clone() const;
 };
