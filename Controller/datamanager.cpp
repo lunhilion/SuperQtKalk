@@ -45,7 +45,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(sendRadius(double)),this,SLOT(setRadius(double)));
     connect(view,SIGNAL(sendPolygonPoint(QPointF,uint)),this,SLOT(setPolygonPoint(QPointF,uint)));
 
-    initializeOperands(2,0);
+    initializeOperands(0,0);
 
 }
 
@@ -69,7 +69,11 @@ void DataManager::newColorOperand(int i) {
             emit(setColorMode(1));
         }
         else {
-            throw UndefValue();
+            col1 = new Rgb();
+            emit(setColorOperandMaxValues(col1->getMaxValues()));
+            emit(setCol1Preview(col1->getHex()));
+            emit(setColorMode(0));
+            throw UndefValue("Inizializzazione di operando colore non valida. Operando inizializzato a RGB.");
         }
     }
     catch(KalkException k) {
@@ -283,7 +287,7 @@ void DataManager::drawPolygon(int i) {
 
 
 void DataManager::initializeOperands(int polygon, int color) {
-    fetchPolygon(polygon);
+    setPolygonMode(polygon);
     newColorOperand(color);
 }
 
