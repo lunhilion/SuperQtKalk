@@ -29,9 +29,6 @@ public class Use {
     	System.out.println("X: " + t.getVertice(2).getX() + "Y: " + t.getVertice(2).getY());
     	
     	
-    	
-    	//LatiFiniti
-    	
     	//Quadrilatero
     	Poligono p2 = new Quadrilatero(new Punto(3,3), new Punto(7,3), new Punto(7,6), new Punto(3,6));
     	System.out.println("Perimetro Quadrilatero: ");
@@ -56,6 +53,10 @@ public class Use {
     	//Colori
     	Colore r1 = new Rgb(10,14,15);
     	Colore cm1 = new Cmyk(34,14,15,25);
+    	System.out.println("Valore massimo Rgb: ");
+    	System.out.println(r1.getMaxValues());
+    	System.out.println("Valore massimo Cmyk: ");
+    	System.out.println(cm1.getMaxValues());
     	System.out.println("Hex Rgb: ");
     	System.out.println(r1.getHex());
     	System.out.println("Hex Cmyk: ");
@@ -89,8 +90,6 @@ public class Use {
     	System.out.println(med2.getHex());
     	
     	Rgb r3 = new Rgb(0,0,0);
-    	System.out.println("Valore massimo Rgb: ");
-    	System.out.println(r3.getMaxValues());
     	
     	r3.setRed(100);
     	r3.setGreen(130);
@@ -102,8 +101,7 @@ public class Use {
     	System.out.println(r3.getBlue());
     	
     	Cmyk cm3 = new Cmyk(0,0,0,0);
-    	System.out.println("Valore massimo Cmyk: ");
-    	System.out.println(cm3.getMaxValues());
+    	
     	cm3.setCyan(134);
     	cm3.setMagenta(25);
     	cm3.setYellow(12);
@@ -114,12 +112,6 @@ public class Use {
     	System.out.println(cm3.getMagenta());
     	System.out.println(cm3.getYellow());
     	System.out.println(cm3.getBlack());
-    	
-    	
-    	
-    	
-    	
-    	
     	
     }
 }
