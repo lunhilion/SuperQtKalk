@@ -15,6 +15,10 @@ double Triangolo::getArea() const {
     return area;
 }
 
+double Triangolo::getAltezza() const {
+    return (getArea()/2)/getLato(1);
+}
+
 Triangolo* Triangolo::clone() const {
     return new Triangolo(*this);
 }
