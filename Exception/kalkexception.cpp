@@ -5,7 +5,7 @@
 KalkException::KalkException(QString s) : error(s) {}
 
 void KalkException::printError() const {
-    std::cout << error.toStdString();
+    std::cout << error.toStdString() << std::endl;
 }
 
 TypeErr::TypeErr(QString s) : KalkException(s) {}
