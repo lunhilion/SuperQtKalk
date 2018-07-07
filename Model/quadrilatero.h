@@ -8,7 +8,6 @@ class Quadrilatero : public LatiFiniti {
 public:
   Quadrilatero(const Punto&, const Punto&, const Punto&, const Punto&);
   double getArea() const;     //la calcoliamo dividendo in due con una diagonale, e calcolando per due triangoli generici
-  double getAltezza() const;  //NB: NON FUNZIONA CON QUADRILATERI CONCAVI
   Quadrilatero* clone() const;
 };
 

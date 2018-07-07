@@ -225,7 +225,6 @@ void DataManager::media() {
 }
 
 void DataManager::fetchPolygon(int i) {
-//<<<<<<< HEAD
     try {
         if(i==0) {
             if(poli)
@@ -236,34 +235,6 @@ void DataManager::fetchPolygon(int i) {
             double y = temp->getBaricentro().getY();
             emit(drawCircle(QPointF(x,y),temp->getRaggio()));
             emit(setPolygonMode(0));
-            //else
-                //gestione eccezione
-/*=======
-    if(i==0) {
-        if(poli)
-            delete poli;
-        poli = new Circonferenza(Punto(0,0), 50);
-        Circonferenza* temp = static_cast<Circonferenza*>(poli);
-        double x = temp->getBaricentro().getX();
-        double y = temp->getBaricentro().getY();
-        emit(drawCircle(QPointF(x,y),temp->getRaggio()));
-        emit(setPolygonMode(0));
-        //else
-            //gestione eccezione
-    }
-    else if (i>0) {
-        if(poli)
-            delete poli;
-        if(i==1)
-        {
-            poli = new Triangolo(Punto(-50,30),Punto(50,30),Punto(0,-50));
-            emit(setPolygonMode(1));
-        }
-        else if (i==2)
-        {
-            poli = new Quadrilatero(Punto(-50,30),Punto(50,30),Punto(50,-30),Punto(-50,-30));
-            emit(setPolygonMode(2));
->>>>>>> 45a1e5578f894ba4b20e9a6e61a7346a9b0e3c18 */
         }
         else if (i>0) {
             if(poli)

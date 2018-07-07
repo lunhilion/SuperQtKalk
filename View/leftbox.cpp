@@ -7,13 +7,14 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     polygonSelector = new QComboBox(this);
     polygonSelector->addItem(tr("Cerchio"));
     polygonSelector->addItem(tr("Triangolo"));
-    polygonSelector->addItem(tr("Quadrato"));
+    polygonSelector->addItem(tr("Quadrilatero"));
     polygonPreview->addWidget(polygonSelector,0,0,1,4);
 
     drawbox = new DrawBox(this);
-    drawbox->setMinimumHeight(365);
-    drawbox->setMinimumWidth(450);
+    //drawbox->setMinimumHeight(365);
+    //drawbox->setMinimumWidth(450);
     polygonPreview->addWidget(drawbox,1,0,1,4);
+    polygonPreview->setRowStretch(1,1);
 
     calcolaArea = new QPushButton("Calcola Area",this);
     polygonPreview->addWidget(calcolaArea,2,0,1,3);

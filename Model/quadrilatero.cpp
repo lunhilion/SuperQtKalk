@@ -19,11 +19,6 @@ double Quadrilatero::getArea() const {
 
 }
 
-double Quadrilatero::getAltezza() const {
-   return getArea()/getLato(1);
-
-}
-
 Quadrilatero* Quadrilatero::clone() const {
     return new Quadrilatero(*this);
 }

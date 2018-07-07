@@ -16,10 +16,14 @@ DrawBox::DrawBox(QWidget *parent) : QWidget(parent)
 void DrawBox::paintEvent(QPaintEvent*)
 {
     QPainter painter(this);
-    painter.setPen(color);
+    QPen pen = QPen();
+    pen.setWidth(2);
+    pen.setColor(color);
+    painter.setPen(pen);
     painter.setRenderHint(QPainter::HighQualityAntialiasing);
-    if(drawingSinglePoint)
+    if(drawingSinglePoint) {
         painter.drawPoint(singlePoint);
+    }
     drawingSinglePoint = false;
     if(drawingCircle) {
         painter.drawEllipse(circleCenter,circleRadius,circleRadius);
@@ -31,7 +35,7 @@ void DrawBox::paintEvent(QPaintEvent*)
 
 void DrawBox::drawCircle(QPointF p,double d) {
     drawingCircle = true;
-    circleCenter = QPointF(p.x()+width()/2, p.y()+height()/2);
+    circleCenter = QPointF(p.x()+ width()/2, p.y()+ height()/2);
     circleRadius = d;
     update();
 }
@@ -55,6 +59,6 @@ void DrawBox::updateDrawingColor(QString s) {
 void DrawBox::drawPoint(QPoint p) {
     drawingSinglePoint = true;
     singlePoint.setX(p.x()+width()/2);
-    singlePoint.setY(p.x()+height()/2);
+    singlePoint.setY(p.y()+height()/2);
     update();
 }

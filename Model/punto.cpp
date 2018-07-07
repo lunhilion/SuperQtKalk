@@ -28,15 +28,6 @@ void Punto::setY(double i) {
     y = i;
 }
 
-double Punto::distanza(const Punto& p) const {
-
-    double a = pow(p.getX() - x, 2);
-    double b = pow(p.getY() - y, 2);
-    double dist = sqrt(a+b);
-    return dist;
-
-
-}
 
 double Punto::distanzaDuePunti(const Punto& a, const Punto& b) {
     double v = pow(b.getX() - a.getX(), 2);
