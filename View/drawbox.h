@@ -34,7 +34,7 @@ public:
 signals:
     //void fetchPolygon();
     void sendRadius(double);
-    void sendPolygon(QPolygonF);
+    void sendPolygonPoint(QPointF,uint);
 
 public slots:
     void drawCircle(QPointF,double);

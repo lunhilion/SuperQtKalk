@@ -25,3 +25,7 @@ Circonferenza* Circonferenza::clone() const {
 double Circonferenza::getRaggio() const {
     return raggio;
 }
+
+void Circonferenza::setRaggio(double d) {
+    raggio  = d;
+}

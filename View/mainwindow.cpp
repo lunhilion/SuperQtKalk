@@ -59,6 +59,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,SIGNAL(showPerimetro(double)),leftbox,SLOT(showPerimetro(double)));
     connect(this,SIGNAL(showBaricentro(QPoint)),leftbox,SLOT(showBaricentro(QPoint)));
     connect(this,SIGNAL(showLati(QVector<double>)),leftbox,SLOT(showLati(QVector<double>)));
+    connect(leftbox,SIGNAL(sendRadius(double)),this,SIGNAL(sendRadius(double)));
+    connect(leftbox,SIGNAL(sendPolygonPoint(QPointF,uint)),this,SIGNAL(sendPolygonPoint(QPointF,uint)));
 
 
 }

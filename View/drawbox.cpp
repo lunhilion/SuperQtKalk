@@ -110,6 +110,6 @@ void DrawBox::mouseReleaseEvent(QMouseEvent*) {
     if(drawingCircle)
         emit(sendRadius(circleRadius));
     else
-        emit(sendPoint(edgedPolygon[grabbed]));
+        emit(sendPolygonPoint(edgedPolygon[grabbed],grabbed));
     update();
 }

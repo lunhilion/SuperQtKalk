@@ -64,7 +64,7 @@ signals:
     void showBaricentro(QPoint);
     void showLati(QVector<double>);
     void sendRadius(double);
-    void sendPolygon(QPolygonF);
+    void sendPolygonPoint(QPointF,uint);
 
 };
 

@@ -42,6 +42,8 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(this,SIGNAL(showPerimetro(double)),view,SIGNAL(showPerimetro(double)));
     connect(this,SIGNAL(showBaricentro(QPoint)),view,SIGNAL(showBaricentro(QPoint)));
     connect(this,SIGNAL(showLati(QVector<double>)),view,SIGNAL(showLati(QVector<double>)));
+    connect(view,SIGNAL(sendRadius(double)),this,SLOT(setRadius(double)));
+    connect(view,SIGNAL(sendPolygonPoint(QPointF,uint)),this,SLOT(setPolygonPoint(QPointF,uint)));
 
     initializeOperands(0,0);
 
@@ -355,12 +357,15 @@ void DataManager::findLati() {
 
 void DataManager::setRadius(double r) {
     if(dynamic_cast<Circonferenza*>(poli))
-        static_cast<Circonferenza*>(poli)->getRaggio(r);
+        static_cast<Circonferenza*>(poli)->setRaggio(r);
     //else
         //gestione eccezione
 }
 
-void DataManager::setPoint(QPointF p, uint i) {
+void DataManager::setPolygonPoint(QPointF p, uint i) {
+    Punto t(p.x(),p.y());
     if(dynamic_cast<LatiFiniti*>(poli))
-        static_cast<LatiFiniti*>(poli)->setVertice();
+        static_cast<LatiFiniti*>(poli)->setVertice(i,t);
+    //else
+        //gestione eccezione
 }

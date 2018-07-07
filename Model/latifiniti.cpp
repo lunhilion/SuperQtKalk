@@ -51,8 +51,8 @@ Punto LatiFiniti::getVertice(unsigned int i) const {
 }
 
 void LatiFiniti::setVertice(unsigned int i, const Punto& p) {
-    const_cast<Punto*>(vertici[i])->setX(p.getX());
-    const_cast<Punto*>(vertici[i])->setY(p.getY());
+    vertici[i]->setX(p.getX());
+    vertici[i]->setY(p.getY());
 }
 
 void LatiFiniti::pushVertice(const Punto & p) {

@@ -17,6 +17,7 @@ public:
   Punto getBaricentro() const;   //da controllare il tipo di ritorno
   Circonferenza* clone() const;
   double getRaggio() const;
+  void setRaggio(double);
 };
 
 #endif // CIRCONFERENZA_H

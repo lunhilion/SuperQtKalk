@@ -41,7 +41,7 @@ signals:
     void findLati();
     void drawPoint(QPoint);
     void sendRadius(double);
-    void sendPolygon(QPolygonF);
+    void sendPolygonPoint(QPointF,uint);
 
 
 public slots:

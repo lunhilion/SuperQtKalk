@@ -64,7 +64,8 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     connect(calcolaBaricentro,SIGNAL(clicked()),this,SIGNAL(findBaricentro()));
     connect(calcolaLati,SIGNAL(clicked()),this,SIGNAL(findLati()));
     connect(this,SIGNAL(drawPoint(QPoint)),drawbox,SLOT(drawPoint(QPoint)));
-
+    connect(drawbox,SIGNAL(sendRadius(double)),this,SIGNAL(sendRadius(double)));
+    connect(drawbox,SIGNAL(sendPolygonPoint(QPointF,uint)),this,SIGNAL(sendPolygonPoint(QPointF,uint)));
 }
 
 

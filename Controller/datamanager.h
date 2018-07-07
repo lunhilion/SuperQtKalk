@@ -68,7 +68,7 @@ public slots:
     void findLati();
     void drawPolygon(int);
     void setRadius(double);
-    void setPolygon(QPolygonF);
+    void setPolygonPoint(QPointF,uint);
 
 };
 
