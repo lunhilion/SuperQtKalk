@@ -24,4 +24,9 @@ public class Circonferenza implements Poligono {
     public double getRaggio() {
         return raggio;
     }
+    
+    public void setRaggio(double d) {
+    	raggio = d;
+    	
+    }
  }

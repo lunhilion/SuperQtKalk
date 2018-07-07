@@ -6,6 +6,7 @@
 
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
     MainWindow* view = new MainWindow();
     DataManager dm(view);
@@ -14,9 +15,5 @@ int main(int argc, char *argv[])
 
     return a.exec();
 
-//    try {
-//        std::cout << "prova";
-//    }
-//    catch(KalkException k) { k.printError();}
 }
 
