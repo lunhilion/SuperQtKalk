@@ -49,6 +49,11 @@ public class Use {
     	System.out.println("Raggio Circonferenza: ");
     	Circonferenza c = (Circonferenza)p3;
     	System.out.println(c.getRaggio());
+    	c.setRaggio(6);
+    	System.out.println("Raggio Circonferenza dopo il set: ");
+    	System.out.println(c.getRaggio());
+    	
+    	
     	
     	//Colori
     	Colore r1 = new Rgb(10,14,15);
