@@ -107,6 +107,15 @@ void LeftBox::setPolygonMode(int i){
         calcolaLati->setEnabled(true);
         lcdLato4->setVisible(true);
     }
+    //else
+        /*
+        polygonSelector->setCurrentIndex(0);
+        calcolaArea->setEnabled(true);
+        calcolaPerimetro->setEnabled(true);
+        calcolaBaricentro->setEnabled(true);
+        calcolaLati->setEnabled(false);
+        throw exception("Inizializzazione di operando poligono non valida. Operando inizializzato a Circonferenza.");
+    */
 }
 
 void LeftBox::showArea(double d) {

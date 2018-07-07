@@ -13,8 +13,10 @@ class DrawBox : public QWidget
 
 private:
     bool drawingCircle;
+    bool drawingEdgedPolygon;
     bool drawingSinglePoint;
     bool mousePressed;
+    bool initialized;
     unsigned int grabbed;
     QPalette pal;
     QColor color;
