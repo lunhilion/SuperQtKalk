@@ -5,19 +5,19 @@
 
 //Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) : red(r), green(g), blue(b) {}
 Rgb::Rgb(unsigned int r, unsigned int g, unsigned int b) {
-    if(r <= RGB_MAX_VALUE) {
+    if(r < RGB_MAX_VALUE) {
         red = r;
     }
     else
         red = RGB_MAX_VALUE;
 
-    if(g <= RGB_MAX_VALUE){
+    if(g < RGB_MAX_VALUE){
         green = g;
     }
     else
         green = RGB_MAX_VALUE;
 
-    if(b <= RGB_MAX_VALUE){
+    if(b < RGB_MAX_VALUE){
         blue = b;
     }
     else
@@ -49,7 +49,7 @@ unsigned int Rgb::getBlue() const {
 }
 
 void Rgb::setRed(unsigned int i) {
-    if(i <= RGB_MAX_VALUE) {
+    if(i < RGB_MAX_VALUE) {
         red = i;
     }
     else {
@@ -59,7 +59,7 @@ void Rgb::setRed(unsigned int i) {
 }
 
 void Rgb::setGreen(unsigned int i) {
-    if(i <= RGB_MAX_VALUE) {
+    if(i < RGB_MAX_VALUE) {
         green = i;
     }
     else {
@@ -69,7 +69,7 @@ void Rgb::setGreen(unsigned int i) {
 }
 
 void Rgb::setBlue(unsigned int i) {
-    if(i <= RGB_MAX_VALUE) {
+    if(i < RGB_MAX_VALUE) {
         blue = i;
     }
     else {
