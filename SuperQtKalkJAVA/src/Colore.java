@@ -4,6 +4,7 @@ public interface Colore {
     Colore sottrazione(Colore c);
     Colore media(Colore c);
     String getHex();
+    int getMaxValues();
 
 
 }
