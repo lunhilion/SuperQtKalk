@@ -41,15 +41,16 @@ Cmyk::Cmyk(QString s) {
     r2 = r2/255;
     r3 = r3/255;
     double max = std::max(r1,r2);
-    max = std::max(max,r3);
-    double bl = 1-max;
-    black = bl*100;
+    double max2=0;
+    max2 = std::max(max,r3);
+    double bl = 1-max2;
+    black = round(bl*100);
     double cy = (1-r1-bl) / (1-bl);
-    cyan = cy*100;
+    cyan = round(cy*100);
     double mag = (1-r2-bl) / (1-bl);
-    magenta = mag*100;
+    magenta = round(mag*100);
     double yel = (1-r3-bl) / (1-bl);
-    yellow = yel * 100;
+    yellow = round(yel * 100);
 
 }
 
@@ -103,10 +104,10 @@ void Cmyk::setBlack(unsigned int b) {
 
 QString Cmyk::getHex() const {
     QString temp = "#";
-    float c = cyan;
-    float m = magenta;
-    float y = yellow;
-    float bl = black;
+    double c = cyan;
+    double m = magenta;
+    double y = yellow;
+    double bl = black;
 
     int r = round(255*( 1 - c / 100) * ( 1 - bl / 100));
     int g = round(255*( 1 - m / 100) * ( 1 - bl / 100));
@@ -218,10 +219,4 @@ Cmyk* Cmyk::media (const Colore& c) const {
 unsigned int Cmyk::getMaxValues() const {
     return CMYK_MAX_VALUE;
 }
-
-/*
-Red = 255 × ( 1 - Cyan ÷ 100 ) × ( 1 - Black ÷ 100 )
-Green = 255 × ( 1 - Magenta ÷ 100 ) × ( 1 - Black ÷ 100 )
-Blue = 255 × ( 1 - Yellow ÷ 100 ) × ( 1 - Black ÷ 100 )
-*/
 
