@@ -352,3 +352,15 @@ void DataManager::findLati() {
         k.printError();
     }
 }
+
+void DataManager::setRadius(double r) {
+    if(dynamic_cast<Circonferenza*>(poli))
+        static_cast<Circonferenza*>(poli)->getRaggio(r);
+    //else
+        //gestione eccezione
+}
+
+void DataManager::setPoint(QPointF p, uint i) {
+    if(dynamic_cast<LatiFiniti*>(poli))
+        static_cast<LatiFiniti*>(poli)->setVertice();
+}

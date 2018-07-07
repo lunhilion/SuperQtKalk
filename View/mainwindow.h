@@ -63,6 +63,8 @@ signals:
     void showPerimetro(double);
     void showBaricentro(QPoint);
     void showLati(QVector<double>);
+    void sendRadius(double);
+    void sendPolygon(QPolygonF);
 
 };
 

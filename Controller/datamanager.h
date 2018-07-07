@@ -67,6 +67,9 @@ public slots:
     void findBaricentro();
     void findLati();
     void drawPolygon(int);
+    void setRadius(double);
+    void setPolygon(QPolygonF);
+
 };
 
 #endif // DATAMANAGER_H

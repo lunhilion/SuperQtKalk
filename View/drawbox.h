@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QPainter>
 #include <QColor>
+#include <QMouseEvent>
 
 class DrawBox : public QWidget
 {
@@ -13,6 +14,8 @@ class DrawBox : public QWidget
 private:
     bool drawingCircle;
     bool drawingSinglePoint;
+    bool mousePressed;
+    unsigned int grabbed;
     QPalette pal;
     QColor color;
     QPointF circleCenter;
@@ -23,10 +26,15 @@ private:
 
 public:
     explicit DrawBox(QWidget *parent = 0);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
     void paintEvent(QPaintEvent* PaintEvent);
 
 signals:
-    void fetchPolygon();
+    //void fetchPolygon();
+    void sendRadius(double);
+    void sendPolygon(QPolygonF);
 
 public slots:
     void drawCircle(QPointF,double);

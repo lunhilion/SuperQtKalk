@@ -38,6 +38,9 @@ signals:
     void findBaricentro();
     void findLati();
     void drawPoint(QPoint);
+    void sendRadius(double);
+    void sendPolygon(QPolygonF);
+
 
 public slots:
     void setPolygonMode(int);
