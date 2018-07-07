@@ -5,13 +5,15 @@
 DrawBox::DrawBox(QWidget *parent) : QWidget(parent)
 {
     drawingCircle = false;
+    drawingEdgedPolygon = false;
     drawingSinglePoint = false;
     mousePressed = false;
+    initialized = false;
     color = Qt::black;
     pal.setColor(QPalette::Background, Qt::white);
     setAutoFillBackground(true);
     setPalette(pal);
-    setMouseTracking(true);
+    setAttribute(Qt::WA_TransparentForMouseEvents, true);
 }
 
 
@@ -31,20 +33,27 @@ void DrawBox::paintEvent(QPaintEvent*)
     if(drawingCircle) {
         painter.drawEllipse(circleCenter,circleRadius,circleRadius);
     }
-    else {
+    else if(drawingEdgedPolygon) {
         painter.drawPolygon(edgedPolygon);
     }
 }
 
 void DrawBox::drawCircle(QPointF p,double d) {
     drawingCircle = true;
+    drawingEdgedPolygon = false;
     circleCenter = QPointF(p.x()+ width()/2, p.y()+ height()/2);
     circleRadius = d;
     update();
+    if(!initialized){
+        initialized = true;
+        setAttribute(Qt::WA_TransparentForMouseEvents, false);
+        setMouseTracking(true);
+    }
 }
 
 void DrawBox::drawEdgedPolygon(QPolygonF q) {
     drawingCircle = false;
+    drawingEdgedPolygon = true;
     QPolygonF qf;
     for (int i=0; i<q.size(); ++i) {
         QPointF qp(q[i].x() + width()/2, q[i].y() + height()/2);
@@ -52,6 +61,11 @@ void DrawBox::drawEdgedPolygon(QPolygonF q) {
     }
     edgedPolygon = qf;
     update();
+    if(!initialized){
+        initialized = true;
+        setAttribute(Qt::WA_TransparentForMouseEvents, false);
+        setMouseTracking(true);
+    }
 }
 
 void DrawBox::updateDrawingColor(QString s) {
@@ -107,9 +121,10 @@ void DrawBox::mouseMoveEvent(QMouseEvent *event) {
         else {
             double x = event->pos().x();
             double y = event->pos().y();
-            for(int i=0; i<edgedPolygon.size() && found == false; ++i)
+            for(int i=0; i<edgedPolygon.size() && found == false; ++i) {
                 if(x > edgedPolygon[i].x()-10  &&  x < edgedPolygon[i].x()+10  &&  y > edgedPolygon[i].y()-10  &&  y < edgedPolygon[i].y()+10)
                     found = true;
+            }
         }
         if(found)
             setCursor(Qt::OpenHandCursor);

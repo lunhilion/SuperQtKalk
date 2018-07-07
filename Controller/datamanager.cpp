@@ -45,7 +45,7 @@ DataManager::DataManager(MainWindow * w) : view(w)
     connect(view,SIGNAL(sendRadius(double)),this,SLOT(setRadius(double)));
     connect(view,SIGNAL(sendPolygonPoint(QPointF,uint)),this,SLOT(setPolygonPoint(QPointF,uint)));
 
-    initializeOperands(0,0);
+    initializeOperands(2,0);
 
 }
 
