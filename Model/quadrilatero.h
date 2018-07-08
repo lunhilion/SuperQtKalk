@@ -12,6 +12,5 @@ public:
 };
 
 
-//è stato scelto il nome quadrilatero e non quadrato, perchè muovendo un vertice non sarebbe stato più un quadrato!
 
 #endif // QUADRILATERO_H
