@@ -120,9 +120,9 @@ public class Cmyk implements Colore {
         double y = yellow;
         double bl = black;
 
-        double r1 = round(255*( 1 - c / 100) * ( 1 - bl / 100));
-        double g1 = round(255*( 1 - m / 100) * ( 1 - bl / 100));
-        double b1 = round(255*( 1 - y / 100) * ( 1 - bl / 100));
+        double r1 = Math.round(255*( 1 - c / 100) * ( 1 - bl / 100));
+        double g1 = Math.round(255*( 1 - m / 100) * ( 1 - bl / 100));
+        double b1 = Math.round(255*( 1 - y / 100) * ( 1 - bl / 100));
 
         String r = String.format("%02X", (int)r1);
         String g = String.format("%02X", (int)g1);
