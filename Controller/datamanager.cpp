@@ -10,41 +10,47 @@ DataManager::DataManager(MainWindow * w) : view(w)
     op2 = new Rgb(255,255,255);
     colorResult = new Rgb(255,255,255);
     polygonColor = new Rgb(0,0,0);
+
+    //segnali dallla view
     connect(view,SIGNAL(newColorOperand(int)), this, SLOT(newColorOperand(int)));
-    connect(this,SIGNAL(setColorOperandMaxValues(uint)),view,SIGNAL(setColorOperandMaxValues(uint)));
     connect(view,SIGNAL(val1changed(int)),this,SLOT(setval1(int)));
     connect(view,SIGNAL(val2changed(int)),this,SLOT(setval2(int)));
     connect(view,SIGNAL(val3changed(int)),this,SLOT(setval3(int)));
     connect(view,SIGNAL(val4changed(int)),this,SLOT(setval4(int)));
-    connect(this,SIGNAL(setCol1Preview(QString)),view,SIGNAL(setCol1Preview(QString)));
     connect(view,SIGNAL(col1toOP1()),this,SLOT(col1toOP1()));
     connect(view,SIGNAL(col1toOP2()),this,SLOT(col1toOP2()));
     connect(view,SIGNAL(col1toPolygonColor()),this,SLOT(col1toPolygonColor()));
     connect(view,SIGNAL(colorResulttoPolygonColor()),this,SLOT(colorResulttoPolygonColor()));
-    connect(this,SIGNAL(setOP1(QString)),view,SIGNAL(setOP1(QString)));
-    connect(this,SIGNAL(setOP2(QString)),view,SIGNAL(setOP2(QString)));
     connect(view,SIGNAL(somma()),this,SLOT(somma()));
     connect(view,SIGNAL(sottrai()),this,SLOT(sottrai()));
     connect(view,SIGNAL(media()),this,SLOT(media()));
-    connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
     connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(fetchPolygon(int)));
     connect(view,SIGNAL(fetchPolygon(int)),this,SLOT(drawPolygon(int)));
-    connect(this,SIGNAL(drawCircle(QPointF,double)),view,SIGNAL(drawCircle(QPointF,double)));
-    connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),view,SIGNAL(drawEdgedPolygon(QPolygonF)));
-    connect(this,SIGNAL(setColorMode(int)),view,SIGNAL(setColorMode(int)));
-    connect(this,SIGNAL(setPolygonMode(int)),view,SIGNAL(setPolygonMode(int)));
-    connect(this,SIGNAL(updateDrawingColor(QString)),view,SIGNAL(updateDrawingColor(QString)));
     connect(view,SIGNAL(findArea()),this,SLOT(findArea()));
     connect(view,SIGNAL(findPerimetro()),this,SLOT(findPerimetro()));
     connect(view,SIGNAL(findBaricentro()),this,SLOT(findBaricentro()));
     connect(view,SIGNAL(findLati()),this,SLOT(findLati()));
+    connect(view,SIGNAL(sendRadius(double)),this,SLOT(setRadius(double)));
+    connect(view,SIGNAL(sendPolygonPoint(QPointF,uint)),this,SLOT(setPolygonPoint(QPointF,uint)));
+
+    //segnali verso la view
+    connect(this,SIGNAL(setColorOperandMaxValues(uint)),view,SIGNAL(setColorOperandMaxValues(uint)));
+    connect(this,SIGNAL(setCol1Preview(QString)),view,SIGNAL(setCol1Preview(QString)));
+    connect(this,SIGNAL(setOP1(QString)),view,SIGNAL(setOP1(QString)));
+    connect(this,SIGNAL(setOP2(QString)),view,SIGNAL(setOP2(QString)));
+    connect(this,SIGNAL(setResult(QString)),view,SIGNAL(setResult(QString)));
+    connect(this,SIGNAL(drawCircle(QPointF,double)),view,SIGNAL(drawCircle(QPointF,double)));
+    connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),view,SIGNAL(drawEdgedPolygon(QPolygonF)));
+    connect(this,SIGNAL(setColorMode(int)),view,SIGNAL(setColorMode(int)));
+    connect(this,SIGNAL(setPolygonMode(int)),view,SIGNAL(setPolygonMode(int)));
+    connect(this,SIGNAL(setPolygonOperand(int)),view,SIGNAL(setPolygonOperand(int)));
+    connect(this,SIGNAL(updateDrawingColor(QString)),view,SIGNAL(updateDrawingColor(QString)));
     connect(this,SIGNAL(showArea(double)),view,SIGNAL(showArea(double)));
     connect(this,SIGNAL(showPerimetro(double)),view,SIGNAL(showPerimetro(double)));
     connect(this,SIGNAL(showBaricentro(QPoint)),view,SIGNAL(showBaricentro(QPoint)));
     connect(this,SIGNAL(showLati(QVector<double>)),view,SIGNAL(showLati(QVector<double>)));
-    connect(view,SIGNAL(sendRadius(double)),this,SLOT(setRadius(double)));
-    connect(view,SIGNAL(sendPolygonPoint(QPointF,uint)),this,SLOT(setPolygonPoint(QPointF,uint)));
 
+    //inizializzazione combobox
     initializeOperands(0,0);
 
 }
@@ -69,14 +75,15 @@ void DataManager::newColorOperand(int i) {
             emit(setColorMode(1));
         }
         else {
-            col1 = new Rgb();
-            emit(setColorOperandMaxValues(col1->getMaxValues()));
-            emit(setCol1Preview(col1->getHex()));
-            emit(setColorMode(0));
+
             throw UndefValue("Inizializzazione di operando colore non valida. Operando inizializzato a RGB.");
         }
     }
     catch(KalkException k) {
+        col1 = new Rgb();
+        emit(setColorOperandMaxValues(col1->getMaxValues()));
+        emit(setCol1Preview(col1->getHex()));
+        emit(setColorMode(0));
         k.printError();
     }
 }
@@ -287,7 +294,7 @@ void DataManager::drawPolygon(int i) {
 
 
 void DataManager::initializeOperands(int polygon, int color) {
-    setPolygonMode(polygon);
+    emit(setPolygonOperand(polygon));
     newColorOperand(color);
 }
 

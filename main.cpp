@@ -1,8 +1,7 @@
 #include "View/mainwindow.h"
 #include "Controller/datamanager.h"
 #include <QApplication>
-#include <iostream>
-#include "Exception/kalkexception.h"
+
 
 int main(int argc, char *argv[])
 {

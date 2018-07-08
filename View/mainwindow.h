@@ -52,6 +52,7 @@ signals:
     void setResult(QString);
     void fetchPolygon(int);
     void setPolygonMode(int);
+    void setPolygonOperand(int);
     void drawCircle(QPointF,double);
     void drawEdgedPolygon(QPolygonF);
     void updateDrawingColor(QString);

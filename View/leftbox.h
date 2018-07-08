@@ -46,6 +46,7 @@ signals:
 
 public slots:
     void setPolygonMode(int);
+    void setPolygonOperand(int);
     void showArea(double);
     void showPerimetro(double);
     void showBaricentro(QPoint);

@@ -25,12 +25,10 @@ private:
     Colore* colorResult;
     Colore* polygonColor;
 
-    void initializeOperands(int, int);
-
-
 public:
     unsigned int getColorOperandMaxValue() const;
     DataManager(MainWindow*);
+    void initializeOperands(int, int);
 
 signals:
     void setColorOperandMaxValues(unsigned int);
@@ -42,6 +40,7 @@ signals:
     void drawCircle(QPointF,double);
     void drawEdgedPolygon(QPolygonF);
     void setPolygonMode(int);
+    void setPolygonOperand(int);
     void updateDrawingColor(QString);
     void showArea(double);
     void showPerimetro(double);

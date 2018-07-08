@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,SIGNAL(drawEdgedPolygon(QPolygonF)),leftbox,SIGNAL(drawEdgedPolygon(QPolygonF)));
     connect(this,SIGNAL(setColorMode(int)),rightbox,SLOT(setColorMode(int)));
     connect(this,SIGNAL(setPolygonMode(int)),leftbox,SLOT(setPolygonMode(int)));
+    connect(this,SIGNAL(setPolygonOperand(int)),leftbox,SLOT(setPolygonOperand(int)));
     connect(this,SIGNAL(updateDrawingColor(QString)),leftbox,SIGNAL(updateDrawingColor(QString)));
     connect(leftbox,SIGNAL(findArea()),this,SIGNAL(findArea()));
     connect(leftbox,SIGNAL(findPerimetro()),this,SIGNAL(findPerimetro()));
@@ -70,4 +71,3 @@ MainWindow::~MainWindow() {
     delete rightbox;
     delete bottombox;
 }
-

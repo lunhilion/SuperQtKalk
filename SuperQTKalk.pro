@@ -29,7 +29,7 @@ SOURCES += main.cpp\
     View/rightbox.cpp \
     View/valueselector.cpp \
     View/drawbox.cpp \
-    View/colorbox.cpp \ 
+    View/colorbox.cpp \
     Exception/kalkexception.cpp
 
 HEADERS  +=  Controller/datamanager.h \
@@ -49,8 +49,4 @@ HEADERS  +=  Controller/datamanager.h \
     View/rightbox.h \
     View/valueselector.h \
     View/colorbox.h \
-    kalkexception.h \
     Exception/kalkexception.h
-
-
-FORMS    += mainwindow.ui

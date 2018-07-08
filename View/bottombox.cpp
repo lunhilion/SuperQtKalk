@@ -1,4 +1,5 @@
 #include "bottombox.h"
+#include "Exception/kalkexception.h"
 
 BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
 {
@@ -73,12 +74,20 @@ BottomBox::BottomBox(QWidget *parent) : QFrame(parent)
 }
 
 void BottomBox::operationRouting() {
-    if(operandselector->currentIndex()==0)
+    try {
+        if(operandselector->currentIndex()==0)
+            emit(somma());
+        else if(operandselector->currentIndex()==1)
+            emit(sottrai());
+        else if(operandselector->currentIndex()==2)
+            emit(media());
+        else
+            throw ViewUndefValue("Indice operazione non valido. Operazione impostata a Somma.");
+    }
+    catch(KalkException k) {
         emit(somma());
-    else if(operandselector->currentIndex()==1)
-        emit(sottrai());
-    else if(operandselector->currentIndex()==2)
-        emit(media());
+        k.printError();
+    }
 
 }
 

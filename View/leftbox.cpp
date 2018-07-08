@@ -1,4 +1,5 @@
 #include "leftbox.h"
+#include "Exception/kalkexception.h"
 
 LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
 {
@@ -81,39 +82,55 @@ void LeftBox::polygonRouter() {
 }
 
 void LeftBox::setPolygonMode(int i){
-    if(i==0)
-    {
+   try {
+        if(i==0)
+        {
+            polygonSelector->setCurrentIndex(0);
+            calcolaArea->setEnabled(true);
+            calcolaPerimetro->setEnabled(true);
+            calcolaBaricentro->setEnabled(true);
+            calcolaLati->setEnabled(false);
+        }
+        else if (i==1) {
+            polygonSelector->setCurrentIndex(1);
+            calcolaArea->setEnabled(true);
+            calcolaPerimetro->setEnabled(true);
+            calcolaBaricentro->setEnabled(true);
+            calcolaLati->setEnabled(true);
+            lcdLato4->setVisible(false);
+        }
+        else if (i==2) {
+            polygonSelector->setCurrentIndex(2);
+            calcolaArea->setEnabled(true);
+            calcolaPerimetro->setEnabled(true);
+            calcolaBaricentro->setEnabled(true);
+            calcolaLati->setEnabled(true);
+            lcdLato4->setVisible(true);
+        }
+        else
+            throw ViewUndefValue("Inizializzazione di operando poligono non valida. Operando inizializzato a Circonferenza.");
+        }
+    catch (KalkException k) {
         polygonSelector->setCurrentIndex(0);
         calcolaArea->setEnabled(true);
         calcolaPerimetro->setEnabled(true);
         calcolaBaricentro->setEnabled(true);
         calcolaLati->setEnabled(false);
+        k.printError();
     }
-    else if (i==1) {
-        polygonSelector->setCurrentIndex(1);
-        calcolaArea->setEnabled(true);
-        calcolaPerimetro->setEnabled(true);
-        calcolaBaricentro->setEnabled(true);
-        calcolaLati->setEnabled(true);
-        lcdLato4->setVisible(false);
+}
+
+void LeftBox::setPolygonOperand(int i) {
+    try {
+        if(i>=0 && i < polygonSelector->count())
+            polygonSelector->setCurrentIndex(i);
+        else
+            throw ViewUndefValue("Inizializzazione di operando poligono non valida. Operando inizializzato a Circonferenza.");
     }
-    else if (i==2) {
-        polygonSelector->setCurrentIndex(2);
-        calcolaArea->setEnabled(true);
-        calcolaPerimetro->setEnabled(true);
-        calcolaBaricentro->setEnabled(true);
-        calcolaLati->setEnabled(true);
-        lcdLato4->setVisible(true);
-    }
-    //else
-        /*
+    catch (KalkException k) {
         polygonSelector->setCurrentIndex(0);
-        calcolaArea->setEnabled(true);
-        calcolaPerimetro->setEnabled(true);
-        calcolaBaricentro->setEnabled(true);
-        calcolaLati->setEnabled(false);
-        throw exception("Inizializzazione di operando poligono non valida. Operando inizializzato a Circonferenza.");
-    */
+        k.printError();
+    }
 }
 
 void LeftBox::showArea(double d) {
