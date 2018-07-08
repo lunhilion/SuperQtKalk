@@ -249,7 +249,7 @@ void DataManager::fetchPolygon(int i) {
             poli = new Quadrilatero(Punto(-50,50),Punto(50,50),Punto(50,-50),Punto(-50,-50));
         }
         else
-            throw EmptyPoly();
+            throw EmptyPoly("Impossibile creare questo poligono.");
     }
     catch(KalkException k) {
         k.printError();

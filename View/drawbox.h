@@ -34,7 +34,6 @@ public:
     void paintEvent(QPaintEvent* PaintEvent);
 
 signals:
-    //void fetchPolygon();
     void sendRadius(double);
     void sendPolygonPoint(QPointF,uint);
 

@@ -14,18 +14,16 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     polygonPreview->addWidget(disegna,0,3,1,1);
 
     drawbox = new DrawBox(this);
-    //drawbox->setMinimumHeight(365);
-    //drawbox->setMinimumWidth(450);
     polygonPreview->addWidget(drawbox,1,0,1,4);
     polygonPreview->setRowStretch(1,1);
 
-    calcolaArea = new QPushButton("Calcola Area",this);
+    calcolaArea = new QPushButton("Calcola Area (Px quadrati)",this);
     calcolaArea->setEnabled(false);
     polygonPreview->addWidget(calcolaArea,2,0,1,3);
     lcdArea = new QLCDNumber(8);
     polygonPreview->addWidget(lcdArea,2,3);
 
-    calcolaPerimetro = new QPushButton("Calcola Perimetro",this);
+    calcolaPerimetro = new QPushButton("Calcola Perimetro (Px)",this);
     calcolaPerimetro->setEnabled(false);
     polygonPreview->addWidget(calcolaPerimetro,3,0,1,3);
     lcdPerimetro = new QLCDNumber(8);
@@ -35,7 +33,7 @@ LeftBox::LeftBox(QWidget *parent) : QFrame(parent)
     calcolaBaricentro->setEnabled(false);
     polygonPreview->addWidget(calcolaBaricentro,4,0,1,3);
 
-    calcolaLati = new QPushButton("Calcola Lunghezza Lati",this);
+    calcolaLati = new QPushButton("Calcola Lunghezza Lati (Px)",this);
     calcolaLati->setEnabled(false);
     polygonPreview->addWidget(calcolaLati,5,0,1,3);
 
