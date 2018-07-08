@@ -317,16 +317,26 @@ void DataManager::findLati() {
 }
 
 void DataManager::setRadius(double r) {
-    if(dynamic_cast<Circonferenza*>(poli))
-        static_cast<Circonferenza*>(poli)->setRaggio(r);
-    //else
-        //gestione eccezione
+    try {
+        if(dynamic_cast<Circonferenza*>(poli))
+            static_cast<Circonferenza*>(poli)->setRaggio(r);
+        else
+            throw TypeErr();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
 
 void DataManager::setPolygonPoint(QPointF p, uint i) {
-    Punto t(p.x(),p.y());
-    if(dynamic_cast<LatiFiniti*>(poli))
-        static_cast<LatiFiniti*>(poli)->setVertice(i,t);
-    //else
-        //gestione eccezione
+    try {
+        Punto t(p.x(),p.y());
+        if(dynamic_cast<LatiFiniti*>(poli))
+            static_cast<LatiFiniti*>(poli)->setVertice(i,t);
+        else
+            throw TypeErr();
+    }
+    catch(KalkException k) {
+        k.printError();
+    }
 }
